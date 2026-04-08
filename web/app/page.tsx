@@ -1,28 +1,26 @@
+"use client";
 /*
- * THROTTL AI — HOMEPAGE
+ * THROTTL AI — HOMEPAGE (Next.js)
  * Sections: Hero → Problem → Use Cases → Services → The Throttl Accelerator → Who It's For → CTA
- * Design: Premium B2B, navy/cream, Fraunces + Outfit, coral CTA
  */
 
 import { useState, useEffect } from "react";
 import { ArrowRight, ChevronDown, CheckCircle2, Zap, BarChart2, FileText, Users, MessageSquare, Calendar, TrendingUp, Clock, Send, Search, BookOpen, Wrench } from "lucide-react";
-import { Link } from "wouter";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import Link from "next/link";
 import FadeSection from "@/components/FadeSection";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
 const USE_CASES = [
-  { icon: BarChart2,    title: "Faster Decisions",          body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
-  { icon: Zap,          title: "Brainstorming & Strategy",  body: "Use AI as a thinking partner to stress-test ideas and accelerate planning." },
-  { icon: MessageSquare,title: "Clearer Communication",     body: "Draft sharper emails, proposals, and internal memos in minutes." },
-  { icon: FileText,     title: "SOPs & Documentation",      body: "Turn tribal knowledge into structured, searchable operating procedures." },
-  { icon: Calendar,     title: "Meeting Prep & Summaries",  body: "Walk into every meeting prepared. Walk out with a clean action log." },
-  { icon: Users,        title: "Smarter Delegation",        body: "Brief your team with AI-generated context so nothing gets lost in translation." },
-  { icon: TrendingUp,   title: "Automated Reporting",       body: "Stop building the same reports manually. Let AI do the heavy lifting." },
-  { icon: Clock,        title: "Reduce Admin Load",         body: "Reclaim hours every week by automating repetitive management tasks." },
-  { icon: Send,         title: "Sales Communication",       body: "Follow up faster, personalise at scale, and close more with less effort." },
+  { icon: BarChart2,     title: "Faster Decisions",         body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
+  { icon: Zap,           title: "Brainstorming & Strategy", body: "Use AI as a thinking partner to stress-test ideas and accelerate planning." },
+  { icon: MessageSquare, title: "Clearer Communication",    body: "Draft sharper emails, proposals, and internal memos in minutes." },
+  { icon: FileText,      title: "SOPs & Documentation",     body: "Turn tribal knowledge into structured, searchable operating procedures." },
+  { icon: Calendar,      title: "Meeting Prep & Summaries", body: "Walk into every meeting prepared. Walk out with a clean action log." },
+  { icon: Users,         title: "Smarter Delegation",       body: "Brief your team with AI-generated context so nothing gets lost in translation." },
+  { icon: TrendingUp,    title: "Automated Reporting",      body: "Stop building the same reports manually. Let AI do the heavy lifting." },
+  { icon: Clock,         title: "Reduce Admin Load",        body: "Reclaim hours every week by automating repetitive management tasks." },
+  { icon: Send,          title: "Sales Communication",      body: "Follow up faster, personalise at scale, and close more with less effort." },
 ];
 
 export default function Home() {
@@ -37,14 +35,12 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
-      <NavBar />
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.hero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}EE 0%, ${C.navy}BB 45%, ${C.navy}55 100%)` }} />
-          {/* Subtle grid overlay */}
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px", opacity: 0.6 }} />
         </div>
 
@@ -159,9 +155,9 @@ export default function Home() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(24px)", transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s" }}>
               {[
                 { num: "~4 in 5", label: "executives say lack of internal AI skills is their top barrier to adoption" },
-                { num: "70%", label: "of AI projects fail due to poor team adoption" },
-                { num: "55%", label: "of employees already use unapproved AI tools at work" },
-                { num: "3×",  label: "more revenue growth at companies with AI-enabled leadership" },
+                { num: "70%",     label: "of AI projects fail due to poor team adoption" },
+                { num: "55%",     label: "of employees already use unapproved AI tools at work" },
+                { num: "3×",      label: "more revenue growth at companies with AI-enabled leadership" },
               ].map((s, i) => (
                 <div key={i} style={{
                   backgroundColor: "rgba(255,255,255,0.04)",
@@ -197,7 +193,7 @@ export default function Home() {
           </FadeSection>
 
           <div ref={useCases.ref}>
-            {/* ── Featured card (index 0) ── */}
+            {/* Featured card (index 0) */}
             {(() => {
               const FeaturedIcon = USE_CASES[0].icon;
               return (
@@ -213,7 +209,7 @@ export default function Home() {
                   transform: useCases.inView ? "translateY(0)" : "translateY(24px)",
                   transition: "opacity 0.5s cubic-bezier(0.23,1,0.32,1) 0s, transform 0.5s cubic-bezier(0.23,1,0.32,1) 0s",
                 }}>
-                  <div style={{ width: "56px", height: "56px", borderRadius: "50%", border: `1.5px solid rgba(201,168,76,0.35)`, backgroundColor: "rgba(201,168,76,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div style={{ width: "56px", height: "56px", borderRadius: "50%", border: "1.5px solid rgba(201,168,76,0.35)", backgroundColor: "rgba(201,168,76,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <FeaturedIcon size={24} color={C.gold} />
                   </div>
                   <div style={{ flex: 1 }}>
@@ -231,7 +227,7 @@ export default function Home() {
               );
             })()}
 
-            {/* ── Supporting grid (indices 1–8) ── */}
+            {/* Supporting grid (indices 1–8) */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "1rem" }}>
               {USE_CASES.slice(1).map((uc, i) => {
                 const Icon = uc.icon;
@@ -354,7 +350,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Card 2: Enablement */}
+            {/* Card 2: Transformation */}
             <div style={{
               backgroundColor: C.navy,
               borderRadius: "12px",
@@ -418,7 +414,6 @@ export default function Home() {
 
       {/* ── THROTTL ACCELERATOR INTRO ── */}
       <section style={{ padding: "5.5rem 0", backgroundColor: C.navy, position: "relative", overflow: "hidden" }}>
-        {/* Background image */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.playbookHero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.25 }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, ${C.navy}FF 40%, ${C.navy}AA 100%)` }} />
@@ -439,57 +434,56 @@ export default function Home() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "1rem" }}>
               {[
                 { step: "01", label: "Identify",   desc: "Find where AI creates immediate impact", icon: Search },
-                { step: "02", label: "Train",      desc: "Certify your leadership team in AI", icon: BookOpen },
-                { step: "03", label: "Implement",  desc: "Apply AI to real business operations", icon: Wrench },
-                { step: "04", label: "Scale",      desc: "Build a truly AI-enabled company", icon: TrendingUp },
+                { step: "02", label: "Train",      desc: "Certify your leadership team in AI",     icon: BookOpen },
+                { step: "03", label: "Implement",  desc: "Apply AI to real business operations",   icon: Wrench },
+                { step: "04", label: "Scale",      desc: "Build a truly AI-enabled company",       icon: TrendingUp },
               ].map((s, i) => {
                 const Icon = s.icon;
                 return (
-                <div key={i} style={{
-                  backgroundColor: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: `1px solid rgba(255,255,255,0.08)`,
-                  borderRadius: "10px",
-                  padding: "1.75rem 1.5rem",
-                  opacity: accelerator.inView ? 1 : 0,
-                  transform: accelerator.inView ? "translateY(0)" : "translateY(24px)",
-                  transition: `all 0.5s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.1}s`,
-                  position: "relative",
-                  overflow: "hidden",
-                  cursor: "default",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(255,255,255,0.07)";
-                    el.style.borderColor = `rgba(201,168,76,0.35)`;
-                    el.style.transform = "translateY(-4px)";
-                    el.style.boxShadow = `0 12px 24px rgba(15,28,63,0.3), 0 0 16px rgba(201,168,76,0.15)`;
+                  <div key={i} style={{
+                    backgroundColor: "rgba(255,255,255,0.03)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "10px",
+                    padding: "1.75rem 1.5rem",
+                    opacity: accelerator.inView ? 1 : 0,
+                    transform: accelerator.inView ? "translateY(0)" : "translateY(24px)",
+                    transition: `all 0.5s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.1}s`,
+                    position: "relative",
+                    overflow: "hidden",
+                    cursor: "default",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(255,255,255,0.03)";
-                    el.style.borderColor = `rgba(255,255,255,0.08)`;
-                    el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "none";
-                  }}
-                >
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.6 }} />
-                  
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.25rem" }}>
-                    <div style={{ width: "34px", height: "34px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <Icon size={16} color={C.goldLight} />
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.backgroundColor = "rgba(255,255,255,0.07)";
+                      el.style.borderColor = "rgba(201,168,76,0.35)";
+                      el.style.transform = "translateY(-4px)";
+                      el.style.boxShadow = "0 12px 24px rgba(15,28,63,0.3), 0 0 16px rgba(201,168,76,0.15)";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.backgroundColor = "rgba(255,255,255,0.03)";
+                      el.style.borderColor = "rgba(255,255,255,0.08)";
+                      el.style.transform = "translateY(0)";
+                      el.style.boxShadow = "none";
+                    }}
+                  >
+                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.6 }} />
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.25rem" }}>
+                      <div style={{ width: "34px", height: "34px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <Icon size={16} color={C.goldLight} />
+                      </div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
                     </div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
+                    <div style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: "0.5rem" }}>{s.label}</div>
+                    <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{s.desc}</div>
                   </div>
-                  
-                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: "0.5rem" }}>{s.label}</div>
-                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{s.desc}</div>
-                </div>
-              )})}
+                );
+              })}
             </div>
 
             <div style={{ marginTop: "2.5rem", opacity: accelerator.inView ? 1 : 0, transition: "opacity 0.7s ease 0.6s" }}>
@@ -523,15 +517,15 @@ export default function Home() {
 
           <div ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.25rem" }}>
             {[
-              { role: "CEOs & Founders",        desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
-              { role: "COOs & Operators",       desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
-              { role: "Management Teams",       desc: "You lead people and projects. AI gives you better information, faster decisions, and more time for what matters." },
+              { role: "CEOs & Founders",  desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
+              { role: "COOs & Operators", desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
+              { role: "Management Teams", desc: "You lead people and projects. AI gives you better information, faster decisions, and more time for what matters." },
             ].map((item, i) => (
               <div key={i} style={{
                 backgroundColor: "#fff",
                 borderRadius: "6px",
                 padding: "1.75rem",
-                border: `1px solid rgba(15,28,63,0.07)`,
+                border: "1px solid rgba(15,28,63,0.07)",
                 boxShadow: "0 2px 12px rgba(15,28,63,0.04)",
                 opacity: audience.inView ? 1 : 0,
                 transform: audience.inView ? "translateY(0)" : "translateY(20px)",
@@ -580,7 +574,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

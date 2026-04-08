@@ -1,12 +1,10 @@
+"use client";
 /*
- * THROTTL AI — AI BUSINESS TRANSFORMATION PAGE
- * Merges: In-House AI Enablement + The Throttl Accelerator (formerly "AI Operator Playbook")
+ * THROTTL AI — AI BUSINESS TRANSFORMATION PAGE (Next.js)
  * Sections: Hero → What Is It → The Throttl Accelerator (4 steps) → Toolkit → CTA
  */
 
 import { ArrowRight, CheckCircle2, Search, Map, Wrench, TrendingUp } from "lucide-react";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import FadeSection from "@/components/FadeSection";
 import TransformationForm from "@/components/TransformationForm";
 import { useInView } from "@/hooks/useInView";
@@ -90,7 +88,6 @@ export default function Transformation() {
 
   return (
     <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
-      <NavBar />
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "64vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -145,10 +142,10 @@ export default function Transformation() {
             </FadeSection>
             <div>
               {[
-                { icon: Search,     title: "Assess",     body: "We map your workflows, identify inefficiencies, and find where AI creates the most immediate value." },
-                { icon: Map,        title: "Plan",       body: "We build a prioritised AI roadmap — quick wins first, long-term transformation second." },
-                { icon: Wrench,     title: "Implement",  body: "We apply AI tools and workflows into your real operations, working alongside your team." },
-                { icon: TrendingUp, title: "Scale",      body: "We expand AI adoption across departments and build the internal capability to sustain it." },
+                { icon: Search,     title: "Assess",    body: "We map your workflows, identify inefficiencies, and find where AI creates the most immediate value." },
+                { icon: Map,        title: "Plan",      body: "We build a prioritised AI roadmap — quick wins first, long-term transformation second." },
+                { icon: Wrench,     title: "Implement", body: "We apply AI tools and workflows into your real operations, working alongside your team." },
+                { icon: TrendingUp, title: "Scale",     body: "We expand AI adoption across departments and build the internal capability to sustain it." },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -169,7 +166,6 @@ export default function Transformation() {
           </div>
         </div>
       </section>
-
 
       {/* ── THE THROTTL ACCELERATOR ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.creamDark }}>
@@ -227,16 +223,16 @@ export default function Transformation() {
                 transition: `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${i * 0.12}s`,
                 position: "relative",
               }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.boxShadow = `0 16px 48px rgba(15,28,63,0.2)`;
-                el.style.transform = "translateY(-6px)";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.boxShadow = `0 8px 32px rgba(15,28,63,0.12)`;
-                el.style.transform = "translateY(0)";
-              }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.boxShadow = "0 16px 48px rgba(15,28,63,0.2)";
+                  el.style.transform = "translateY(-6px)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.boxShadow = "0 8px 32px rgba(15,28,63,0.12)";
+                  el.style.transform = "translateY(0)";
+                }}
               >
                 {i % 2 === 0 && (
                   <div style={{ position: "relative", padding: "3rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden" }}>
@@ -259,7 +255,7 @@ export default function Transformation() {
                     const isHighlight = o === "Honest view of where AI won't help";
                     return (
                       <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.6rem" }}>
-                        <CheckCircle2 size={16} color={isHighlight ? s.color : s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
+                        <CheckCircle2 size={16} color={s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
                         <span style={{ fontSize: "0.9rem", color: isHighlight ? "#ffffff" : "#3A3530", fontWeight: isHighlight ? 600 : 400 }}>
                           {isHighlight ? "→ " : ""}{o}
                         </span>
@@ -287,8 +283,6 @@ export default function Transformation() {
         </div>
       </section>
 
-
-
       {/* ── TOOLKIT ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
         <div className="container">
@@ -308,7 +302,7 @@ export default function Transformation() {
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: "10px",
                 backgroundColor: "#fff", borderRadius: "6px", padding: "1rem 1.25rem",
-                border: `1px solid rgba(15,28,63,0.07)`,
+                border: "1px solid rgba(15,28,63,0.07)",
                 opacity: toolkit.inView ? 1 : 0,
                 transform: toolkit.inView ? "translateY(0)" : "translateY(12px)",
                 transition: `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`,
@@ -349,7 +343,6 @@ export default function Transformation() {
 
       <TransformationForm />
 
-      <Footer />
     </div>
   );
 }

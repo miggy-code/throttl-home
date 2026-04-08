@@ -1,12 +1,11 @@
+"use client";
 /*
- * THROTTL AI — ABOUT US PAGE
+ * THROTTL AI — ABOUT US PAGE (Next.js)
  * Sections: Hero → Mission → Who We Are → Values → CTA
  */
 
 import { ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import Link from "next/link";
 import FadeSection from "@/components/FadeSection";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
@@ -17,7 +16,6 @@ export default function About() {
 
   return (
     <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
-      <NavBar />
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "56vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -94,7 +92,7 @@ export default function About() {
                   backgroundColor: C.navy, borderRadius: "8px", padding: "2.5rem",
                   boxShadow: "0 4px 24px rgba(15,28,63,0.1)",
                   cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%", display: "flex", flexDirection: "column"
+                  height: "100%", display: "flex", flexDirection: "column",
                 }}
                   onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(15,28,63,0.18)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(15,28,63,0.1)"; }}
@@ -123,7 +121,7 @@ export default function About() {
                   backgroundColor: C.coral, borderRadius: "8px", padding: "2.5rem",
                   boxShadow: "0 4px 24px rgba(232,93,53,0.2)",
                   cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%", display: "flex", flexDirection: "column"
+                  height: "100%", display: "flex", flexDirection: "column",
                 }}
                   onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(232,93,53,0.3)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(232,93,53,0.2)"; }}
@@ -147,8 +145,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-
 
       {/* ── CTA ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.navy }}>
@@ -176,7 +172,6 @@ export default function About() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

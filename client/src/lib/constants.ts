@@ -20,8 +20,8 @@ export const C = {
   creamDark:   "#EAE6DC",
   gold:        "#C9A84C",
   goldLight:   "#E2C97A",
-  coral:       "#E85D35",
-  coralDark:   "#C94A24",
+  coral:       "#6A8A9E",
+  coralDark:   "#4F6D7E",
   warmGray:    "#8A8278",
   white:       "#FFFFFF",
 };

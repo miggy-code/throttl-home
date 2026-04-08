@@ -1,11 +1,10 @@
+"use client";
 /*
- * THROTTL AI — AI WORKSHOPS PAGE
+ * THROTTL AI — AI WORKSHOPS PAGE (Next.js)
  * Sections: Hero → What Are the Workshops → How It Works → Topics → Certification → Pricing → CTA
  */
 
 import { ArrowRight, CheckCircle2, Award, Users, Zap, BookOpen, Target, Clock } from "lucide-react";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import FadeSection from "@/components/FadeSection";
 import WorkshopForm from "@/components/WorkshopForm";
 import { useInView } from "@/hooks/useInView";
@@ -30,11 +29,9 @@ export default function Workshops() {
   const how = useInView();
   const topics = useInView();
   const cert = useInView();
-  const pricing = useInView();
 
   return (
     <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
-      <NavBar />
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "64vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -89,15 +86,15 @@ export default function Workshops() {
             </FadeSection>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               {[
-                { icon: Users,    label: "For Leadership Teams",   desc: "Designed for executives, managers, and department heads" },
-                { icon: Target,   label: "Business-Focused",       desc: "Built around your actual workflows, not generic AI content" },
-                { icon: Zap,      label: "Hands-On",               desc: "Live practice with real tools during every session" },
-                { icon: Award,    label: "Certified Outcomes",     desc: "Participants earn the Throttl AI Operator Certification" },
+                { icon: Users,  label: "For Leadership Teams", desc: "Designed for executives, managers, and department heads" },
+                { icon: Target, label: "Business-Focused",     desc: "Built around your actual workflows, not generic AI content" },
+                { icon: Zap,    label: "Hands-On",             desc: "Live practice with real tools during every session" },
+                { icon: Award,  label: "Certified Outcomes",   desc: "Participants earn the Throttl AI Operator Certification" },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <FadeSection key={i} delay={i * 0.08}>
-                    <div style={{ backgroundColor: "#fff", borderRadius: "6px", padding: "1.25rem", border: `1px solid rgba(15,28,63,0.07)`, boxShadow: "0 2px 10px rgba(15,28,63,0.05)" }}>
+                    <div style={{ backgroundColor: "#fff", borderRadius: "6px", padding: "1.25rem", border: "1px solid rgba(15,28,63,0.07)", boxShadow: "0 2px 10px rgba(15,28,63,0.05)" }}>
                       <div style={{ width: "32px", height: "32px", borderRadius: "6px", backgroundColor: `${C.navy}10`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.75rem" }}>
                         <Icon size={16} color={C.navy} />
                       </div>
@@ -140,11 +137,11 @@ export default function Workshops() {
           </FadeSection>
           <div ref={how.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
             {[
-              { n: "01", icon: BookOpen, title: "Discovery Call",       body: "We learn about your business, your team, and the workflows where AI can make the biggest difference." },
-              { n: "02", icon: Target,   title: "Custom Program",       body: "We design a workshop program tailored to your industry, your tools, and your team's current level." },
-              { n: "03", icon: Zap,      title: "Live Workshops",       body: "Hands-on sessions with your management team. Real tools. Real use cases. Real outcomes." },
-              { n: "04", icon: Award,    title: "Certification",        body: "Participants who demonstrate AI proficiency earn the Throttl AI Operator Certification." },
-              { n: "05", icon: Clock,    title: "Ongoing Support",      body: "We stay available for follow-up coaching and questions as your team builds new habits." },
+              { n: "01", icon: BookOpen, title: "Discovery Call",  body: "We learn about your business, your team, and the workflows where AI can make the biggest difference." },
+              { n: "02", icon: Target,   title: "Custom Program",  body: "We design a workshop program tailored to your industry, your tools, and your team's current level." },
+              { n: "03", icon: Zap,      title: "Live Workshops",  body: "Hands-on sessions with your management team. Real tools. Real use cases. Real outcomes." },
+              { n: "04", icon: Award,    title: "Certification",   body: "Participants who demonstrate AI proficiency earn the Throttl AI Operator Certification." },
+              { n: "05", icon: Clock,    title: "Ongoing Support", body: "We stay available for follow-up coaching and questions as your team builds new habits." },
             ].map((s, i) => {
               const Icon = s.icon;
               return (
@@ -191,7 +188,7 @@ export default function Workshops() {
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: "1rem",
                 padding: "0.85rem 0",
-                borderBottom: `1px solid rgba(15,28,63,0.07)`,
+                borderBottom: "1px solid rgba(15,28,63,0.07)",
                 opacity: topics.inView ? 1 : 0,
                 transform: topics.inView ? "translateY(0)" : "translateY(12px)",
                 transition: `opacity 0.4s ease ${i * 0.04}s, transform 0.4s ease ${i * 0.04}s`,
@@ -239,7 +236,6 @@ export default function Workshops() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </section>
@@ -301,7 +297,6 @@ export default function Workshops() {
 
       <WorkshopForm />
 
-      <Footer />
     </div>
   );
 }
