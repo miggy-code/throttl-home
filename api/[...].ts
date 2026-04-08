@@ -5,7 +5,7 @@ import path from "path";
 import type { IncomingMessage, ServerResponse } from "http";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const publicDir = join(__dirname, "../dist/public");
+const publicDir = join(__dirname, "../public");
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   try {
