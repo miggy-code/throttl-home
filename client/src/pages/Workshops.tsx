@@ -6,6 +6,7 @@
 import { ArrowRight, CheckCircle2, Award, Users, Zap, BookOpen, Target, Clock } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import WorkshopForm from "@/components/WorkshopForm";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
@@ -53,7 +54,7 @@ export default function Workshops() {
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "640px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Management Training</span>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               AI Workshops for<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>Executives & Managers</span>
             </h1>
@@ -61,7 +62,7 @@ export default function Workshops() {
               Hands-on, practical AI training built for leadership teams. Not theory. Not generic tutorials. Real skills for real business workflows.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href={BOOKING_URL} style={{
+              <a href="#get-started" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -84,14 +85,14 @@ export default function Workshops() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What Are the Workshops</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 Practical AI training that actually changes how you work
               </h2>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "1.25rem" }}>
                 Our workshops are intensive, hands-on sessions designed specifically for executives and managers. We don't teach you what AI is. We teach you how to use it inside your actual job.
               </p>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem" }}>
-                Every workshop is tailored to your business, your industry, and the real workflows your team runs every day. You leave with skills you can apply immediately — and the certification to prove it.
+                Every workshop is tailored to your business, your industry, and the real workflows your team runs every day. You leave with skills you can apply Monday morning — and the certification to prove it.
               </p>
             </FadeSection>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
@@ -125,13 +126,13 @@ export default function Workshops() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>How It Works</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 Find the right workshop for your organisation
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 1.75rem" }}>
                 Book a time with one of our directors to understand what workshops would be the best fit for your organisation.
               </p>
-              <a href={BOOKING_URL} style={{
+              <a href="#get-started" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -148,7 +149,7 @@ export default function Workshops() {
           <div ref={how.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
             {[
               { n: "01", icon: BookOpen, title: "Discovery Call",       body: "We learn about your business, your team, and the workflows where AI can make the biggest difference." },
-              { n: "02", icon: Target,   title: "Custom Programme",     body: "We design a workshop programme tailored to your industry, your tools, and your team's current level." },
+              { n: "02", icon: Target,   title: "Custom Program",       body: "We design a workshop program tailored to your industry, your tools, and your team's current level." },
               { n: "03", icon: Zap,      title: "Live Workshops",       body: "Hands-on sessions with your management team. Real tools. Real use cases. Real outcomes." },
               { n: "04", icon: Award,    title: "Certification",        body: "Participants who demonstrate AI proficiency earn the Throttl AI Operator Certification." },
               { n: "05", icon: Clock,    title: "Ongoing Support",      body: "We stay available for follow-up coaching and questions as your team builds new habits." },
@@ -165,7 +166,7 @@ export default function Workshops() {
                   transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1rem" }}>
-                    <span style={{ fontFamily: "'Fraunces', serif", fontSize: "1.5rem", fontWeight: 700, color: C.creamDark, lineHeight: 1 }}>{s.n}</span>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: C.creamDark, lineHeight: 1 }}>{s.n}</span>
                     <div style={{ width: "28px", height: "28px", borderRadius: "6px", backgroundColor: `${C.coral}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <Icon size={14} color={C.coral} />
                     </div>
@@ -185,11 +186,11 @@ export default function Workshops() {
           <FadeSection>
             <div style={{ marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Workshop Topics</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
                 What your team will learn
               </h2>
               <p style={{ color: C.warmGray, fontSize: "0.97rem", maxWidth: "540px", lineHeight: 1.75 }}>
-                Topics are selected and sequenced based on your team's needs. Every programme is different — here's a sample of what we cover.
+                Topics are selected and sequenced based on your team's needs. Every program is different — here's a sample of what we cover.
               </p>
             </div>
           </FadeSection>
@@ -217,17 +218,17 @@ export default function Workshops() {
           <div ref={cert.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: cert.inView ? 1 : 0, transform: cert.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>Certification</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 The Throttl AI Operator Certification
               </h2>
               <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "1.5rem" }}>
-                Executives who complete our programme and demonstrate real AI proficiency earn a certification that means something — proof that they can apply AI inside real business workflows.
+                Executives who complete our program and demonstrate real AI proficiency earn a certification that means something. This isn't a participation badge — it's tied to demonstrated tool mastery and real workflow application. It's proof that your leadership team can actually use AI, not just talk about it.
               </p>
               {[
                 "Demonstrates practical AI capability, not just awareness",
                 "Tied to specific tool mastery and workflow application",
                 "Recognised as a mark of modern operational leadership",
-                "Issued by Throttl — a firm built on real-world AI enablement",
+                "Issued by Throttl — practitioners who build and deploy AI systems, not academics who study them",
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.6rem" }}>
                   <CheckCircle2 size={15} color={C.gold} style={{ flexShrink: 0, marginTop: "2px" }} />
@@ -246,13 +247,13 @@ export default function Workshops() {
           <FadeSection>
             <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Pricing</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 Tailored to your team
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-                Book a time with our director to understand the pricing packages available for your organisation.
+                Workshop pricing is tailored to your team size and program scope. Book a call and we'll walk you through options — most programs start at $8,000.
               </p>
-              <a href={BOOKING_URL} style={{
+              <a href="#get-started" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.navy, color: "#fff",
                 padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -273,13 +274,13 @@ export default function Workshops() {
       <section style={{ padding: "5rem 0", backgroundColor: C.coral }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               Ready to build an AI-capable leadership team?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>
-              Book a free strategy call and we'll design a workshop programme around your team's specific needs.
+              Book a free strategy call and we'll design a workshop program around your team's specific needs.
             </p>
-            <a href={BOOKING_URL} style={{
+            <a href="#get-started" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#fff", color: C.coral,
               padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -294,6 +295,8 @@ export default function Workshops() {
           </FadeSection>
         </div>
       </section>
+
+      <WorkshopForm />
 
       <Footer />
     </div>

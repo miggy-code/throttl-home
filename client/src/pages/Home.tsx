@@ -72,7 +72,7 @@ export default function Home() {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: "'Fraunces', serif",
+              fontFamily: "'Playfair Display', serif",
               fontSize: "clamp(3rem, 6.5vw, 5rem)",
               fontWeight: 700,
               color: "#fff",
@@ -98,7 +98,7 @@ export default function Home() {
               transform: heroLoaded ? "translateY(0)" : "translateY(20px)",
               transition: "opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s",
             }}>
-              So they can make better decisions, lead more effectively, and build companies that operate with modern leverage.
+              So they can make better decisions, lead more effectively, and run companies that get more done with fewer resources.
             </p>
 
             {/* CTAs */}
@@ -152,12 +152,12 @@ export default function Home() {
           <div ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>The Problem</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.5rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.5rem" }}>
                 AI is everywhere.<br />
                 <span style={{ color: C.goldLight, fontStyle: "italic" }}>Adoption is not.</span>
               </h2>
               <p style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "1.25rem" }}>
-                Most companies are experimenting with AI — but very few are operationalising it. The bottleneck isn't the technology. It's the people leading the business.
+                Most companies are experimenting with AI — but very few are actually doing it at scale. The bottleneck isn't the technology. It's the people leading the business.
               </p>
               <p style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.8, fontSize: "1rem" }}>
                 When your management team doesn't know how to use AI effectively, the whole organisation stalls. Throttl fixes that.
@@ -166,7 +166,7 @@ export default function Home() {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(24px)", transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s" }}>
               {[
-                { num: "78%", label: "of executives cite lack of internal AI skills as their #1 barrier" },
+                { num: "~4 in 5", label: "executives say lack of internal AI skills is their top barrier to adoption" },
                 { num: "70%", label: "of AI projects fail due to poor team adoption" },
                 { num: "55%", label: "of employees already use unapproved AI tools at work" },
                 { num: "3×",  label: "more revenue growth at companies with AI-enabled leadership" },
@@ -180,7 +180,7 @@ export default function Home() {
                   transform: problem.inView ? "translateY(0)" : "translateY(16px)",
                   transition: `opacity 0.5s ease ${0.3 + i * 0.1}s, transform 0.5s ease ${0.3 + i * 0.1}s`,
                 }}>
-                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.4rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>{s.num}</div>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.4rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>{s.num}</div>
                   <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.82rem", lineHeight: 1.5 }}>{s.label}</div>
                 </div>
               ))}
@@ -195,8 +195,8 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What AI Actually Does for Executives</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1rem" }}>
-                AI that supports how you actually work
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1rem" }}>
+                AI that fits how you already work
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", maxWidth: "520px", margin: "0 auto", lineHeight: 1.75 }}>
                 Not theoretical. Not technical. These are the workflows where AI creates immediate leverage for managers and executives.
@@ -222,6 +222,9 @@ export default function Home() {
                   transform: useCases.inView ? "translateY(0)" : "translateY(24px)",
                   transition: `all 0.5s cubic-bezier(0.23, 1, 0.32, 1) ${i * 0.05}s`,
                   cursor: "default",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLDivElement;
@@ -240,7 +243,7 @@ export default function Home() {
                     <Icon size={18} color={C.coral} />
                   </div>
                   <div style={{ fontWeight: 600, color: C.navy, fontSize: "0.95rem", marginBottom: "0.4rem" }}>{uc.title}</div>
-                  <div style={{ color: C.warmGray, fontSize: "0.85rem", lineHeight: 1.6 }}>{uc.body}</div>
+                  <div style={{ color: C.warmGray, fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{uc.body}</div>
                 </div>
               );
             })}
@@ -254,7 +257,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Services</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Two ways to become AI-enabled
               </h2>
             </div>
@@ -276,6 +279,9 @@ export default function Home() {
               opacity: services.inView ? 1 : 0,
               transform: services.inView ? "translateY(0)" : "translateY(28px)",
               transition: "all 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0s",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
             }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLDivElement;
@@ -296,7 +302,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
-                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Management Training
                 </h3>
                 <p style={{ color: "#5A5550", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
@@ -332,6 +338,9 @@ export default function Home() {
               opacity: services.inView ? 1 : 0,
               transform: services.inView ? "translateY(0)" : "translateY(28px)",
               transition: "all 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.15s",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
             }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLDivElement;
@@ -352,13 +361,13 @@ export default function Home() {
                 </div>
               </div>
               <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
-                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Business Transformation
                 </h3>
                 <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
                   Our team embeds inside your business to assess, implement, and scale AI across your operations — using <strong style={{ color: C.goldLight, fontWeight: 700 }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
                 </p>
-                {["AI opportunity assessment & workflow mapping", "Identify highest-value use cases fast", "Embedded Throttl team inside your business", "From experimentation to full operationalisation"].map((item, i) => (
+                {["AI opportunity assessment & workflow mapping", "Identify highest-value use cases fast", "Embedded Throttl team inside your business", "From experimentation to making it part of daily operations"].map((item, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
                     <CheckCircle2 size={15} color={C.gold} style={{ flexShrink: 0, marginTop: "2px" }} />
                     <span style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.8)" }}>{item}</span>
@@ -394,7 +403,7 @@ export default function Home() {
           <div ref={accelerator.ref} style={{ maxWidth: "680px" }}>
             <div style={{ opacity: accelerator.inView ? 1 : 0, transform: accelerator.inView ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
                 The Throttl Accelerator
               </h2>
               <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "2.5rem" }}>
@@ -424,6 +433,9 @@ export default function Home() {
                   position: "relative",
                   overflow: "hidden",
                   cursor: "default",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLDivElement;
@@ -446,11 +458,11 @@ export default function Home() {
                     <div style={{ width: "34px", height: "34px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <Icon size={16} color={C.goldLight} />
                     </div>
-                    <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
                   </div>
                   
                   <div style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: "0.5rem" }}>{s.label}</div>
-                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6 }}>{s.desc}</div>
+                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{s.desc}</div>
                 </div>
               )})}
             </div>
@@ -478,7 +490,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Who This Is For</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Built for operators who want to lead, not follow
               </h2>
             </div>
@@ -486,12 +498,9 @@ export default function Home() {
 
           <div ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.25rem" }}>
             {[
-              { role: "CEOs & Founders",        desc: "You want your company to operate with modern leverage. You need your team to move faster and think smarter." },
+              { role: "CEOs & Founders",        desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
               { role: "COOs & Operators",       desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
               { role: "Management Teams",       desc: "You lead people and projects. AI gives you better information, faster decisions, and more time for what matters." },
-              { role: "Department Heads",       desc: "You own a function. AI can automate the admin, surface the insights, and free your team to do their best work." },
-              { role: "Growing Businesses",     desc: "Doing $10M–$50M and scaling fast? AI-enabled leadership is your competitive advantage." },
-              { role: "Transformation Leaders", desc: "You've been tasked with modernising how the business operates. Throttl is your strategic partner to get it done." },
             ].map((item, i) => (
               <div key={i} style={{
                 backgroundColor: "#fff",
@@ -502,10 +511,13 @@ export default function Home() {
                 opacity: audience.inView ? 1 : 0,
                 transform: audience.inView ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
               }}>
                 <div style={{ width: "28px", height: "3px", backgroundColor: C.coral, borderRadius: "2px", marginBottom: "1rem" }} />
                 <div style={{ fontWeight: 700, color: C.navy, fontSize: "0.95rem", marginBottom: "0.5rem" }}>{item.role}</div>
-                <div style={{ color: C.warmGray, fontSize: "0.86rem", lineHeight: 1.65 }}>{item.desc}</div>
+                <div style={{ color: C.warmGray, fontSize: "0.86rem", lineHeight: 1.65, flex: 1 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -518,11 +530,11 @@ export default function Home() {
         <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
           <FadeSection>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", display: "block", marginBottom: "1rem" }}>Get Started</span>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
               Ready to build an AI-enabled leadership team?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1.05rem", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: "480px", margin: "0 auto 2.5rem" }}>
-              Book a free 45-minute AI strategy call. We'll identify exactly where AI can create the most value for your business — no pitch, no pressure.
+              Book a free 45-minute strategy call. We'll walk through where AI fits in your operation and where it doesn't — no pitch, no pressure, no jargon.
             </p>
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
               <a href={BOOKING_URL} style={{
@@ -538,20 +550,6 @@ export default function Home() {
               >
                 Get Started <ArrowRight size={16} />
               </a>
-              <Link href="/about" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: "transparent", color: "#fff",
-                padding: "0.95rem 2.25rem", borderRadius: "3px",
-                fontWeight: 600, fontSize: "0.9rem",
-                textDecoration: "none",
-                border: "1.5px solid rgba(255,255,255,0.5)",
-                transition: "border-color 0.2s, background-color 0.2s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#fff"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)"; e.currentTarget.style.backgroundColor = "transparent"; }}
-              >
-                Learn About Throttl
-              </Link>
             </div>
           </FadeSection>
         </div>

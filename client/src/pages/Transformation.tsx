@@ -7,6 +7,7 @@
 import { ArrowRight, CheckCircle2, Search, Map, Wrench, TrendingUp } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import TransformationForm from "@/components/TransformationForm";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
@@ -69,10 +70,10 @@ const ACCELERATOR_STEPS = [
     body: "Once the foundation is in place, we help you scale. We expand AI adoption across departments, build internal capability, and create the systems and culture that sustain AI-enabled operations long after our engagement ends.",
     outcomes: [
       "Department-by-department AI rollout",
-      "Internal AI champion programme",
+      "Internal AI champion program",
       "AI governance and policy framework",
       "Ongoing measurement and optimisation",
-      "A company that runs with modern leverage",
+      "A company that runs leaner without cutting capability",
     ],
     color: C.gold,
   },
@@ -109,15 +110,15 @@ export default function Transformation() {
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "680px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We transform how your<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>business operates.</span>
             </h1>
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "1.5rem", maxWidth: "560px" }}>
-              Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using our proprietary 4-step framework, <strong style={{ color: C.goldLight }}>The Throttl Accelerator</strong>.
+              Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using <strong style={{ color: C.goldLight }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href={BOOKING_URL} style={{
+              <a href="#get-started" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -140,7 +141,7 @@ export default function Transformation() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What Is AI Business Transformation</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 More than consulting.<br />We do the work with you.
               </h2>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "1.25rem" }}>
@@ -184,7 +185,7 @@ export default function Transformation() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
                 The Throttl Accelerator
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", maxWidth: "540px", margin: "0 auto", lineHeight: 1.75 }}>
@@ -203,7 +204,7 @@ export default function Transformation() {
                       width: "48px", height: "48px", borderRadius: "50%",
                       backgroundColor: s.color, color: "#fff",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: "0.9rem",
+                      fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem",
                       boxShadow: `0 4px 16px ${s.color}40`,
                       marginBottom: "0.5rem",
                     }}>
@@ -250,11 +251,11 @@ export default function Transformation() {
                     <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 30% 0%, ${s.color} 0%, ${C.navy} 120%)` }} />
                     <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
                     <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ fontFamily: "'Fraunces', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
                         onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
                       >{s.n}</div>
-                      <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
                       <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
                     </div>
                   </div>
@@ -262,23 +263,28 @@ export default function Transformation() {
                 <div style={{ backgroundColor: "#fff", padding: "3rem 2.5rem" }}>
                   <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "2rem" }}>{s.body}</p>
                   <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: s.color, marginBottom: "1rem" }}>Key Outcomes</div>
-                  {s.outcomes.map((o, j) => (
-                    <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.6rem" }}>
-                      <CheckCircle2 size={16} color={s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
-                      <span style={{ fontSize: "0.9rem", color: "#3A3530" }}>{o}</span>
-                    </div>
-                  ))}
+                  {s.outcomes.map((o, j) => {
+                    const isHighlight = o === "Honest view of where AI won't help";
+                    return (
+                      <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.6rem" }}>
+                        <CheckCircle2 size={16} color={isHighlight ? s.color : s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
+                        <span style={{ fontSize: "0.9rem", color: isHighlight ? "#ffffff" : "#3A3530", fontWeight: isHighlight ? 600 : 400 }}>
+                          {isHighlight ? "→ " : ""}{o}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
                 {i % 2 !== 0 && (
                   <div style={{ position: "relative", padding: "3rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden" }}>
                     <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 70% 100%, ${s.color} 0%, ${C.navy} 120%)` }} />
                     <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
                     <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ fontFamily: "'Fraunces', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
                         onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
                       >{s.n}</div>
-                      <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
                       <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
                     </div>
                   </div>
@@ -297,8 +303,8 @@ export default function Transformation() {
           <FadeSection>
             <div style={{ marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>The Toolkit</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
-                What you get access to
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
+                What comes with every engagement
               </h2>
               <p style={{ color: C.warmGray, fontSize: "0.97rem", maxWidth: "520px", lineHeight: 1.75 }}>
                 Every AI Business Transformation client gets access to Throttl's full suite of frameworks, templates, and tools — built to make AI adoption practical and repeatable.
@@ -327,13 +333,13 @@ export default function Transformation() {
       <section style={{ padding: "5rem 0", backgroundColor: C.coral }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               Ready to transform how your business operates?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>
-              Apply for an AI Business Transformation engagement. We'll start with a free strategy call to assess fit and scope.
+              Book a free 45-minute strategy call. We'll walk through where AI fits in your operation and where it doesn't.
             </p>
-            <a href={BOOKING_URL} style={{
+            <a href="#get-started" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#fff", color: C.coral,
               padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -343,11 +349,13 @@ export default function Transformation() {
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
             >
-              Apply for AI Transformation <ArrowRight size={16} />
+              Start with a Strategy Call <ArrowRight size={16} />
             </a>
           </FadeSection>
         </div>
       </section>
+
+      <TransformationForm />
 
       <Footer />
     </div>

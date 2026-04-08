@@ -10,10 +10,10 @@ import Footer from "@/components/Footer";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
-function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function FadeSection({ children, delay = 0, style = {} }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const { ref, inView } = useInView();
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`, ...style }}>
       {children}
     </div>
   );
@@ -37,7 +37,7 @@ export default function About() {
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "640px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>About Throttl</span>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We exist to make<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>executives AI-capable.</span>
             </h1>
@@ -54,7 +54,7 @@ export default function About() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Mission</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 AI adoption starts at the top.
               </h2>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "1.25rem" }}>
@@ -64,18 +64,18 @@ export default function About() {
                 Throttl was founded to fix that. We work with management teams — the people who actually run businesses — and give them the knowledge, skills, and support to lead AI adoption from the front.
               </p>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem" }}>
-                We do this through two services: <strong>AI Workshops</strong> that certify your leadership team, and <strong>AI Business Transformation</strong> engagements where our team embeds inside your business and does the work with you.
+                We do this two ways: <strong>hands-on workshops</strong> that certify your leadership team in real AI skills, and <strong>embedded transformation engagements</strong> where our team works inside your business until the job is done.
               </p>
             </FadeSection>
             <FadeSection delay={0.2}>
               <div style={{ backgroundColor: C.navy, borderRadius: "8px", padding: "2.5rem", boxShadow: "0 12px 40px rgba(15,28,63,0.15)" }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "3rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>"</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>"</div>
                 <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: 1.8, fontStyle: "italic", marginBottom: "1.5rem" }}>
                   The businesses that win in the next decade won't be the ones with the most AI tools. They'll be the ones with the most AI-capable leaders.
                 </p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1rem" }}>
-                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.9rem" }}>The Throttl Team</div>
-                  <div style={{ color: C.gold, fontSize: "0.8rem" }}>Founders, Throttl AI</div>
+                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.9rem" }}>— Gabriel, Co-Founder</div>
+                  <div style={{ color: C.gold, fontSize: "0.8rem" }}>Throttl AI</div>
                 </div>
               </div>
             </FadeSection>
@@ -89,33 +89,35 @@ export default function About() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What We Do</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Two ways we work with you
               </h2>
             </div>
           </FadeSection>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
             {/* AI Workshops card */}
-            <Link href="/workshops" style={{ textDecoration: "none" }}>
-              <FadeSection delay={0}>
+            <Link href="/workshops" style={{ textDecoration: "none", display: "block" }}>
+              <FadeSection delay={0} style={{ height: "100%" }}>
                 <div style={{
                   backgroundColor: C.navy, borderRadius: "8px", padding: "2.5rem",
                   boxShadow: "0 4px 24px rgba(15,28,63,0.1)",
                   cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%",
+                  height: "100%", display: "flex", flexDirection: "column"
                 }}
                   onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(15,28,63,0.18)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(15,28,63,0.1)"; }}
                 >
-                  <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: `${C.coral}22`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
-                    <span style={{ fontSize: "1.2rem" }}>🎓</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: `${C.coral}22`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
+                      <span style={{ fontSize: "1.2rem" }}>🎓</span>
+                    </div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.gold, marginBottom: "0.5rem" }}>Service 01</div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Workshops</h3>
+                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                      Hands-on training that certifies your management team in how to use AI tools inside their real workflows. Participants earn the Throttl AI Operator Certification.
+                    </p>
                   </div>
-                  <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.gold, marginBottom: "0.5rem" }}>Service 01</div>
-                  <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Workshops</h3>
-                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                    Hands-on training that certifies your management team in how to use AI tools inside their real workflows. Participants earn the Throttl AI Operator Certification.
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: C.coral, fontWeight: 700, fontSize: "0.85rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: C.coral, fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
                     Explore Workshops <ArrowRight size={14} />
                   </div>
                 </div>
@@ -123,26 +125,28 @@ export default function About() {
             </Link>
 
             {/* AI Business Transformation card */}
-            <Link href="/transformation" style={{ textDecoration: "none" }}>
-              <FadeSection delay={0.15}>
+            <Link href="/transformation" style={{ textDecoration: "none", display: "block" }}>
+              <FadeSection delay={0.15} style={{ height: "100%" }}>
                 <div style={{
                   backgroundColor: C.coral, borderRadius: "8px", padding: "2.5rem",
                   boxShadow: "0 4px 24px rgba(232,93,53,0.2)",
                   cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%",
+                  height: "100%", display: "flex", flexDirection: "column"
                 }}
                   onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(232,93,53,0.3)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(232,93,53,0.2)"; }}
                 >
-                  <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
-                    <span style={{ fontSize: "1.2rem" }}>⚡</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
+                      <span style={{ fontSize: "1.2rem" }}>⚡</span>
+                    </div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "0.5rem" }}>Service 02</div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Business Transformation</h3>
+                    <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                      Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using The Throttl Accelerator framework.
+                    </p>
                   </div>
-                  <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "0.5rem" }}>Service 02</div>
-                  <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Business Transformation</h3>
-                  <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                    Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using The Throttl Accelerator framework.
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#fff", fontWeight: 700, fontSize: "0.85rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#fff", fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
                     Explore Transformation <ArrowRight size={14} />
                   </div>
                 </div>
@@ -152,48 +156,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── VALUES ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.creamDark }}>
-        <div className="container">
-          <FadeSection>
-            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>How We Work</span>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
-                What we believe
-              </h2>
-            </div>
-          </FadeSection>
-          <div ref={values.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.25rem" }}>
-            {[
-              { title: "Operators, not theorists",    body: "We've worked inside businesses. We know what it takes to change how an organisation operates. We don't do slide decks and disappear." },
-              { title: "Leadership-first",            body: "AI adoption succeeds when it's led from the top. We always start with the management team, not the IT department." },
-              { title: "Practical over impressive",  body: "We're not here to show you the most advanced AI. We're here to find the AI that actually moves the needle in your business." },
-              { title: "Honest about limitations",   body: "AI isn't the answer to everything. We'll tell you where it won't help — and focus your energy where it will." },
-              { title: "Capability, not dependency", body: "Our goal is for your team to own AI adoption. We build internal capability, not long-term consulting relationships." },
-              { title: "Results over activity",      body: "We measure success by business outcomes — time saved, decisions improved, revenue generated — not by tools deployed." },
-            ].map((v, i) => (
-              <div key={i} style={{
-                backgroundColor: "#fff", borderRadius: "6px", padding: "1.75rem",
-                border: `1px solid rgba(15,28,63,0.07)`,
-                boxShadow: "0 2px 12px rgba(15,28,63,0.04)",
-                opacity: values.inView ? 1 : 0,
-                transform: values.inView ? "translateY(0)" : "translateY(20px)",
-                transition: `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`,
-              }}>
-                <div style={{ width: "28px", height: "3px", backgroundColor: C.coral, borderRadius: "2px", marginBottom: "1rem" }} />
-                <div style={{ fontWeight: 700, color: C.navy, fontSize: "0.95rem", marginBottom: "0.5rem" }}>{v.title}</div>
-                <div style={{ color: C.warmGray, fontSize: "0.86rem", lineHeight: 1.65 }}>{v.body}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── CTA ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.navy }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               Want to work with us?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "440px", margin: "0 auto 2.25rem" }}>
