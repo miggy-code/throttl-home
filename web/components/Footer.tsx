@@ -77,7 +77,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Throttl AI. All rights reserved.
           </div>
           <div style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.78rem" }}>
-            <a href={BOOKING_URL} style={{ color: "rgba(255,255,255,0.35)", textDecoration: "none" }}>hello@throttl.ai</a>
+            <a href="mailto:hello@throttl.ai" style={{ color: "rgba(255,255,255,0.35)", textDecoration: "none" }}>hello@throttl.ai</a>
           </div>
         </div>
       </div>

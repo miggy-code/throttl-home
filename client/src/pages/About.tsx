@@ -41,7 +41,7 @@ export default function About() {
       </section>
 
       {/* ── MISSION ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
@@ -76,7 +76,7 @@ export default function About() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section style={{ padding: "4.5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -151,7 +151,7 @@ export default function About() {
 
 
       {/* ── CTA ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.navy }}>
+      <section className="section-padding" style={{ backgroundColor: C.navy }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>

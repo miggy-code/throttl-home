@@ -7,7 +7,6 @@ import { ArrowRight, CheckCircle2, Award, Users, Zap, BookOpen, Target, Clock } 
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import FadeSection from "@/components/FadeSection";
-import WorkshopForm from "@/components/WorkshopForm";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
@@ -54,7 +53,7 @@ export default function Workshops() {
               Hands-on, practical AI training built for leadership teams. Not theory. Not generic tutorials. Real skills for real business workflows.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -72,7 +71,7 @@ export default function Workshops() {
       </section>
 
       {/* ── WHAT ARE THE WORKSHOPS ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
@@ -113,7 +112,7 @@ export default function Workshops() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.creamDark }}>
+      <section className="section-padding" style={{ backgroundColor: C.creamDark }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -124,7 +123,7 @@ export default function Workshops() {
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 1.75rem" }}>
                 Book a time with one of our directors to understand what workshops would be the best fit for your organisation.
               </p>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -173,7 +172,7 @@ export default function Workshops() {
       </section>
 
       {/* ── TOPICS ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ marginBottom: "3rem" }}>
@@ -216,7 +215,7 @@ export default function Workshops() {
       </section>
 
       {/* ── CERTIFICATION ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.navy }}>
+      <section className="section-padding" style={{ backgroundColor: C.navy }}>
         <div className="container">
           <div ref={cert.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: cert.inView ? 1 : 0, transform: cert.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
@@ -245,7 +244,7 @@ export default function Workshops() {
       </section>
 
       {/* ── PRICING ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto" }}>
@@ -256,7 +255,7 @@ export default function Workshops() {
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
                 Workshop pricing is tailored to your team size and program scope. Book a call and we'll walk you through options — most programs start at $8,000.
               </p>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.navy, color: "#fff",
                 padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -274,7 +273,7 @@ export default function Workshops() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "5rem 0", backgroundColor: C.coral }}>
+      <section className="section-padding" style={{ backgroundColor: C.coral }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
@@ -283,7 +282,7 @@ export default function Workshops() {
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>
               Book a free strategy call and we'll design a workshop program around your team's specific needs.
             </p>
-            <a href="#get-started" style={{
+            <a href="/contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#fff", color: C.coral,
               padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -298,8 +297,6 @@ export default function Workshops() {
           </FadeSection>
         </div>
       </section>
-
-      <WorkshopForm />
 
       <Footer />
     </div>

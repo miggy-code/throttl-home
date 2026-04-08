@@ -6,7 +6,6 @@
 
 import { ArrowRight, CheckCircle2, Award, Users, Zap, BookOpen, Target, Clock } from "lucide-react";
 import FadeSection from "@/components/FadeSection";
-import WorkshopForm from "@/components/WorkshopForm";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
@@ -51,7 +50,7 @@ export default function Workshops() {
               Hands-on, practical AI training built for leadership teams. Not theory. Not generic tutorials. Real skills for real business workflows.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -121,7 +120,7 @@ export default function Workshops() {
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 1.75rem" }}>
                 Book a time with one of our directors to understand what workshops would be the best fit for your organisation.
               </p>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -252,7 +251,7 @@ export default function Workshops() {
               <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
                 Workshop pricing is tailored to your team size and program scope. Book a call and we'll walk you through options — most programs start at $8,000.
               </p>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.navy, color: "#fff",
                 padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -279,7 +278,7 @@ export default function Workshops() {
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>
               Book a free strategy call and we'll design a workshop program around your team's specific needs.
             </p>
-            <a href="#get-started" style={{
+            <a href="/contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#fff", color: C.coral,
               padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -294,8 +293,6 @@ export default function Workshops() {
           </FadeSection>
         </div>
       </section>
-
-      <WorkshopForm />
 
     </div>
   );

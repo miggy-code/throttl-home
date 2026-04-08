@@ -34,13 +34,23 @@ export default function NavBar() {
     location === "/" ||
     location === "/transformation" ||
     location === "/workshops" ||
-    location === "/about";
-
-  useEffect(() => {
+    location === "/about";  useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -60,6 +70,7 @@ export default function NavBar() {
 
   return (
     <nav
+      className="nav-mobile-invisible"
       style={{
         position: "fixed",
         top: 0,
@@ -86,7 +97,8 @@ export default function NavBar() {
         {/* Logo */}
         <Link
           href="/"
-          style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+          className="hidden md:flex"
+          style={{ alignItems: "center", textDecoration: "none" }}
         >
           <img
             src={IMGS.logo}
@@ -325,133 +337,147 @@ export default function NavBar() {
           style={{
             background: "none",
             border: "none",
-            color: textColor,
+            color: mobileOpen ? "#fff" : textColor,
             padding: "8px",
             transition: "color 0.35s",
+            marginLeft: "auto",
+            position: "relative",
+            zIndex: 110,
+            cursor: "pointer",
           }}
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Full-screen Dark Premium Mobile menu overlay */}
       {mobileOpen && (
         <div
           style={{
-            backgroundColor: C.cream,
-            borderTop: `1px solid rgba(15,28,63,0.08)`,
-            padding: "1.25rem 1.5rem 2rem",
+            position: "fixed",
+            inset: 0,
+            backgroundColor: `rgba(15, 28, 63, 0.98)`,
+            backdropFilter: "blur(24px)",
+            zIndex: 105,
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "5rem 1.5rem",
+            animation: "fadeIn 0.2s ease-out",
           }}
           className="md:hidden"
         >
-          {/* About Us */}
-          <Link
-            href="/about"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              display: "block",
-              padding: "0.8rem 0",
-              color: C.navy,
-              fontWeight: 500,
-              textDecoration: "none",
-              borderBottom: `1px solid rgba(15,28,63,0.06)`,
-              fontSize: "0.95rem",
-            }}
-          >
-            About Us
-          </Link>
-
-          {/* Services accordion */}
-          <div style={{ borderBottom: `1px solid rgba(15,28,63,0.06)` }}>
-            <button
-              onClick={() => setMobileServicesOpen((v) => !v)}
+          {/* CTA At the Top */}
+          <div style={{ marginBottom: "4rem", width: "100%", maxWidth: "340px", marginTop: "auto" }}>
+            <a
+              href={BOOKING_URL}
+              onClick={() => setMobileOpen(false)}
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                padding: "0.8rem 0",
-                color: C.navy,
-                fontWeight: 500,
-                background: "none",
-                border: "none",
-                fontSize: "0.95rem",
-                cursor: "pointer",
+                display: "block",
+                backgroundColor: C.coral,
+                color: "#fff",
+                padding: "1.2rem 2rem",
+                borderRadius: "4px",
+                textAlign: "center",
+                fontWeight: 700,
+                textDecoration: "none",
+                fontSize: "1.05rem",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                boxShadow: "0 8px 32px rgba(232, 93, 53, 0.3)",
               }}
             >
-              Services
-              <ChevronDown
-                size={16}
-                style={{
-                  transition: "transform 0.25s",
-                  transform: mobileServicesOpen
-                    ? "rotate(180deg)"
-                    : "rotate(0deg)",
-                }}
-              />
-            </button>
-            {mobileServicesOpen && (
-              <div style={{ paddingBottom: "0.5rem" }}>
-                {SERVICES.map((s) => (
-                  <Link
-                    key={s.href}
-                    href={s.href}
-                    onClick={() => setMobileOpen(false)}
-                    style={{
-                      display: "block",
-                      padding: "0.6rem 0 0.6rem 1rem",
-                      color: C.navy,
-                      fontWeight: 500,
-                      textDecoration: "none",
-                      fontSize: "0.9rem",
-                      borderLeft: `2px solid ${C.coral}`,
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+              Get Started
+            </a>
           </div>
 
-          {/* Contact */}
-          <a
-            href={BOOKING_URL}
-            onClick={() => setMobileOpen(false)}
-            style={{
-              display: "block",
-              padding: "0.8rem 0",
-              color: C.navy,
-              fontWeight: 500,
-              textDecoration: "none",
-              borderBottom: `1px solid rgba(15,28,63,0.06)`,
-              fontSize: "0.95rem",
-            }}
-          >
-            Contact
-          </a>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", alignItems: "center", width: "100%", maxWidth: "340px", marginBottom: "auto" }}>
+            {/* About Us */}
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "2.5rem",
+                fontWeight: 700,
+                color: "#fff",
+                textDecoration: "none",
+              }}
+            >
+              About Us
+            </Link>
 
-          <a
-            href={BOOKING_URL}
-            onClick={() => setMobileOpen(false)}
-            style={{
-              display: "block",
-              marginTop: "1.25rem",
-              backgroundColor: C.coral,
-              color: "#fff",
-              padding: "0.85rem 1.5rem",
-              borderRadius: "3px",
-              textAlign: "center",
-              fontWeight: 700,
-              textDecoration: "none",
-              fontSize: "0.875rem",
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-            }}
-          >
-            Get Started
-          </a>
+            {/* Services accordion */}
+            <div style={{ width: "100%", textAlign: "center" }}>
+              <button
+                onClick={() => setMobileServicesOpen((v) => !v)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "12px",
+                  width: "100%",
+                  color: "#fff",
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "2.5rem",
+                  fontWeight: 700,
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+              >
+                Services
+                <ChevronDown
+                  size={26}
+                  color={C.gold}
+                  style={{
+                    transition: "transform 0.25s",
+                    transform: mobileServicesOpen
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                  }}
+                />
+              </button>
+              {mobileServicesOpen && (
+                <div style={{ paddingTop: "1.75rem", display: "flex", flexDirection: "column", gap: "1.5rem", alignItems: "center" }}>
+                  {SERVICES.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setMobileOpen(false)}
+                      style={{
+                        display: "block",
+                        color: "rgba(255,255,255,0.75)",
+                        fontWeight: 500,
+                        textDecoration: "none",
+                        fontSize: "1.2rem",
+                        letterSpacing: "0.02em",
+                      }}
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Contact */}
+            <a
+              href={BOOKING_URL}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "2.5rem",
+                fontWeight: 700,
+                color: "#fff",
+                textDecoration: "none",
+              }}
+            >
+              Contact
+            </a>
+          </div>
         </div>
       )}
     </nav>

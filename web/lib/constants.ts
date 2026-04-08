@@ -25,4 +25,4 @@ export const C = {
   white:     "#FFFFFF",
 };
 
-export const BOOKING_URL = "mailto:hello@throttl.ai";
+export const BOOKING_URL = "/contact";

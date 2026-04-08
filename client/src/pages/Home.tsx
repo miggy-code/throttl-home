@@ -139,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* ── PROBLEM ── */}
-      <section id="problem" style={{ padding: "5.5rem 0", backgroundColor: C.navy }}>
+      <section id="problem" className="section-padding" style={{ backgroundColor: C.navy }}>
         <div className="container">
           <div ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
@@ -182,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* ── USE CASES ── */}
-      <section style={{ padding: "5.5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -197,77 +197,41 @@ export default function Home() {
           </FadeSection>
 
           <div ref={useCases.ref}>
-            {/* ── Featured card (index 0) ── */}
-            {(() => {
-              const FeaturedIcon = USE_CASES[0].icon;
-              return (
-                <div style={{
-                  backgroundColor: C.navy,
-                  borderRadius: "10px",
-                  padding: "2.25rem 2.5rem",
-                  display: "flex",
-                  gap: "2rem",
-                  alignItems: "center",
-                  marginBottom: "1.25rem",
-                  opacity: useCases.inView ? 1 : 0,
-                  transform: useCases.inView ? "translateY(0)" : "translateY(24px)",
-                  transition: "opacity 0.5s cubic-bezier(0.23,1,0.32,1) 0s, transform 0.5s cubic-bezier(0.23,1,0.32,1) 0s",
-                }}>
-                  <div style={{ width: "56px", height: "56px", borderRadius: "50%", border: `1.5px solid rgba(201,168,76,0.35)`, backgroundColor: "rgba(201,168,76,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <FeaturedIcon size={24} color={C.gold} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.gold, marginBottom: "0.75rem", display: "block" }}>
-                      Featured Use Case
-                    </span>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.5rem", lineHeight: 1.2 }}>
-                      {USE_CASES[0].title}
-                    </div>
-                    <div style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, maxWidth: "540px" }}>
-                      {USE_CASES[0].body}
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* ── Supporting grid (indices 1–8) ── */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "1rem" }}>
-              {USE_CASES.slice(1).map((uc, i) => {
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1.5rem" }}>
+              {USE_CASES.map((uc, i) => {
                 const Icon = uc.icon;
                 return (
                   <div key={i} style={{
-                    backgroundColor: C.white,
-                    borderRadius: "8px",
-                    padding: "1.5rem 1.5rem 1.75rem",
-                    border: "1px solid rgba(15,28,63,0.07)",
-                    borderLeft: "3px solid transparent",
-                    boxShadow: "0 2px 12px rgba(15,28,63,0.04)",
+                    backgroundColor: "#fff",
+                    borderRadius: "12px",
+                    padding: "2.25rem",
+                    border: "1px solid rgba(15,28,63,0.08)",
+                    boxShadow: "0 4px 24px rgba(15,28,63,0.02)",
                     opacity: useCases.inView ? 1 : 0,
                     transform: useCases.inView ? "translateY(0)" : "translateY(24px)",
-                    transition: `opacity 0.45s cubic-bezier(0.23,1,0.32,1) ${0.08 + i * 0.05}s, transform 0.45s cubic-bezier(0.23,1,0.32,1) ${0.08 + i * 0.05}s, border-left-color 0.18s ease, box-shadow 0.18s ease`,
+                    transition: `all 0.5s cubic-bezier(0.23,1,0.32,1) ${0.1 + i * 0.05}s`,
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                   }}
                     onMouseEnter={e => {
                       const el = e.currentTarget as HTMLDivElement;
-                      el.style.borderLeftColor = C.coral;
-                      el.style.boxShadow = "0 8px 24px rgba(15,28,63,0.10)";
-                      el.style.transform = "translateY(-3px)";
+                      el.style.borderColor = "rgba(201,168,76,0.6)";
+                      el.style.boxShadow = "0 12px 32px rgba(15,28,63,0.06)";
+                      el.style.transform = "translateY(-4px)";
                     }}
                     onMouseLeave={e => {
                       const el = e.currentTarget as HTMLDivElement;
-                      el.style.borderLeftColor = "transparent";
-                      el.style.boxShadow = "0 2px 12px rgba(15,28,63,0.04)";
+                      el.style.borderColor = "rgba(15,28,63,0.08)";
+                      el.style.boxShadow = "0 4px 24px rgba(15,28,63,0.02)";
                       el.style.transform = "translateY(0)";
                     }}
                   >
-                    <div style={{ width: "32px", height: "32px", borderRadius: "6px", backgroundColor: `${C.coral}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.9rem" }}>
-                      <Icon size={15} color={C.coral} />
+                    <div style={{ width: "42px", height: "42px", borderRadius: "8px", backgroundColor: "rgba(15,28,63,0.03)", border: "1px solid rgba(15,28,63,0.06)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
+                      <Icon size={18} color={C.navy} />
                     </div>
-                    <div style={{ fontWeight: 700, fontSize: "0.9rem", color: C.navy, marginBottom: "0.35rem" }}>{uc.title}</div>
-                    <div style={{ fontSize: "0.82rem", color: C.warmGray, lineHeight: 1.6, flex: 1 }}>{uc.body}</div>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.35rem", color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>{uc.title}</div>
+                    <div style={{ fontSize: "0.95rem", color: C.warmGray, lineHeight: 1.65, flex: 1 }}>{uc.body}</div>
                   </div>
                 );
               })}
@@ -277,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: "5.5rem 0", backgroundColor: C.creamDark }}>
+      <section id="services" className="section-padding" style={{ backgroundColor: C.creamDark }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -417,7 +381,7 @@ export default function Home() {
       </section>
 
       {/* ── THROTTL ACCELERATOR INTRO ── */}
-      <section style={{ padding: "5.5rem 0", backgroundColor: C.navy, position: "relative", overflow: "hidden" }}>
+      <section className="section-padding" style={{ backgroundColor: C.navy, position: "relative", overflow: "hidden" }}>
         {/* Background image */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.playbookHero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.25 }} />
@@ -436,7 +400,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "1rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
               {[
                 { step: "01", label: "Identify",   desc: "Find where AI creates immediate impact", icon: Search },
                 { step: "02", label: "Train",      desc: "Certify your leadership team in AI", icon: BookOpen },
@@ -446,48 +410,49 @@ export default function Home() {
                 const Icon = s.icon;
                 return (
                 <div key={i} style={{
-                  backgroundColor: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: `1px solid rgba(255,255,255,0.08)`,
-                  borderRadius: "10px",
-                  padding: "1.75rem 1.5rem",
+                  backgroundColor: "rgba(10, 18, 45, 0.6)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: `1px solid rgba(255,255,255,0.06)`,
+                  borderRadius: "12px",
+                  padding: "2.5rem 2.25rem",
                   opacity: accelerator.inView ? 1 : 0,
                   transform: accelerator.inView ? "translateY(0)" : "translateY(24px)",
-                  transition: `all 0.5s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.1}s`,
+                  transition: `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.15}s`,
                   position: "relative",
                   overflow: "hidden",
                   cursor: "default",
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
                 }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(255,255,255,0.07)";
-                    el.style.borderColor = `rgba(201,168,76,0.35)`;
-                    el.style.transform = "translateY(-4px)";
-                    el.style.boxShadow = `0 12px 24px rgba(15,28,63,0.3), 0 0 16px rgba(201,168,76,0.15)`;
+                    el.style.backgroundColor = "rgba(15, 25, 60, 0.8)";
+                    el.style.borderColor = `rgba(201,168,76,0.4)`;
+                    el.style.transform = "translateY(-6px)";
+                    el.style.boxShadow = `0 24px 48px rgba(0,0,0,0.4), 0 0 24px rgba(201,168,76,0.1)`;
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(255,255,255,0.03)";
-                    el.style.borderColor = `rgba(255,255,255,0.08)`;
+                    el.style.backgroundColor = "rgba(10, 18, 45, 0.6)";
+                    el.style.borderColor = `rgba(255,255,255,0.06)`;
                     el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "none";
+                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.2)";
                   }}
                 >
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.6 }} />
+                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.8 }} />
                   
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.25rem" }}>
-                    <div style={{ width: "34px", height: "34px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <Icon size={16} color={C.goldLight} />
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
+                    <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <Icon size={20} color={C.goldLight} />
                     </div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", color: "rgba(255,255,255,0.15)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
                   </div>
                   
-                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: "0.5rem" }}>{s.label}</div>
-                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{s.desc}</div>
+                  <div style={{ fontWeight: 700, fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.45rem", marginBottom: "0.75rem", letterSpacing: "0.02em" }}>{s.label}</div>
+                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.95rem", lineHeight: 1.7, flex: 1 }}>{s.desc}</div>
                 </div>
               )})}
             </div>
@@ -510,7 +475,7 @@ export default function Home() {
       </section>
 
       {/* ── WHO IT'S FOR ── */}
-      <section style={{ padding: "5.5rem 0", backgroundColor: C.cream }}>
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -550,7 +515,7 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section style={{ padding: "5.5rem 0", backgroundColor: C.coral, position: "relative", overflow: "hidden" }}>
+      <section className="section-padding" style={{ backgroundColor: C.coral, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
         <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
           <FadeSection>

@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Workshops from "./pages/Workshops";
 import Transformation from "./pages/Transformation";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/workshops" component={Workshops} />
       <Route path="/transformation" component={Transformation} />
       <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
       {/* Legacy redirects — keep old URLs working */}
       <Route path="/enablement" component={Transformation} />
       <Route path="/playbook" component={Transformation} />

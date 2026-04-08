@@ -6,7 +6,6 @@
 
 import { ArrowRight, CheckCircle2, Search, Map, Wrench, TrendingUp } from "lucide-react";
 import FadeSection from "@/components/FadeSection";
-import TransformationForm from "@/components/TransformationForm";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
@@ -107,7 +106,7 @@ export default function Transformation() {
               Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using <strong style={{ color: C.goldLight }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href="#get-started" style={{
+              <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
                 padding: "0.875rem 2rem", borderRadius: "3px",
@@ -325,7 +324,7 @@ export default function Transformation() {
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>
               Book a free 45-minute strategy call. We'll walk through where AI fits in your operation and where it doesn't.
             </p>
-            <a href="#get-started" style={{
+            <a href="/contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#fff", color: C.coral,
               padding: "0.95rem 2.25rem", borderRadius: "3px",
@@ -340,8 +339,6 @@ export default function Transformation() {
           </FadeSection>
         </div>
       </section>
-
-      <TransformationForm />
 
     </div>
   );

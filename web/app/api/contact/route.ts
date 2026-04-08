@@ -11,7 +11,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-type ContactSource = "transformation-partial" | "transformation-complete" | "workshop";
+type ContactSource = "transformation-partial" | "transformation-complete" | "workshop" | "contact";
 
 interface ContactPayload {
   source: ContactSource;
@@ -56,6 +56,7 @@ const SUBJECT: Record<ContactSource, (p: ContactPayload) => string> = {
   "transformation-partial":  p => `🟡 New Transformation Lead — ${p.name}`,
   "transformation-complete": p => `🟢 Transformation Inquiry — ${p.name} at ${p.company || "Unknown"}`,
   "workshop":                p => `📘 Workshop Inquiry — ${p.name}`,
+  "contact":                 p => `✉️ Contact Inquiry — ${p.name}`,
 };
 
 function buildEmailHtml(p: ContactPayload): string {
@@ -75,6 +76,7 @@ function buildEmailHtml(p: ContactPayload): string {
     "transformation-partial":  "Transformation (Partial)",
     "transformation-complete": "Transformation (Complete)",
     "workshop":                "Workshop Inquiry",
+    "contact":                 "Contact Inquiry",
   };
 
   return `
@@ -128,7 +130,7 @@ export async function POST(req: NextRequest) {
 
   // Honeypot check (handled client-side but double-check server-side)
   // Validate source
-  const validSources: ContactSource[] = ["transformation-partial", "transformation-complete", "workshop"];
+  const validSources: ContactSource[] = ["transformation-partial", "transformation-complete", "workshop", "contact"];
   if (!body.source || !validSources.includes(body.source)) {
     return NextResponse.json({ error: "Invalid source" }, { status: 400 });
   }

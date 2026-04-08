@@ -372,8 +372,8 @@ export default function TransformationForm() {
                   }}
                 >
                   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                    <TextField label="Your Name" id="tf-name" placeholder="Jane Smith" value={name} onChange={setName} error={errors.name} required />
-                    <TextField label="Email Address" id="tf-email" type="email" placeholder="jane@company.com" value={email} onChange={setEmail} error={errors.email} required />
+                    <TextField label="Your Name" id="tf-name" placeholder="John Smith" value={name} onChange={setName} error={errors.name} required />
+                    <TextField label="Email Address" id="tf-email" type="email" placeholder="john@company.com" value={email} onChange={setEmail} error={errors.email} required />
                   </div>
                   <button type="submit"
                     style={{

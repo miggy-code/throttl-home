@@ -12,7 +12,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";
 
-type ContactSource = "transformation-partial" | "transformation-complete" | "workshop";
+type ContactSource = "transformation-partial" | "transformation-complete" | "workshop" | "contact";
 
 interface ContactPayload {
   source: ContactSource;
@@ -57,6 +57,7 @@ const SUBJECT: Record<ContactSource, (p: ContactPayload) => string> = {
   "transformation-partial":  p => `🟡 New Transformation Lead — ${p.name}`,
   "transformation-complete": p => `🟢 Transformation Inquiry — ${p.name} at ${p.company || "Unknown"}`,
   "workshop":                p => `📘 Workshop Inquiry — ${p.name}`,
+  "contact":                 p => `✉️ Contact Inquiry — ${p.name}`,
 };
 
 function buildEmailHtml(p: ContactPayload): string {
@@ -76,6 +77,7 @@ function buildEmailHtml(p: ContactPayload): string {
     "transformation-partial":  "Transformation (Partial)",
     "transformation-complete": "Transformation (Complete)",
     "workshop":                "Workshop Inquiry",
+    "contact":                 "Contact Inquiry",
   };
 
   return `
@@ -130,7 +132,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const body = req.body as Partial<ContactPayload>;
 
   // Validate source
-  const validSources: ContactSource[] = ["transformation-partial", "transformation-complete", "workshop"];
+  const validSources: ContactSource[] = ["transformation-partial", "transformation-complete", "workshop", "contact"];
   if (!body.source || !validSources.includes(body.source)) {
     return res.status(400).json({ error: "Invalid source" });
   }

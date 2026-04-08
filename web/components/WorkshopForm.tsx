@@ -161,8 +161,8 @@ export default function WorkshopForm() {
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                <Field label="Your Name" id="ws-name" placeholder="Jane Smith" value={name} onChange={setName} error={errors.name} required />
-                <Field label="Email Address" id="ws-email" type="email" placeholder="jane@company.com" value={email} onChange={setEmail} error={errors.email} required />
+                <Field label="Your Name" id="ws-name" placeholder="John Smith" value={name} onChange={setName} error={errors.name} required />
+                <Field label="Email Address" id="ws-email" type="email" placeholder="john@company.com" value={email} onChange={setEmail} error={errors.email} required />
                 <Field label="Company Name" id="ws-company" placeholder="Acme Manufacturing" value={company} onChange={setCompany} />
               </div>
 
