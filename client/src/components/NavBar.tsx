@@ -54,8 +54,7 @@ export default function NavBar() {
   }, []);
 
   const textColor = scrolled ? C.navy : isDark ? C.white : C.navy;
-  const logoFilter =
-    scrolled ? "none" : isDark ? "brightness(0) invert(1)" : "none";
+  const logoFilter = "none";
 
   const isServicesActive = SERVICES.some((s) => location === s.href);
 
