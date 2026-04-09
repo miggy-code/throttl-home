@@ -96,6 +96,7 @@ function Field({
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formState, setFormState] = useState<FormState>("idle");
@@ -129,6 +130,7 @@ export default function ContactForm() {
           source: "contact",
           name,
           email,
+          phone: phone || undefined,
           company: company || undefined,
         }),
       });
@@ -172,6 +174,7 @@ export default function ContactForm() {
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <Field label="Your Name" id="c-name" placeholder="John Smith" value={name} onChange={setName} error={errors.name} required />
         <Field label="Email Address" id="c-email" type="email" placeholder="john@company.com" value={email} onChange={setEmail} error={errors.email} required />
+        <Field label="Phone Number" id="c-phone" type="tel" placeholder="+1 (555) 000-0000" value={phone} onChange={setPhone} />
         <Field label="Company Name" id="c-company" placeholder="Acme Manufacturing" value={company} onChange={setCompany} />
       </div>
 
