@@ -144,7 +144,7 @@ export default function Workshops() {
                   transform: how.inView ? "translateY(0)" : "translateY(20px)",
                   transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
                 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "1rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "36px", marginBottom: "1rem" }}>
                     <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: C.creamDark, lineHeight: 1 }}>{s.n}</span>
                     <div style={{ width: "28px", height: "28px", borderRadius: "6px", backgroundColor: `${C.coral}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <Icon size={14} color={C.coral} />
