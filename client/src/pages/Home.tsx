@@ -14,15 +14,15 @@ import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 
 const USE_CASES = [
-  { icon: BarChart2,    title: "Faster Decisions",          body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
-  { icon: Zap,          title: "Brainstorming & Strategy",  body: "Use AI as a thinking partner to stress-test ideas and accelerate planning." },
-  { icon: MessageSquare,title: "Clearer Communication",     body: "Draft sharper emails, proposals, and internal memos in minutes." },
-  { icon: FileText,     title: "SOPs & Documentation",      body: "Turn tribal knowledge into structured, searchable operating procedures." },
-  { icon: Calendar,     title: "Meeting Prep & Summaries",  body: "Walk into every meeting prepared. Walk out with a clean action log." },
-  { icon: Users,        title: "Smarter Delegation",        body: "Brief your team with AI-generated context so nothing gets lost in translation." },
-  { icon: TrendingUp,   title: "Automated Reporting",       body: "Stop building the same reports manually. Let AI do the heavy lifting." },
-  { icon: Clock,        title: "Reduce Admin Load",         body: "Reclaim hours every week by automating repetitive management tasks." },
-  { icon: Send,         title: "Sales Communication",       body: "Follow up faster, personalise at scale, and close more with less effort." },
+  { icon: BarChart2, title: "Faster Decisions", body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
+  { icon: Zap, title: "Brainstorming & Strategy", body: "Use AI as a thinking partner to stress-test ideas and accelerate planning." },
+  { icon: MessageSquare, title: "Clearer Communication", body: "Draft sharper emails, proposals, and internal memos in minutes." },
+  { icon: FileText, title: "SOPs & Documentation", body: "Turn tribal knowledge into structured, searchable operating procedures." },
+  { icon: Calendar, title: "Meeting Prep & Summaries", body: "Walk into every meeting prepared. Walk out with a clean action log." },
+  { icon: Users, title: "Smarter Delegation", body: "Brief your team with AI-generated context so nothing gets lost in translation." },
+  { icon: TrendingUp, title: "Automated Reporting", body: "Stop building the same reports manually. Let AI do the heavy lifting." },
+  { icon: Clock, title: "Reduce Admin Load", body: "Reclaim hours every week by automating repetitive management tasks." },
+  { icon: Send, title: "Sales Communication", body: "Follow up faster, personalise at scale, and close more with less effort." },
 ];
 
 export default function Home() {
@@ -161,7 +161,7 @@ export default function Home() {
                 { num: "~4 in 5", label: "executives say lack of internal AI skills is their top barrier to adoption" },
                 { num: "70%", label: "of AI projects fail due to poor team adoption" },
                 { num: "55%", label: "of employees already use unapproved AI tools at work" },
-                { num: "3×",  label: "more revenue growth at companies with AI-enabled leadership" },
+                { num: "3×", label: "more revenue growth at companies with AI-enabled leadership" },
               ].map((s, i) => (
                 <div key={i} style={{
                   backgroundColor: "rgba(255,255,255,0.04)",
@@ -294,9 +294,10 @@ export default function Home() {
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Management Training
                 </h3>
-                <p style={{ color: "#5A5550", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
+                <p style={{ color: "#5A5550", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem", minHeight: "80px" }}>
                   Hands-on workshops that give your executives and managers the skills to use AI inside their real workflows — and the certification to prove it.
                 </p>
+
                 {["Live workshops tailored to your business", "Practical tool mastery for real workflows", "AI Operator Certification on completion", "Confidence to lead AI adoption internally"].map((item, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
                     <CheckCircle2 size={15} color={C.coral} style={{ flexShrink: 0, marginTop: "2px" }} />
@@ -353,7 +354,7 @@ export default function Home() {
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Business Transformation
                 </h3>
-                <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
+                <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem", minHeight: "80px" }}>
                   Our team embeds inside your business to assess, implement, and scale AI across your operations — using <strong style={{ color: C.goldLight, fontWeight: 700 }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
                 </p>
                 {["AI opportunity assessment & workflow mapping", "Identify highest-value use cases fast", "Embedded Throttl team inside your business", "From experimentation to making it part of daily operations"].map((item, i) => (
@@ -402,59 +403,60 @@ export default function Home() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
               {[
-                { step: "01", label: "Identify",   desc: "Find where AI creates immediate impact", icon: Search },
-                { step: "02", label: "Train",      desc: "Certify your leadership team in AI", icon: BookOpen },
-                { step: "03", label: "Implement",  desc: "Apply AI to real business operations", icon: Wrench },
-                { step: "04", label: "Scale",      desc: "Build a truly AI-enabled company", icon: TrendingUp },
+                { step: "01", label: "Identify", desc: "Find where AI creates immediate impact", icon: Search },
+                { step: "02", label: "Train", desc: "Certify your leadership team in AI", icon: BookOpen },
+                { step: "03", label: "Implement", desc: "Apply AI to real business operations", icon: Wrench },
+                { step: "04", label: "Scale", desc: "Build a truly AI-enabled company", icon: TrendingUp },
               ].map((s, i) => {
                 const Icon = s.icon;
                 return (
-                <div key={i} style={{
-                  backgroundColor: "rgba(10, 18, 45, 0.6)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: `1px solid rgba(255,255,255,0.06)`,
-                  borderRadius: "12px",
-                  padding: "2.5rem 2.25rem",
-                  opacity: accelerator.inView ? 1 : 0,
-                  transform: accelerator.inView ? "translateY(0)" : "translateY(24px)",
-                  transition: `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.15}s`,
-                  position: "relative",
-                  overflow: "hidden",
-                  cursor: "default",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
-                }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(15, 25, 60, 0.8)";
-                    el.style.borderColor = `rgba(201,168,76,0.4)`;
-                    el.style.transform = "translateY(-6px)";
-                    el.style.boxShadow = `0 24px 48px rgba(0,0,0,0.4), 0 0 24px rgba(201,168,76,0.1)`;
+                  <div key={i} style={{
+                    backgroundColor: "rgba(10, 18, 45, 0.6)",
+                    backdropFilter: "blur(16px)",
+                    WebkitBackdropFilter: "blur(16px)",
+                    border: `1px solid rgba(255,255,255,0.06)`,
+                    borderRadius: "12px",
+                    padding: "2.5rem 2.25rem",
+                    opacity: accelerator.inView ? 1 : 0,
+                    transform: accelerator.inView ? "translateY(0)" : "translateY(24px)",
+                    transition: `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${0.2 + i * 0.15}s`,
+                    position: "relative",
+                    overflow: "hidden",
+                    cursor: "default",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
                   }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.backgroundColor = "rgba(10, 18, 45, 0.6)";
-                    el.style.borderColor = `rgba(255,255,255,0.06)`;
-                    el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.2)";
-                  }}
-                >
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.8 }} />
-                  
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
-                    <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <Icon size={20} color={C.goldLight} />
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.backgroundColor = "rgba(15, 25, 60, 0.8)";
+                      el.style.borderColor = `rgba(201,168,76,0.4)`;
+                      el.style.transform = "translateY(-6px)";
+                      el.style.boxShadow = `0 24px 48px rgba(0,0,0,0.4), 0 0 24px rgba(201,168,76,0.1)`;
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.backgroundColor = "rgba(10, 18, 45, 0.6)";
+                      el.style.borderColor = `rgba(255,255,255,0.06)`;
+                      el.style.transform = "translateY(0)";
+                      el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.2)";
+                    }}
+                  >
+                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)`, opacity: 0.8 }} />
+
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
+                      <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <Icon size={20} color={C.goldLight} />
+                      </div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", color: "rgba(255,255,255,0.15)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
                     </div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", color: "rgba(255,255,255,0.15)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
+
+                    <div style={{ fontWeight: 700, fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.45rem", marginBottom: "0.75rem", letterSpacing: "0.02em" }}>{s.label}</div>
+                    <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.95rem", lineHeight: 1.7, flex: 1 }}>{s.desc}</div>
                   </div>
-                  
-                  <div style={{ fontWeight: 700, fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.45rem", marginBottom: "0.75rem", letterSpacing: "0.02em" }}>{s.label}</div>
-                  <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.95rem", lineHeight: 1.7, flex: 1 }}>{s.desc}</div>
-                </div>
-              )})}
+                )
+              })}
             </div>
 
             <div style={{ marginTop: "2.5rem", opacity: accelerator.inView ? 1 : 0, transition: "opacity 0.7s ease 0.6s" }}>
@@ -488,9 +490,9 @@ export default function Home() {
 
           <div ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.25rem" }}>
             {[
-              { role: "CEOs & Founders",        desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
-              { role: "COOs & Operators",       desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
-              { role: "Management Teams",       desc: "You lead people and projects. AI gives you better information, faster decisions, and more time for what matters." },
+              { role: "CEOs & Founders", desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
+              { role: "COOs & Operators", desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
+              { role: "Management Teams", desc: "You lead people and projects. AI gives you better information, faster decisions, and more time for what matters." },
             ].map((item, i) => (
               <div key={i} style={{
                 backgroundColor: "#fff",
