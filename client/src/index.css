@@ -102,10 +102,6 @@
     font-family: 'Playfair Display', serif;
     font-feature-settings: "ss01";
   }
-  ::selection {
-    background: #E85D35;
-    color: #ffffff;
-  }
   img {
     -webkit-user-drag: none;
     user-select: none;
