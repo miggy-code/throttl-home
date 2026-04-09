@@ -101,8 +101,17 @@ export default function Transformation() {
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "680px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
-            <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
-              We Turn Your Business Into an AI-Enabled Operation
+            <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+              We Turn Your Business Into an <br className="hidden md:block" />
+              <span style={{
+                position: "relative", display: "inline-block",
+                color: C.navy, backgroundColor: C.goldLight,
+                padding: "0.08em 0.25em", borderRadius: "8px",
+                transform: "rotate(-1.5deg)", marginTop: "0.15em",
+                boxShadow: `0 8px 24px ${C.goldLight}40`
+              }}>
+                AI-Enabled Operation
+              </span>
             </h1>
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "1.5rem", maxWidth: "560px" }}>
               We work alongside your leadership team to implement AI, drive adoption, and position your business to grow as a truly AI-enabled company—guided by our AI Operator Playbook™.

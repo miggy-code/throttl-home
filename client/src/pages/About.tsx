@@ -91,26 +91,42 @@ export default function About() {
             <Link href="/workshops" style={{ textDecoration: "none", display: "block" }}>
               <FadeSection delay={0} style={{ height: "100%" }}>
                 <div style={{
-                  backgroundColor: C.navy, borderRadius: "8px", padding: "2.5rem",
-                  boxShadow: "0 4px 24px rgba(15,28,63,0.1)",
-                  cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%", display: "flex", flexDirection: "column"
+                  position: "relative",
+                  backgroundColor: C.navy, borderRadius: "12px", padding: "2.5rem",
+                  boxShadow: "0 8px 32px rgba(15,28,63,0.1), inset 0 1px 0 rgba(255,255,255,0.05)",
+                  cursor: "pointer", transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
+                  height: "100%", display: "flex", flexDirection: "column",
+                  overflow: "hidden"
                 }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(15,28,63,0.18)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(15,28,63,0.1)"; }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.transform = "translateY(-6px) scale(1.02)";
+                    el.style.boxShadow = "0 24px 64px rgba(15,28,63,0.25), inset 0 1px 0 rgba(255,255,255,0.1)";
+                    (el.querySelector('.card1-glow') as HTMLDivElement).style.opacity = "1";
+                    (el.querySelector('.card1-arrow') as HTMLDivElement).style.transform = "translateX(4px)";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.transform = "translateY(0) scale(1)";
+                    el.style.boxShadow = "0 8px 32px rgba(15,28,63,0.1), inset 0 1px 0 rgba(255,255,255,0.05)";
+                    (el.querySelector('.card1-glow') as HTMLDivElement).style.opacity = "0";
+                    (el.querySelector('.card1-arrow') as HTMLDivElement).style.transform = "translateX(0)";
+                  }}
                 >
-                  <div style={{ flex: 1 }}>
-                    <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: `${C.coral}22`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
-                      <span style={{ fontSize: "1.2rem" }}>🎓</span>
+                  <div className="card1-glow" style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 100% 0%, ${C.coral}33 0%, transparent 60%)`, opacity: 0, transition: "opacity 0.6s ease", pointerEvents: "none" }} />
+                  <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay", pointerEvents: "none" }} />
+                  <div style={{ flex: 1, position: "relative", zIndex: 1 }}>
+                    <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: `${C.coral}22`, border: `1px solid ${C.coral}40`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
+                      <span style={{ fontSize: "1.3rem" }}>🎓</span>
                     </div>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.gold, marginBottom: "0.5rem" }}>Service 01</div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Workshops</h3>
-                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, marginBottom: "0.75rem" }}>Service 01</div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Workshops</h3>
+                    <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                       Hands-on training that certifies your management team in how to use AI tools inside their real workflows. Participants earn the Throttl AI Operator Certification.
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: C.coral, fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
-                    Explore Workshops <ArrowRight size={14} />
+                  <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "6px", color: C.coral, fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
+                    Explore Workshops <div className="card1-arrow" style={{ transition: "transform 0.3s ease" }}><ArrowRight size={14} /></div>
                   </div>
                 </div>
               </FadeSection>
@@ -120,26 +136,42 @@ export default function About() {
             <Link href="/transformation" style={{ textDecoration: "none", display: "block" }}>
               <FadeSection delay={0.15} style={{ height: "100%" }}>
                 <div style={{
-                  backgroundColor: C.coral, borderRadius: "8px", padding: "2.5rem",
-                  boxShadow: "0 4px 24px rgba(232,93,53,0.2)",
-                  cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-                  height: "100%", display: "flex", flexDirection: "column"
+                  position: "relative",
+                  backgroundColor: C.coral, borderRadius: "12px", padding: "2.5rem",
+                  boxShadow: "0 8px 32px rgba(232,93,53,0.15), inset 0 1px 0 rgba(255,255,255,0.15)",
+                  cursor: "pointer", transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
+                  height: "100%", display: "flex", flexDirection: "column",
+                  overflow: "hidden"
                 }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(232,93,53,0.3)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(232,93,53,0.2)"; }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.transform = "translateY(-6px) scale(1.02)";
+                    el.style.boxShadow = "0 24px 64px rgba(232,93,53,0.35), inset 0 1px 0 rgba(255,255,255,0.25)";
+                    (el.querySelector('.card2-glow') as HTMLDivElement).style.opacity = "1";
+                    (el.querySelector('.card2-arrow') as HTMLDivElement).style.transform = "translateX(4px)";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.transform = "translateY(0) scale(1)";
+                    el.style.boxShadow = "0 8px 32px rgba(232,93,53,0.15), inset 0 1px 0 rgba(255,255,255,0.15)";
+                    (el.querySelector('.card2-glow') as HTMLDivElement).style.opacity = "0";
+                    (el.querySelector('.card2-arrow') as HTMLDivElement).style.transform = "translateX(0)";
+                  }}
                 >
-                  <div style={{ flex: 1 }}>
-                    <div style={{ width: "40px", height: "40px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
-                      <span style={{ fontSize: "1.2rem" }}>⚡</span>
+                  <div className="card2-glow" style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 100% 100%, ${C.gold}44 0%, transparent 65%)`, opacity: 0, transition: "opacity 0.6s ease", pointerEvents: "none" }} />
+                  <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay", pointerEvents: "none" }} />
+                  <div style={{ flex: 1, position: "relative", zIndex: 1 }}>
+                    <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
+                      <span style={{ fontSize: "1.3rem" }}>⚡</span>
                     </div>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "0.5rem" }}>Service 02</div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Business Transformation</h3>
-                    <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "0.75rem" }}>Service 02</div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Business Transformation</h3>
+                    <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                       Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using The Throttl Accelerator framework.
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#fff", fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
-                    Explore Transformation <ArrowRight size={14} />
+                  <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "6px", color: "#fff", fontWeight: 700, fontSize: "0.85rem", marginTop: "auto" }}>
+                    Explore Transformation <div className="card2-arrow" style={{ transition: "transform 0.3s ease" }}><ArrowRight size={14} /></div>
                   </div>
                 </div>
               </FadeSection>
