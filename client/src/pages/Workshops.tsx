@@ -50,7 +50,7 @@ export default function Workshops() {
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>Executives & Managers</span>
             </h1>
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "520px" }}>
-              Hands-on, practical AI training built for leadership teams. Not theory. Not generic tutorials. Real skills for real business workflows.
+              We teach your team how to use the right AI tools—and more importantly, how to get real value from them in their day-to-day work.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <a href="/contact" style={{
@@ -88,10 +88,10 @@ export default function Workshops() {
             </FadeSection>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               {[
-                { icon: Users,    label: "For Leadership Teams",   desc: "Designed for executives, managers, and department heads" },
-                { icon: Target,   label: "Business-Focused",       desc: "Built around your actual workflows, not generic AI content" },
-                { icon: Zap,      label: "Hands-On",               desc: "Live practice with real tools during every session" },
-                { icon: Award,    label: "Certified Outcomes",     desc: "Participants earn the Throttl AI Operator Certification" },
+                { icon: Users, label: "For Leadership Teams", desc: "Designed for executives, managers, and department heads" },
+                { icon: Target, label: "Business-Focused", desc: "Built around your actual workflows, not generic AI content" },
+                { icon: Zap, label: "Hands-On", desc: "Live practice with real tools during every session" },
+                { icon: Award, label: "Certified Outcomes", desc: "Participants earn the Throttl AI Operator Certification" },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -127,11 +127,11 @@ export default function Workshops() {
           </FadeSection>
           <div ref={how.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
             {[
-              { n: "01", icon: BookOpen, title: "Discovery Call",       body: "We learn about your business, your team, and the workflows where AI can make the biggest difference." },
-              { n: "02", icon: Target,   title: "Custom Program",       body: "We design a workshop program tailored to your industry, your tools, and your team's current level." },
-              { n: "03", icon: Zap,      title: "Live Workshops",       body: "Hands-on sessions with your management team. Real tools. Real use cases. Real outcomes." },
-              { n: "04", icon: Award,    title: "Certification",        body: "Participants who demonstrate AI proficiency earn the Throttl AI Operator Certification." },
-              { n: "05", icon: Clock,    title: "Ongoing Support",      body: "We stay available for follow-up coaching and questions as your team builds new habits." },
+              { n: "01", icon: BookOpen, title: "Understand the Business", body: "Identify how your business operates and where AI can drive immediate impact" },
+              { n: "02", icon: Target, title: "Curate the Program", body: "Select the right workshops based on your workflows, team structure, and priorities" },
+              { n: "03", icon: Zap, title: "Train the Teams", body: "Deliver hands-on workshops using real tools, workflows, and business scenarios" },
+              { n: "04", icon: Award, title: "Certify Capability", body: "Certify leaders who demonstrate real ability to apply AI in daily work" },
+              { n: "05", icon: Clock, title: "Reinforce & Scale", body: "Support adoption, reinforce usage, and expand AI across teams and workflows" },
             ].map((s, i) => {
               const Icon = s.icon;
               return (
