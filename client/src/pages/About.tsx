@@ -34,7 +34,7 @@ export default function About() {
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>executives AI-capable.</span>
             </h1>
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, maxWidth: "520px" }}>
-              Throttl was built on a simple belief: the businesses that thrive in the next decade will be led by people who understand and use AI — not just companies that have deployed AI tools.
+              So they can make better decisions, lead more effectively, and run companies that get more done with fewer resources.
             </p>
           </div>
         </div>

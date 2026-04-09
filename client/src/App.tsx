@@ -13,10 +13,9 @@ import Contact from "./pages/Contact";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={About} />
       <Route path="/workshops" component={Workshops} />
       <Route path="/transformation" component={Transformation} />
-      <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       {/* Legacy redirects — keep old URLs working */}
       <Route path="/enablement" component={Transformation} />
