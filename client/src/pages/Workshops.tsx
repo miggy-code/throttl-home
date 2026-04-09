@@ -120,21 +120,9 @@ export default function Workshops() {
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 Find the right workshop for your organisation
               </h2>
-              <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 1.75rem" }}>
+              <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto" }}>
                 Book a time with one of our directors to understand what workshops would be the best fit for your organisation.
               </p>
-              <a href="/contact" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: C.coral, color: "#fff",
-                padding: "0.875rem 2rem", borderRadius: "3px",
-                fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-                transition: "background-color 0.2s, transform 0.15s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.coralDark; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(0)"; }}
-              >
-                Click here to get started <ArrowRight size={16} />
-              </a>
             </div>
           </FadeSection>
           <div ref={how.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
@@ -252,21 +240,9 @@ export default function Workshops() {
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 Tailored to your team
               </h2>
-              <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
+              <p style={{ color: C.warmGray, fontSize: "1rem", lineHeight: 1.8 }}>
                 Workshop pricing is tailored to your team size and program scope. Book a call and we'll walk you through options — most programs start at $8,000.
               </p>
-              <a href="/contact" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: C.navy, color: "#fff",
-                padding: "0.95rem 2.25rem", borderRadius: "3px",
-                fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-                transition: "background-color 0.2s, transform 0.15s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = C.navy; e.currentTarget.style.transform = "translateY(0)"; }}
-              >
-                Get Started <ArrowRight size={16} />
-              </a>
             </div>
           </FadeSection>
         </div>
