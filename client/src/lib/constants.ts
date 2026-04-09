@@ -18,8 +18,8 @@ export const C = {
   navyLight:   "#1A2E5A",
   cream:       "#F5F2EC",
   creamDark:   "#EAE6DC",
-  gold:        "#F2B705", // vibrant tech gold
-  goldLight:   "#F2CB05", // bright sun yellow
+  gold:        "#cea253", // elegant, understated gold
+  goldLight:   "#e6c687", // soft, professional champagne gold
   coral:       "#6A8A9E",
   coralDark:   "#4F6D7E",
   warmGray:    "#8A8278",

@@ -103,13 +103,7 @@ export default function Transformation() {
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
             <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We Turn Your Business Into an <br className="hidden md:block" />
-              <span style={{
-                position: "relative", display: "inline-block",
-                color: C.navy, backgroundColor: C.goldLight,
-                padding: "0.08em 0.25em", borderRadius: "8px",
-                transform: "rotate(-1.5deg)", marginTop: "0.15em",
-                boxShadow: `0 8px 24px ${C.goldLight}40`
-              }}>
+              <span style={{ color: C.goldLight, fontStyle: "italic" }}>
                 AI-Enabled Operation
               </span>
             </h1>
