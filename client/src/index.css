@@ -195,10 +195,3 @@ html { scroll-behavior: smooth; }
   }
 }
 
-@media (max-width: 767px) {
-  .nav-mobile-invisible {
-    background-color: transparent !important;
-    backdrop-filter: none !important;
-    border-bottom: none !important;
-  }
-}

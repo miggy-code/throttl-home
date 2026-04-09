@@ -64,7 +64,7 @@ export default function Home() {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(3rem, 6.5vw, 5rem)",
               fontWeight: 700,
               color: "#fff",
