@@ -171,6 +171,154 @@ export default function Transformation() {
         </div>
       </section>
 
+      {/* ── THE THROTTL ACCELERATOR ── */}
+      <section className="section-padding" style={{ backgroundColor: C.creamDark }}>
+        <div className="container">
+          <FadeSection>
+            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
+                The Throttl Accelerator
+              </h2>
+              <p style={{ color: C.warmGray, fontSize: "1rem", maxWidth: "540px", margin: "0 auto", lineHeight: 1.75 }}>
+                Our proprietary 4-step framework that takes companies from AI experimentation to full operationalisation. Every AI Business Transformation engagement is built around it.
+              </p>
+            </div>
+          </FadeSection>
+
+          {/* Step progress bar */}
+          <FadeSection delay={0.1}>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "2.75rem", overflowX: "auto", paddingBottom: "0.5rem" }}>
+              {ACCELERATOR_STEPS.map((s, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: "120px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+                    <div style={{
+                      width: "48px", height: "48px", borderRadius: "50%",
+                      backgroundColor: s.color, color: "#fff",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem",
+                      boxShadow: `0 4px 16px ${s.color}40`,
+                      marginBottom: "0.5rem",
+                    }}>
+                      {s.n}
+                    </div>
+                    <div style={{ fontWeight: 700, color: C.navy, fontSize: "0.85rem", textAlign: "center" }}>{s.label}</div>
+                  </div>
+                  {i < ACCELERATOR_STEPS.length - 1 && (
+                    <div style={{ height: "2px", flex: 1, backgroundColor: "rgba(15,28,63,0.12)", margin: "0 0.5rem", marginBottom: "1.5rem" }} />
+                  )}
+                </div>
+              ))}
+            </div>
+          </FadeSection>
+
+          {/* Step cards — alternating layout */}
+          <div ref={steps.ref} style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+            {ACCELERATOR_STEPS.map((s, i) => (
+              <div key={i} style={{
+                display: "grid",
+                gridTemplateColumns: i % 2 === 0 ? "1fr 2fr" : "2fr 1fr",
+                gap: "0",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 8px 32px rgba(15,28,63,0.12)",
+                opacity: steps.inView ? 1 : 0,
+                transform: steps.inView ? "translateY(0)" : "translateY(32px)",
+                transition: `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${i * 0.12}s`,
+                position: "relative",
+              }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.boxShadow = "0 16px 48px rgba(15,28,63,0.2)";
+                  el.style.transform = "translateY(-6px)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.boxShadow = "0 8px 32px rgba(15,28,63,0.12)";
+                  el.style.transform = "translateY(0)";
+                }}
+              >
+                {i % 2 === 0 && (
+                  <div style={{ position: "relative", padding: "3rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden" }}>
+                    <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 30% 0%, ${s.color} 0%, ${C.navy} 120%)` }} />
+                    <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
+                    <div style={{ position: "relative", zIndex: 1 }}>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
+                      >{s.n}</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
+                    </div>
+                  </div>
+                )}
+                <div style={{ backgroundColor: "#fff", padding: "3rem 2.5rem" }}>
+                  <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "2rem" }}>{s.body}</p>
+                  <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: s.color, marginBottom: "1rem" }}>Key Outcomes</div>
+                  {s.outcomes.map((o, j) => {
+                    const isHighlight = o === "Honest view of where AI won't help";
+                    return (
+                      <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.6rem" }}>
+                        <CheckCircle2 size={16} color={s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
+                        <span style={{ fontSize: "0.9rem", color: isHighlight ? "#ffffff" : "#3A3530", fontWeight: isHighlight ? 600 : 400 }}>
+                          {isHighlight ? "→ " : ""}{o}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                {i % 2 !== 0 && (
+                  <div style={{ position: "relative", padding: "3rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden" }}>
+                    <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 70% 100%, ${s.color} 0%, ${C.navy} 120%)` }} />
+                    <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
+                    <div style={{ position: "relative", zIndex: 1 }}>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
+                      >{s.n}</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TOOLKIT ── */}
+      <section className="section-padding" style={{ backgroundColor: C.cream }}>
+        <div className="container">
+          <FadeSection>
+            <div style={{ marginBottom: "3rem" }}>
+              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>The Toolkit</span>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
+                What comes with every engagement
+              </h2>
+              <p style={{ color: C.warmGray, fontSize: "0.97rem", maxWidth: "520px", lineHeight: 1.75 }}>
+                Every AI Business Transformation client gets access to Throttl's full suite of frameworks, templates, and tools — built to make AI adoption practical and repeatable.
+              </p>
+            </div>
+          </FadeSection>
+          <div ref={toolkit.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "0.75rem" }}>
+            {TOOLKIT.map((t, i) => (
+              <div key={i} style={{
+                display: "flex", alignItems: "center", gap: "10px",
+                backgroundColor: "#fff", borderRadius: "6px", padding: "1rem 1.25rem",
+                border: "1px solid rgba(15,28,63,0.07)",
+                opacity: toolkit.inView ? 1 : 0,
+                transform: toolkit.inView ? "translateY(0)" : "translateY(12px)",
+                transition: `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`,
+              }}>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: C.gold, flexShrink: 0 }} />
+                <span style={{ fontSize: "0.875rem", color: C.navy, fontWeight: 500 }}>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="section-padding" style={{ backgroundColor: C.coral }}>
         <div className="container" style={{ textAlign: "center" }}>
