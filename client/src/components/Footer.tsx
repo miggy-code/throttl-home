@@ -74,10 +74,10 @@ export default function Footer() {
         </div>
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-          <div style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.78rem" }}>
+          <div style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.85rem" }}>
             © {new Date().getFullYear()} Throttl AI. All rights reserved.
           </div>
-          <div style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.78rem" }}>
+          <div style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.85rem" }}>
             <a href="mailto:hello@throttl.ai" style={{ color: "rgba(255,255,255,0.35)", textDecoration: "none" }}>hello@throttl.ai</a>
           </div>
         </div>

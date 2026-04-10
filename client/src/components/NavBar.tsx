@@ -254,7 +254,7 @@ export default function NavBar() {
                       <div
                         style={{
                           color: C.warmGray,
-                          fontSize: "0.78rem",
+                          fontSize: "0.85rem",
                           lineHeight: 1.4,
                         }}
                       >
