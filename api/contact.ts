@@ -153,6 +153,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const message = buildSlackMessage(payload);
+    console.log("[/api/contact] Sending to Slack:", JSON.stringify(message));
+
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
@@ -161,8 +163,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify(message),
     });
 
+    const responseText = await response.text();
+    console.log("[/api/contact] Slack response:", response.status, responseText);
+
     if (!response.ok) {
-      console.error("[/api/contact] Slack webhook error:", response.statusText);
+      console.error("[/api/contact] Slack webhook error:", response.statusText, responseText);
       return res.status(500).json({ error: "Failed to send to Slack" });
     }
 
