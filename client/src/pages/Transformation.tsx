@@ -100,7 +100,7 @@ export default function Transformation() {
         </div>
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "680px" }}>
-            <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
+            <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
             <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We Turn Your Business Into an <br className="hidden md:block" />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>
@@ -133,7 +133,7 @@ export default function Transformation() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>How The AI Transformation Process Begins</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>How The AI Transformation Process Begins</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 We embed inside your business and execute with you.
               </h2>
@@ -176,7 +176,7 @@ export default function Transformation() {
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
                 The Throttl Accelerator
               </h2>
@@ -254,7 +254,7 @@ export default function Transformation() {
                 )}
                 <div style={{ backgroundColor: "#fff", padding: "3rem 2.5rem" }}>
                   <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "2rem" }}>{s.body}</p>
-                  <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: s.color, marginBottom: "1rem" }}>Key Outcomes</div>
+                  <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: s.color, marginBottom: "1rem" }}>Key Outcomes</div>
                   {s.outcomes.map((o, j) => {
                     const isHighlight = o === "Honest view of where AI won't help";
                     return (
@@ -292,7 +292,7 @@ export default function Transformation() {
         <div className="container">
           <FadeSection>
             <div style={{ marginBottom: "3rem" }}>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>The Toolkit</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>The Toolkit</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
                 What comes with every engagement
               </h2>

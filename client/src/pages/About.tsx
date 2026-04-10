@@ -28,7 +28,7 @@ export default function About() {
         </div>
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "640px" }}>
-            <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>About Throttl</span>
+            <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>About Throttl</span>
             <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We exist to make<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>executives AI-capable.</span>
@@ -45,7 +45,7 @@ export default function About() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Mission</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Mission</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 AI adoption starts at the top.
               </h2>
@@ -80,7 +80,7 @@ export default function About() {
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What We Do</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What We Do</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Two ways we work with you
               </h2>
@@ -119,7 +119,7 @@ export default function About() {
                     <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: `${C.coral}22`, border: `1px solid ${C.coral}40`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>🎓</span>
                     </div>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, marginBottom: "0.75rem" }}>Service 01</div>
+                    <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, marginBottom: "0.75rem" }}>Service 01</div>
                     <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Workshops</h3>
                     <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                       Hands-on training that certifies your management team in how to use AI tools inside their real workflows. Participants earn the Throttl AI Operator Certification.
@@ -164,7 +164,7 @@ export default function About() {
                     <div style={{ width: "44px", height: "44px", borderRadius: "10px", backgroundColor: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>⚡</span>
                     </div>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "0.75rem" }}>Service 02</div>
+                    <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.9)", marginBottom: "0.75rem" }}>Service 02</div>
                     <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "0.75rem" }}>AI Business Transformation</h3>
                     <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                       Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using The Throttl Accelerator framework.

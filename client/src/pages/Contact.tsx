@@ -26,7 +26,7 @@ export default function Contact() {
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ maxWidth: "560px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>
                 Get Started
               </span>
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1rem", letterSpacing: "-0.015em" }}>

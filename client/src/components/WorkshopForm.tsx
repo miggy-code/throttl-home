@@ -143,7 +143,7 @@ export default function WorkshopForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.coral, display: "block", marginBottom: "1rem" }}>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: C.coral, display: "block", marginBottom: "1rem" }}>
                 Get Started
               </span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 2.25rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "0.75rem" }}>

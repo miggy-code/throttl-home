@@ -330,7 +330,7 @@ export default function TransformationForm() {
           ) : (
             <>
               {/* Section label */}
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.coral, display: "block", marginBottom: "1rem" }}>
+              <span style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: C.coral, display: "block", marginBottom: "1rem" }}>
                 Get Started
               </span>
 
