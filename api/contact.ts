@@ -171,7 +171,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const resend = new Resend(apiKey);
     await resend.emails.send({
       from: `Throttl Website <${fromEmail}>`,
-      to:   toEmail,
+      to:   ["gabriel@throttlai.com", "miguel@throttlai.com"],
       subject: SUBJECT[payload.source](payload),
       html: buildEmailHtml(payload),
     });
