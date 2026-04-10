@@ -250,6 +250,25 @@ export default function NavBar() {
             )}
           </div>
 
+          {/* About Us */}
+          <Link
+            href="/"
+            style={{
+              color: textColor,
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              textDecoration: "none",
+              opacity: location === "/" ? 1 : 0.72,
+              transition: "opacity 0.2s, color 0.35s",
+              letterSpacing: "0.01em",
+              display: "block",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = location === "/" ? "1" : "0.72")}
+          >
+            About Us
+          </Link>
+
           {/* Contact */}
           <a
             href={BOOKING_URL}
@@ -414,6 +433,21 @@ export default function NavBar() {
                 </div>
               )}
             </div>
+
+            {/* About Us */}
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "2.5rem",
+                fontWeight: 700,
+                color: "#fff",
+                textDecoration: "none",
+              }}
+            >
+              About Us
+            </Link>
 
             {/* Contact */}
             <a
