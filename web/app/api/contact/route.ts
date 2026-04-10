@@ -66,44 +66,31 @@ const TITLES: Record<ContactSource, string> = {
 function buildSlackMessage(p: ContactPayload): object {
   const emoji = EMOJI[p.source];
   const title = TITLES[p.source];
-  const fields: Array<{ type: string; text: string }> = [
-    { type: "mrkdwn", text: `*Name:*\n${p.name}` },
-    { type: "mrkdwn", text: `*Email:*\n<mailto:${p.email}|${p.email}>` },
-  ];
 
-  if (p.company) fields.push({ type: "mrkdwn", text: `*Company:*\n${p.company}` });
-  if (p.role) fields.push({ type: "mrkdwn", text: `*Role:*\n${p.role}` });
-  if (p.companySize) fields.push({ type: "mrkdwn", text: `*Company Size:*\n${p.companySize}` });
-  if (p.industry) fields.push({ type: "mrkdwn", text: `*Industry:*\n${p.industry}` });
-  if (p.aiUsage) fields.push({ type: "mrkdwn", text: `*Current AI Usage:*\n${p.aiUsage}` });
-  if (p.challenge) fields.push({ type: "mrkdwn", text: `*Operational Challenge:*\n${p.challenge}` });
+  let text = `${emoji} *${title}* — ${p.name}\n\n`;
+  text += `*Name:* ${p.name}\n`;
+  text += `*Email:* ${p.email}\n`;
+  if (p.company) text += `*Company:* ${p.company}\n`;
+  if (p.role) text += `*Role:* ${p.role}\n`;
+  if (p.companySize) text += `*Company Size:* ${p.companySize}\n`;
+  if (p.industry) text += `*Industry:* ${p.industry}\n`;
+  if (p.aiUsage) text += `*Current AI Usage:* ${p.aiUsage}\n`;
+  if (p.challenge) text += `*Challenge:* ${p.challenge}\n`;
 
-  const partialNote = p.source === "transformation-partial"
-    ? "\n⚠️ *Note:* This person started the inquiry form but did not complete Step 2. Follow up to re-engage."
-    : "";
+  if (p.source === "transformation-partial") {
+    text += `\n⚠️ *Note:* This person started the inquiry form but did not complete Step 2. Follow up to re-engage.`;
+  }
 
   return {
     text: `${emoji} ${title} — ${p.name}`,
     blocks: [
       {
-        type: "header",
-        text: {
-          type: "plain_text",
-          text: `${emoji} ${title}`,
-          emoji: true,
-        },
-      },
-      {
-        type: "section",
-        fields,
-      },
-      ...(partialNote ? [{
         type: "section",
         text: {
           type: "mrkdwn",
-          text: partialNote,
+          text,
         },
-      }] : []),
+      },
     ],
   };
 }
