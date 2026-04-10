@@ -1,16 +1,15 @@
 /*
  * THROTTL — /api/contact
  * Vercel serverless function
- * Handles all contact form submissions and sends email via Resend
+ * Handles all contact form submissions and sends to Slack
  *
  * Required env variables:
- *   RESEND_API_KEY      — from resend.com dashboard
- *   RESEND_FROM_EMAIL   — verified sender (e.g. hello@throttl.ai)
- *   THROTTL_NOTIFY_EMAIL — inbox to notify (e.g. gabriel@throttl.ai)
+ *   SLACK_CLIENT_ID      — Slack app client ID
+ *   SLACK_SECRET         — Slack app secret
+ *   SLACK_CHANNEL_ID     — Slack channel ID to post messages to
  */
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Resend } from "resend";
 
 type ContactSource = "transformation-partial" | "transformation-complete" | "workshop" | "contact";
 
@@ -52,62 +51,64 @@ function sanitize(val: unknown, max = 1000): string {
   return val.trim().slice(0, max);
 }
 
-// ── Email formatting ──────────────────────────────────────────────────────────
-const SUBJECT: Record<ContactSource, (p: ContactPayload) => string> = {
-  "transformation-partial":  p => `🟡 New Transformation Lead — ${p.name}`,
-  "transformation-complete": p => `🟢 Transformation Inquiry — ${p.name} at ${p.company || "Unknown"}`,
-  "workshop":                p => `📘 Workshop Inquiry — ${p.name}`,
-  "contact":                 p => `✉️ Contact Inquiry — ${p.name}`,
+// ── Slack message formatting ──────────────────────────────────────────────────
+const EMOJI: Record<ContactSource, string> = {
+  "transformation-partial":  "🟡",
+  "transformation-complete": "🟢",
+  "workshop":                "📘",
+  "contact":                 "✉️",
 };
 
-function buildEmailHtml(p: ContactPayload): string {
-  const row = (label: string, value: string | undefined) =>
-    value
-      ? `<tr><td style="padding:8px 12px;font-weight:600;color:#374151;white-space:nowrap;vertical-align:top;font-family:sans-serif;font-size:14px">${label}</td><td style="padding:8px 12px;color:#1f2937;font-family:sans-serif;font-size:14px">${value}</td></tr>`
-      : "";
+const TITLES: Record<ContactSource, string> = {
+  "transformation-partial":  "New Transformation Lead",
+  "transformation-complete": "Transformation Inquiry",
+  "workshop":                "Workshop Inquiry",
+  "contact":                 "Contact Inquiry",
+};
 
-  const partialNote =
-    p.source === "transformation-partial"
-      ? `<div style="margin:16px 0;padding:12px 16px;background:#FEF9C3;border-left:4px solid #F59E0B;border-radius:4px;font-family:sans-serif;font-size:14px;color:#92400E">
-          <strong>Note:</strong> This person started the inquiry form but did not complete Step 2. Follow up to re-engage.
-        </div>`
-      : "";
+function buildSlackMessage(p: ContactPayload): object {
+  const emoji = EMOJI[p.source];
+  const title = TITLES[p.source];
+  const fields: Array<{ type: string; text: string }> = [
+    { type: "mrkdwn", text: `*Name:*\n${p.name}` },
+    { type: "mrkdwn", text: `*Email:*\n<mailto:${p.email}|${p.email}>` },
+  ];
 
-  const sourceLabels: Record<ContactSource, string> = {
-    "transformation-partial":  "Transformation (Partial)",
-    "transformation-complete": "Transformation (Complete)",
-    "workshop":                "Workshop Inquiry",
-    "contact":                 "Contact Inquiry",
+  if (p.company) fields.push({ type: "mrkdwn", text: `*Company:*\n${p.company}` });
+  if (p.role) fields.push({ type: "mrkdwn", text: `*Role:*\n${p.role}` });
+  if (p.companySize) fields.push({ type: "mrkdwn", text: `*Company Size:*\n${p.companySize}` });
+  if (p.industry) fields.push({ type: "mrkdwn", text: `*Industry:*\n${p.industry}` });
+  if (p.aiUsage) fields.push({ type: "mrkdwn", text: `*Current AI Usage:*\n${p.aiUsage}` });
+  if (p.challenge) fields.push({ type: "mrkdwn", text: `*Operational Challenge:*\n${p.challenge}` });
+
+  const partialNote = p.source === "transformation-partial"
+    ? "\n⚠️ *Note:* This person started the inquiry form but did not complete Step 2. Follow up to re-engage."
+    : "";
+
+  return {
+    text: `${emoji} ${title} — ${p.name}`,
+    blocks: [
+      {
+        type: "header",
+        text: {
+          type: "plain_text",
+          text: `${emoji} ${title}`,
+          emoji: true,
+        },
+      },
+      {
+        type: "section",
+        fields,
+      },
+      ...(partialNote ? [{
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: partialNote,
+        },
+      }] : []),
+    ],
   };
-
-  return `
-    <!DOCTYPE html>
-    <html>
-    <body style="margin:0;padding:24px;background:#f9fafb;font-family:sans-serif">
-      <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
-        <div style="background:#0F1C3F;padding:24px 28px">
-          <h1 style="margin:0;color:#fff;font-size:20px;font-weight:700">New ${sourceLabels[p.source]}</h1>
-        </div>
-        <div style="padding:24px 28px">
-          ${partialNote}
-          <table style="border-collapse:collapse;width:100%;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden">
-            ${row("Name", p.name)}
-            ${row("Email", `<a href="mailto:${p.email}" style="color:#6A8A9E">${p.email}</a>`)}
-            ${row("Company", p.company)}
-            ${row("Role / Title", p.role)}
-            ${row("Company Size", p.companySize)}
-            ${row("Industry", p.industry)}
-            ${row("Current AI Usage", p.aiUsage)}
-            ${p.challenge ? row("Operational Challenge", p.challenge) : ""}
-          </table>
-        </div>
-        <div style="padding:16px 28px;background:#f3f4f6;border-top:1px solid #e5e7eb">
-          <p style="margin:0;font-size:12px;color:#6b7280">Sent from the Throttl website contact form</p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
@@ -156,28 +157,39 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: "Valid email is required" });
   }
 
-  // Send email
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "hello@throttl.ai";
-  const toEmail = process.env.THROTTL_NOTIFY_EMAIL || "hello@throttl.ai";
+  // Send to Slack
+  const slackSecret = process.env.SLACK_SECRET;
+  const channelId = process.env.SLACK_CHANNEL_ID || "sales-marketing";
 
-  if (!apiKey) {
-    // Dev fallback — log and return success so the UI works without Resend configured
-    console.log("[/api/contact] RESEND_API_KEY not set. Payload:", payload);
+  if (!slackSecret) {
+    // Dev fallback — log and return success so the UI works without Slack configured
+    console.log("[/api/contact] SLACK_SECRET not set. Payload:", payload);
     return res.status(200).json({ ok: true });
   }
 
   try {
-    const resend = new Resend(apiKey);
-    await resend.emails.send({
-      from: `Throttl Website <${fromEmail}>`,
-      to:   ["gabriel@throttlai.com", "miguel@throttlai.com"],
-      subject: SUBJECT[payload.source](payload),
-      html: buildEmailHtml(payload),
+    const message = buildSlackMessage(payload);
+    const response = await fetch("https://slack.com/api/chat.postMessage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${slackSecret}`,
+      },
+      body: JSON.stringify({
+        channel: channelId,
+        ...message,
+      }),
     });
+
+    const data = await response.json();
+    if (!data.ok) {
+      console.error("[/api/contact] Slack error:", data.error);
+      return res.status(500).json({ error: "Failed to send to Slack" });
+    }
+
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("[/api/contact] Resend error:", err);
-    return res.status(500).json({ error: "Failed to send email" });
+    console.error("[/api/contact] Slack error:", err);
+    return res.status(500).json({ error: "Failed to send to Slack" });
   }
 }
