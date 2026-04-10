@@ -15,7 +15,7 @@ const ALL_PAGES = [
     desc: "Hands-on AI training & certification for executives",
   },
   {
-    label: "Business Transformation",
+    label: "AI Business Transformation",
     href: "/transformation",
     desc: "In-house enablement using our 4-step framework",
   },
@@ -378,7 +378,7 @@ export default function NavBar() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", alignItems: "center", width: "100%", maxWidth: "340px", marginBottom: "auto" }}>
-            
+
             {/* About Us */}
             <Link
               href="/"
