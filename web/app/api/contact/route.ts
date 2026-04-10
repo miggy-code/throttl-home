@@ -3,9 +3,7 @@
  * Handles all contact form submissions and sends to Slack
  *
  * Required env variables:
- *   SLACK_CLIENT_ID      — Slack app client ID
- *   SLACK_SECRET         — Slack app secret
- *   SLACK_CHANNEL_ID     — Slack channel ID to post messages to (default: C...)
+ *   SLACK_WEBHOOK_URL    — Slack incoming webhook URL
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -155,39 +153,33 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Valid email is required" }, { status: 400 });
   }
 
-  // Send to Slack
-  const slackSecret = process.env.SLACK_SECRET;
-  const channelId = process.env.SLACK_CHANNEL_ID || "sales-marketing";
+  // Send to Slack via webhook
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 
-  if (!slackSecret) {
+  if (!webhookUrl) {
     // Dev fallback — log and return success so the UI works without Slack configured
-    console.log("[/api/contact] SLACK_SECRET not set. Payload:", payload);
+    console.log("[/api/contact] SLACK_WEBHOOK_URL not set. Payload:", payload);
     return NextResponse.json({ ok: true });
   }
 
   try {
     const message = buildSlackMessage(payload);
-    const response = await fetch("https://slack.com/api/chat.postMessage", {
+    const response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${slackSecret}`,
       },
-      body: JSON.stringify({
-        channel: channelId,
-        ...message,
-      }),
+      body: JSON.stringify(message),
     });
 
-    const data = await response.json();
-    if (!data.ok) {
-      console.error("[/api/contact] Slack error:", data.error);
+    if (!response.ok) {
+      console.error("[/api/contact] Slack webhook error:", response.statusText);
       return NextResponse.json({ error: "Failed to send to Slack" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[/api/contact] Slack error:", err);
+    console.error("[/api/contact] Slack webhook error:", err);
     return NextResponse.json({ error: "Failed to send to Slack" }, { status: 500 });
   }
 }
