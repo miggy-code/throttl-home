@@ -1,7 +1,6 @@
 /*
  * NavBar — shared across all pages
- * Structure: Logo | Services (Dropdown) | Contact | Book a Call
- * On page change, the currently active page is removed from the visible links inside the Services dropdown.
+ * Structure: About Us | Services (Dropdown) | Contact | Book a Call
  * Transparent on load, cream/blur on scroll
  */
 import { useEffect, useState, useRef } from "react";
@@ -69,8 +68,7 @@ export default function NavBar() {
   const textColor = scrolled ? C.navy : isDark ? C.cream : C.navy;
   const logoFilter = "none";
 
-  // Filter out the current page so we always show the OTHER pages inside the dropdown
-  const visiblePages = ALL_PAGES.filter((p) => p.href !== location);
+
 
   return (
     <nav
@@ -188,7 +186,7 @@ export default function NavBar() {
               />
             )}
             {/* Dropdown panel */}
-            {servicesOpen && visiblePages.length > 0 && (
+            {servicesOpen && (
               <div
                 style={{
                   position: "absolute",
@@ -220,7 +218,7 @@ export default function NavBar() {
                     rotate: "45deg",
                   }}
                 />
-                {visiblePages.map((s) => (
+                {ALL_PAGES.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
@@ -232,21 +230,21 @@ export default function NavBar() {
                       padding: "0.85rem 1rem",
                       borderRadius: "6px",
                       textDecoration: "none",
-                      backgroundColor: "transparent",
+                      backgroundColor: s.href === location ? `${C.coral}10` : "transparent",
                       transition: "background-color 0.15s, transform 0.15s",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = `${C.coral}12`;
+                      e.currentTarget.style.backgroundColor = `${C.coral}18`;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
+                      e.currentTarget.style.backgroundColor = s.href === location ? `${C.coral}10` : "transparent";
                     }}
                   >
                     <div style={{ flex: 1 }}>
                       <div
                         style={{
                           fontWeight: 600,
-                          color: C.navy,
+                          color: s.href === location ? C.coral : C.navy,
                           fontSize: "0.875rem",
                           marginBottom: "3px",
                         }}
@@ -426,9 +424,9 @@ export default function NavBar() {
                   }}
                 />
               </button>
-              {mobileServicesOpen && visiblePages.length > 0 && (
+              {mobileServicesOpen && (
                 <div style={{ paddingTop: "1.75rem", display: "flex", flexDirection: "column", gap: "1.5rem", alignItems: "center" }}>
-                  {visiblePages.map((s) => (
+                  {ALL_PAGES.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
