@@ -191,7 +191,7 @@ export default function Transformation() {
                       width: "48px", height: "48px", borderRadius: "50%",
                       backgroundColor: s.color, color: "#fff",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      , fontWeight: 700, fontSize: "0.9rem",
+                      fontWeight: 700, fontSize: "0.9rem",
                       boxShadow: `0 4px 16px ${s.color}40`,
                       marginBottom: "0.5rem",
                     }}>

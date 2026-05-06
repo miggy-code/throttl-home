@@ -17,6 +17,7 @@ export default function NavBar() {
   const [servicesOpen, setServicesOpen]       = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = usePathname();
 
   const isDark = ["/", "/transformation", "/workshops", "/about"].includes(location ?? "");
@@ -36,6 +37,28 @@ export default function NavBar() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
+
+  const openServices = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setServicesOpen(true);
+  };
+
+  const closeServices = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => {
+      setServicesOpen(false);
+      closeTimerRef.current = null;
+    }, 180);
+  };
 
   const textColor = scrolled ? C.navy : isDark ? "#ffffff" : C.navy;
   const isServicesActive = SERVICES.some(s => location === s.href);
@@ -68,8 +91,8 @@ export default function NavBar() {
 
           {/* Services dropdown */}
           <div ref={dropdownRef} style={{ position: "relative" }}
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={openServices}
+            onMouseLeave={closeServices}
           >
             <button onClick={() => setServicesOpen(v => !v)} style={{
               display: "flex", alignItems: "center", gap: "5px",
@@ -83,20 +106,25 @@ export default function NavBar() {
             </button>
 
             {servicesOpen && (
-              <div style={{ position: "absolute", top: "calc(100% + 18px)", left: "50%", transform: "translateX(-50%)", backgroundColor: C.white, borderRadius: "8px", boxShadow: `0 18px 48px ${C.navy}29, 0 2px 8px ${C.navy}10`, border: `1px solid ${C.navy}12`, minWidth: "300px", padding: "0.5rem", animation: "fadeDropdown 0.18s ease" }}>
-                <div style={{ position: "absolute", top: "-6px", left: "50%", transform: "translateX(-50%)", width: "12px", height: "12px", backgroundColor: C.white, border: `1px solid ${C.navy}12`, borderRight: "none", borderBottom: "none", rotate: "45deg" }} />
-                {SERVICES.map(s => (
-                  <Link key={s.href} href={s.href} onClick={() => setServicesOpen(false)} style={{ display: "flex", alignItems: "center", gap: "0.6rem", padding: "0.85rem 1rem", borderRadius: "6px", textDecoration: "none", backgroundColor: location === s.href ? `${C.coral}0D` : "transparent", transition: "background-color 0.15s" }}
-                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = `${C.coral}12`; }}
-                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = location === s.href ? `${C.coral}0D` : "transparent"; }}
-                  >
-                    <div style={{ width: "3px", alignSelf: "stretch", backgroundColor: location === s.href ? C.coral : "transparent", borderRadius: "2px", transition: "background-color 0.15s" }} />
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 600, color: C.navy, fontSize: "0.875rem", marginBottom: "3px" }}>{s.label}</div>
-                      <div style={{ color: C.warmGray, fontSize: "0.78rem", lineHeight: 1.4 }}>{s.desc}</div>
-                    </div>
-                  </Link>
-                ))}
+              <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", paddingTop: "18px", animation: "fadeDropdown 0.18s ease" }}>
+                <div style={{ backgroundColor: C.white, borderRadius: "8px", boxShadow: `0 18px 48px ${C.navy}29, 0 2px 8px ${C.navy}10`, border: `1px solid ${C.navy}12`, minWidth: "300px", padding: "0.5rem" }}
+                  onMouseEnter={openServices}
+                  onMouseLeave={closeServices}
+                >
+                  <div style={{ position: "absolute", top: "12px", left: "50%", transform: "translateX(-50%) rotate(45deg)", width: "12px", height: "12px", backgroundColor: C.white, border: `1px solid ${C.navy}12`, borderRight: "none", borderBottom: "none" }} />
+                  {SERVICES.map(s => (
+                    <Link key={s.href} href={s.href} onClick={() => setServicesOpen(false)} style={{ display: "flex", alignItems: "center", gap: "0.6rem", padding: "0.85rem 1rem", borderRadius: "6px", textDecoration: "none", backgroundColor: location === s.href ? `${C.coral}0D` : "transparent", transition: "background-color 0.15s" }}
+                      onMouseEnter={e => { e.currentTarget.style.backgroundColor = `${C.coral}12`; }}
+                      onMouseLeave={e => { e.currentTarget.style.backgroundColor = location === s.href ? `${C.coral}0D` : "transparent"; }}
+                    >
+                      <div style={{ width: "3px", alignSelf: "stretch", backgroundColor: location === s.href ? C.coral : "transparent", borderRadius: "2px", transition: "background-color 0.15s" }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 600, color: C.navy, fontSize: "0.875rem", marginBottom: "3px" }}>{s.label}</div>
+                        <div style={{ color: C.warmGray, fontSize: "0.78rem", lineHeight: 1.4 }}>{s.desc}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>

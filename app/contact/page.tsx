@@ -10,7 +10,7 @@ import { C } from "@/lib/constants";
 
 export default function ContactPage() {
   return (
-    <div style={{ backgroundColor: "#0A1628", color: "#fff", , minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ backgroundColor: "#0A1628", color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <NavBar />
 
       {/* ── FORM SECTION ── */}
