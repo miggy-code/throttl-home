@@ -1,0 +1,263 @@
+---
+title: "Using Claude Code as an Agent Swarm Scheduled with Cron Jobs"
+description: "How to orchestrate multiple Claude Code agents running autonomously on schedules — turning a single AI coding assistant into a fleet of specialized workers that maintain, test, and improve your codebase around the clock."
+date: "2025-04-01"
+tags: ["Claude Code", "AI Agents", "Automation", "DevOps", "Cron"]
+theme: "Engineering"
+coverGradient: "from-[#8500FF]/20 via-blueprint/10 to-ink/40"
+author: "Gabriel Meeg"
+---
+
+There's a moment when using Claude Code that you realize you're not just using a tool — you're collaborating with something that can reason about your entire codebase. And then a second realization hits: *what if this thing could work while I sleep?*
+
+That's the idea behind an agent swarm — multiple Claude Code instances, each with a focused job, running on cron schedules. Not a futuristic concept. Something you can set up today with a terminal and a crontab.
+
+## What Is an "Agent Swarm"?
+
+An agent swarm isn't a single monolithic AI doing everything. It's the opposite: **small, specialized agents**, each scoped to a single responsibility, running independently and asynchronously.
+
+Think of it like microservices, but for AI-powered development tasks:
+
+- **Agent A** reviews open PRs every morning at 7am
+- **Agent B** runs your test suite and fixes flaky tests every 6 hours
+- **Agent C** scans for dependency vulnerabilities weekly and opens upgrade PRs
+- **Agent D** generates changelog entries from merged PRs every evening
+
+Each agent is just a Claude Code invocation with a specific prompt, pointed at a specific repo, triggered by cron.
+
+## Why This Works So Well
+
+Claude Code isn't just a chatbot that writes code. It has genuine capabilities that make autonomous operation viable:
+
+1. **Full filesystem access** — it can read, write, and navigate your entire project
+2. **Tool use** — it runs tests, lints, commits, and pushes through real shell commands
+3. **Context awareness** — it reads your project structure, understands conventions, and follows them
+4. **Multi-step reasoning** — it can diagnose a test failure, trace it to a root cause, fix it, and verify the fix
+
+When you combine these capabilities with a schedule, you get something that feels like having a junior developer who works 24/7 and never forgets to run the tests.
+
+## The Basic Pattern
+
+Every agent in the swarm follows the same shape:
+
+```bash
+#!/bin/bash
+# agents/pr-reviewer.sh
+
+cd /path/to/your/repo
+git fetch origin
+
+claude -p "Review all open pull requests. For each one:
+1. Check out the branch
+2. Read the changed files
+3. Look for bugs, security issues, and style violations
+4. Post a summary comment on the PR using gh
+
+Focus on substantive issues. Skip nitpicks." \
+  --allowedTools "Bash,Read,Glob,Grep" \
+  --max-turns 30
+```
+
+Then schedule it:
+
+```bash
+# Run PR reviewer every weekday at 7am
+0 7 * * 1-5 /path/to/agents/pr-reviewer.sh >> /var/log/agents/pr-reviewer.log 2>&1
+```
+
+That's it. No framework, no orchestration layer, no Kubernetes. Just a bash script and cron.
+
+## Building Your First Swarm
+
+Let's walk through setting up three agents that work together to keep a codebase healthy.
+
+### Agent 1: The Test Guardian
+
+This agent runs your test suite, and when tests fail, it attempts to fix them.
+
+```bash
+#!/bin/bash
+# agents/test-guardian.sh
+
+REPO="/path/to/your/repo"
+LOG="/var/log/agents/test-guardian-$(date +%Y%m%d-%H%M).log"
+
+cd "$REPO"
+git checkout main
+git pull origin main
+
+claude -p "Run the full test suite. If any tests fail:
+1. Read the failing test and the code it tests
+2. Determine if the test is wrong or the code is wrong
+3. Fix whichever is incorrect
+4. Re-run to verify the fix
+5. Commit with a clear message and push to a new branch
+6. Open a PR titled 'fix: [description of what was fixed]'
+
+If all tests pass, just report the results. Do not make changes to passing code." \
+  --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+  --max-turns 50 \
+  >> "$LOG" 2>&1
+```
+
+```bash
+# Every 6 hours
+0 */6 * * * /path/to/agents/test-guardian.sh
+```
+
+### Agent 2: The Dependency Auditor
+
+This one checks for outdated or vulnerable dependencies weekly.
+
+```bash
+#!/bin/bash
+# agents/dependency-auditor.sh
+
+REPO="/path/to/your/repo"
+cd "$REPO"
+git checkout main
+git pull origin main
+
+claude -p "Audit the project dependencies:
+1. Run 'npm audit' (or the equivalent for this project's package manager)
+2. Check for critically outdated packages
+3. For any HIGH or CRITICAL vulnerabilities:
+   - Create a new branch
+   - Update the affected packages
+   - Run tests to ensure nothing breaks
+   - Open a PR with a clear description of what was updated and why
+
+Do not upgrade major versions without strong justification.
+Do not touch devDependencies unless they have critical vulnerabilities." \
+  --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+  --max-turns 40
+```
+
+```bash
+# Every Monday at 6am
+0 6 * * 1 /path/to/agents/dependency-auditor.sh >> /var/log/agents/dep-audit.log 2>&1
+```
+
+### Agent 3: The Changelog Writer
+
+A lightweight agent that summarizes what happened in the repo each day.
+
+```bash
+#!/bin/bash
+# agents/changelog-writer.sh
+
+REPO="/path/to/your/repo"
+cd "$REPO"
+git checkout main
+git pull origin main
+
+claude -p "Look at all commits merged to main in the last 24 hours.
+Write a concise, well-organized changelog entry for today.
+Group changes by category (features, fixes, refactors, docs).
+Append the entry to CHANGELOG.md at the top, under today's date.
+Commit and push directly to main." \
+  --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+  --max-turns 20
+```
+
+```bash
+# Every evening at 11pm
+0 23 * * * /path/to/agents/changelog-writer.sh >> /var/log/agents/changelog.log 2>&1
+```
+
+## Patterns for Production
+
+Once you've run a few agents, you'll discover patterns that make them more reliable.
+
+### Scope Down the Allowed Tools
+
+The `--allowedTools` flag is your security boundary. An agent that only needs to read and analyze shouldn't have `Write` or `Bash` permissions. Give each agent the minimum set of tools it needs.
+
+### Use Dedicated Branches
+
+Never let an autonomous agent push directly to `main` (the changelog writer above is an exception because it's append-only and low-risk). The pattern should be:
+
+1. Agent creates a branch
+2. Agent makes changes and pushes
+3. Agent opens a PR
+4. A human reviews and merges
+
+This gives you a clean audit trail and a kill switch.
+
+### Log Everything
+
+Every agent should pipe output to a log file with timestamps. When something goes wrong — and it will — you need to be able to trace what the agent did and why.
+
+```bash
+LOG="/var/log/agents/${AGENT_NAME}-$(date +%Y%m%d-%H%M).log"
+exec > >(tee -a "$LOG") 2>&1
+```
+
+### Set Max Turns
+
+The `--max-turns` flag prevents runaway agents. An agent stuck in a loop will burn tokens and time. Set a reasonable ceiling — 20-50 turns covers most tasks.
+
+### Idempotency Matters
+
+Design agents so that running them twice produces the same result. If the test guardian already fixed a test and opened a PR, running it again shouldn't create a duplicate. Check for existing branches and PRs before creating new ones.
+
+## The Coordination Problem
+
+Independent agents work great for independent tasks. But what about workflows that span multiple agents?
+
+The simplest coordination mechanism is the filesystem itself:
+
+```bash
+# Agent A writes a status file
+echo "audit-complete" > /tmp/agent-status/dependency-audit
+
+# Agent B checks before proceeding
+if [ "$(cat /tmp/agent-status/dependency-audit)" = "audit-complete" ]; then
+  # proceed with integration tests
+fi
+```
+
+For more complex coordination, you can use:
+- **Git branches** as a shared state mechanism (agent B watches for branches created by agent A)
+- **GitHub Issues** as a task queue (agents pick up issues tagged with their label)
+- **A simple SQLite database** that agents read/write to track state
+
+Keep it simple. The whole point of this approach is avoiding infrastructure complexity.
+
+## Cost and Resource Considerations
+
+Running agents on cron means you're spending API tokens on a schedule. Some guidelines:
+
+- **Start with off-peak schedules** — nightly and weekly agents are cheap and high-value
+- **Monitor token usage** — log the cost of each run and set alerts for outliers
+- **Use the right model** — not every agent needs the most powerful model. A changelog writer can use a lighter model than a bug-fixing agent
+- **Kill idle agents** — if an agent consistently finds nothing to do, reduce its frequency or remove it
+
+## What We've Seen in Practice
+
+At Throttl, we've helped clients set up agent swarms for:
+
+- **Code quality monitoring** — agents that run static analysis and flag regressions
+- **Documentation freshness** — agents that compare code changes against docs and flag staleness
+- **Security scanning** — agents that review new code for OWASP top-10 vulnerabilities
+- **Performance benchmarking** — agents that run benchmarks after merges and track trends
+
+The common thread: these are all tasks that humans should do but frequently don't because they're tedious and easy to skip. Agents don't skip.
+
+## Getting Started Today
+
+You don't need a complex setup to start. Here's a 15-minute path:
+
+1. **Pick one repetitive task** you wish someone would just do every day
+2. **Write a Claude Code prompt** that accomplishes that task
+3. **Wrap it in a bash script** with logging
+4. **Add it to your crontab**
+5. **Watch the logs** for a week, then tune
+
+The beauty of this approach is its incrementality. You don't need to design the whole swarm upfront. Start with one agent, see the value, add another. Each one is independent, each one is debuggable, each one can be killed without affecting the others.
+
+That's the operator's approach to AI: not a grand transformation, but a series of small, practical wins that compound over time.
+
+---
+
+*Want to explore how autonomous AI agents could work in your engineering workflow? [Book a strategy review](/contact) with our team.*
