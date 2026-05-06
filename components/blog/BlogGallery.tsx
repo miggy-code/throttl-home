@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, X, Calendar, Tag, Layers, Clock, ArrowRight } from "lucide-react";
 import type { BlogMeta } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/blog-date";
 import { C } from "@/lib/constants";
 
 // ─── Filter Pill ─────────────────────────────────────────────────────────────
@@ -37,11 +38,7 @@ function Pill({
 // ─── Blog Card ───────────────────────────────────────────────────────────────
 
 function BlogCard({ post, index }: { post: BlogMeta; index: number }) {
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatBlogDate(post.date);
 
   return (
     <Link

@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import GlobalCTA from "@/components/GlobalCTA";
 import { mdxComponents } from "@/components/blog/MDXComponents";
+import { formatBlogDate } from "@/lib/blog-date";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { C } from "@/lib/constants";
 
@@ -41,11 +42,7 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatBlogDate(post.date);
 
   return (
     <>
