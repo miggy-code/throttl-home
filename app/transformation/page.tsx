@@ -86,7 +86,7 @@ export default function Transformation() {
   const toolkit = useInView();
 
   return (
-    <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
+    <div style={{ backgroundColor: C.cream, color: C.navy,  }}>
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "64vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -98,7 +98,7 @@ export default function Transformation() {
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "680px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We transform how your<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>business operates.</span>
             </h1>
@@ -129,7 +129,7 @@ export default function Transformation() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What Is AI Business Transformation</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 More than consulting.<br />We do the work with you.
               </h2>
               <p style={{ color: "#5A5550", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "1.25rem" }}>
@@ -172,7 +172,7 @@ export default function Transformation() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.15, marginBottom: "0.75rem" }}>
                 The Throttl Accelerator
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", maxWidth: "540px", margin: "0 auto", lineHeight: 1.75 }}>
@@ -191,7 +191,7 @@ export default function Transformation() {
                       width: "48px", height: "48px", borderRadius: "50%",
                       backgroundColor: s.color, color: "#fff",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem",
+                      , fontWeight: 700, fontSize: "0.9rem",
                       boxShadow: `0 4px 16px ${s.color}40`,
                       marginBottom: "0.5rem",
                     }}>
@@ -238,11 +238,11 @@ export default function Transformation() {
                     <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 30% 0%, ${s.color} 0%, ${C.navy} 120%)` }} />
                     <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
                     <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                      <div style={{ fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
                         onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
                       >{s.n}</div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
                       <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
                     </div>
                   </div>
@@ -267,11 +267,11 @@ export default function Transformation() {
                     <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 70% 100%, ${s.color} 0%, ${C.navy} 120%)` }} />
                     <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`, opacity: 0.15, mixBlendMode: "overlay" }} />
                     <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
+                      <div style={{ fontSize: "5rem", fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, marginBottom: "0.5rem", transition: "color 0.3s ease" }}
                         onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.3)"; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.15)"; }}
                       >{s.n}</div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
+                      <div style={{ fontSize: "2.2rem", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{s.label}</div>
                       <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginTop: "1rem", lineHeight: 1.6 }}>{s.tagline}</div>
                     </div>
                   </div>
@@ -288,7 +288,7 @@ export default function Transformation() {
           <FadeSection>
             <div style={{ marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>The Toolkit</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "0.75rem" }}>
                 What comes with every engagement
               </h2>
               <p style={{ color: C.warmGray, fontSize: "0.97rem", maxWidth: "520px", lineHeight: 1.75 }}>
@@ -318,7 +318,7 @@ export default function Transformation() {
       <section style={{ padding: "5rem 0", backgroundColor: C.coral }}>
         <div className="container" style={{ textAlign: "center" }}>
           <FadeSection>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+            <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               Ready to transform how your business operates?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "460px", margin: "0 auto 2.25rem" }}>

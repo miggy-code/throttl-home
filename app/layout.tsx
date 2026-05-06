@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Outfit } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   display: "swap",
+  variable: "--font-fraunces",
 });
 
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -25,13 +27,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      {/*
-        Applying both font classNames to body ensures both fonts are injected
-        into the document. Outfit becomes the default; Playfair Display is
-        loaded and available for inline-style overrides throughout the pages.
-      */}
-      <body className={`${outfit.className} ${playfair.className}`}>
+    <html lang="en" className={`${fraunces.variable} ${outfit.variable}`}>
+      <body className={outfit.className}>
         <NavBar />
         {children}
         <Footer />

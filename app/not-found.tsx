@@ -9,12 +9,12 @@ export default function NotFound() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      fontFamily: "'Outfit', sans-serif",
+      ,
       color: C.navy,
     }}>
       <div style={{ textAlign: "center", maxWidth: "480px", padding: "2rem" }}>
         <div style={{
-          fontFamily: "'Playfair Display', serif",
+          ,
           fontSize: "6rem",
           fontWeight: 700,
           color: C.navy,
@@ -25,7 +25,7 @@ export default function NotFound() {
           404
         </div>
         <h1 style={{
-          fontFamily: "'Playfair Display', serif",
+          ,
           fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
           fontWeight: 700,
           color: C.navy,

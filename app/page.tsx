@@ -34,7 +34,7 @@ export default function Home() {
   useEffect(() => { setTimeout(() => setHeroLoaded(true), 100); }, []);
 
   return (
-    <div style={{ backgroundColor: C.cream, color: C.navy, fontFamily: "'Outfit', sans-serif" }}>
+    <div style={{ backgroundColor: C.cream, color: C.navy }}>
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -60,7 +60,6 @@ export default function Home() {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: "'Playfair Display', serif",
               fontSize: "clamp(3rem, 6.5vw, 5rem)",
               fontWeight: 700,
               color: "#fff",
@@ -140,7 +139,7 @@ export default function Home() {
           <div ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>The Problem</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.5rem" }}>
+              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.5rem" }}>
                 AI is everywhere.<br />
                 <span style={{ color: C.goldLight, fontStyle: "italic" }}>Adoption is not.</span>
               </h2>
@@ -168,7 +167,7 @@ export default function Home() {
                   transform: problem.inView ? "translateY(0)" : "translateY(16px)",
                   transition: `opacity 0.5s ease ${0.3 + i * 0.1}s, transform 0.5s ease ${0.3 + i * 0.1}s`,
                 }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.4rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>{s.num}</div>
+                  <div style={{ fontSize: "2.4rem", fontWeight: 700, color: C.gold, lineHeight: 1, marginBottom: "0.5rem" }}>{s.num}</div>
                   <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.82rem", lineHeight: 1.5 }}>{s.label}</div>
                 </div>
               ))}
@@ -183,7 +182,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What AI Actually Does for Executives</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1rem" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1rem" }}>
                 AI that fits how you already work
               </h2>
               <p style={{ color: C.warmGray, fontSize: "1rem", maxWidth: "520px", margin: "0 auto", lineHeight: 1.75 }}>
@@ -216,7 +215,7 @@ export default function Home() {
                     <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.gold, marginBottom: "0.75rem", display: "block" }}>
                       Featured Use Case
                     </span>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                    <div style={{ fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.5rem", lineHeight: 1.2 }}>
                       {USE_CASES[0].title}
                     </div>
                     <div style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, maxWidth: "540px" }}>
@@ -278,7 +277,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Services</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Two ways to become AI-enabled
               </h2>
             </div>
@@ -323,7 +322,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
+                <h3 style={{ fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Management Training
                 </h3>
                 <p style={{ color: "#5A5550", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
@@ -382,7 +381,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
+                <h3 style={{ fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Business Transformation
                 </h3>
                 <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
@@ -423,7 +422,7 @@ export default function Home() {
           <div ref={accelerator.ref} style={{ maxWidth: "680px" }}>
             <div style={{ opacity: accelerator.inView ? 1 : 0, transform: accelerator.inView ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
                 The Throttl Accelerator
               </h2>
               <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "2.5rem" }}>
@@ -477,7 +476,7 @@ export default function Home() {
                       <div style={{ width: "34px", height: "34px", borderRadius: "8px", backgroundColor: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <Icon size={16} color={C.goldLight} />
                       </div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
+                      <div style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.2)", fontWeight: 700, letterSpacing: "0.05em", lineHeight: 1 }}>{s.step}</div>
                     </div>
                     <div style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: "0.5rem" }}>{s.label}</div>
                     <div style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", lineHeight: 1.6, flex: 1 }}>{s.desc}</div>
@@ -509,7 +508,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Who This Is For</span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Built for operators who want to lead, not follow
               </h2>
             </div>
@@ -549,7 +548,7 @@ export default function Home() {
         <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
           <FadeSection>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", display: "block", marginBottom: "1rem" }}>Get Started</span>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
+            <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
               Ready to build an AI-enabled leadership team?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1.05rem", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: "480px", margin: "0 auto 2.5rem" }}>
