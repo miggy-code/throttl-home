@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-outfit: "Avenir Next", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-fraunces: Georgia, "Times New Roman", serif;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;

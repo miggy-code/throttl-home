@@ -49,21 +49,21 @@ export const mdxComponents: MDXComponents = {
   h1: (props) => (
     <h1
       style={{ color: C.navy }}
-      className="font-bold text-[32px] leading-tight md:text-[40px] mt-12 mb-6 first:mt-0"
+      className="font-display font-bold text-[32px] leading-tight md:text-[40px] mt-12 mb-6 first:mt-0"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
       style={{ color: C.navy }}
-      className="font-semibold text-[26px] leading-tight md:text-[30px] mt-14 mb-5 scroll-mt-24"
+      className="font-display font-semibold text-[26px] leading-tight md:text-[30px] mt-14 mb-5 scroll-mt-24"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
       style={{ color: C.navy }}
-      className="font-sans font-semibold text-[20px] leading-snug md:text-[22px] mt-10 mb-4 scroll-mt-24"
+      className="font-display font-sans font-semibold text-[20px] leading-snug md:text-[22px] mt-10 mb-4 scroll-mt-24"
       {...props}
     />
   ),

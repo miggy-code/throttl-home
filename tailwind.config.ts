@@ -8,7 +8,12 @@ const config: Config = {
     "./content/blog/**/*.{md,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        display: ["var(--font-fraunces)", "serif"],
+        sans: ["var(--font-outfit)", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

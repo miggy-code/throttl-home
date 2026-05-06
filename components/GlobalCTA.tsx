@@ -11,7 +11,7 @@ export default function GlobalCTA() {
       <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
         <FadeSection>
           <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", display: "block", marginBottom: "1rem" }}>Get Started</span>
-          <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
+          <h2 className="font-display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1.25rem", maxWidth: "600px", margin: "0 auto 1.25rem" }}>
             Ready to build an AI-enabled leadership team?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1.05rem", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: "480px", margin: "0 auto 2.5rem" }}>

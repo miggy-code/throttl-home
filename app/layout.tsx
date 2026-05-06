@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fraunces, outfit } from "@/lib/fonts";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${fraunces.variable} ${outfit.variable}`}>
+      <body className="antialiased">
         <NavBar />
         {children}
         <Footer />
