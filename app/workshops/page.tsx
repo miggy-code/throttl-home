@@ -39,7 +39,7 @@ export default function Workshops() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F0 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "640px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Management Training</span>
             <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
@@ -70,7 +70,7 @@ export default function Workshops() {
       {/* ── WHAT ARE THE WORKSHOPS ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What Are the Workshops</span>
               <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
@@ -83,7 +83,7 @@ export default function Workshops() {
                 Every workshop is tailored to your business, your industry, and the real workflows your team runs every day. You leave with skills you can apply Monday morning — and the certification to prove it.
               </p>
             </FadeSection>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+            <div className="workshop-feature-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               {[
                 { icon: Users,  label: "For Leadership Teams", desc: "Designed for executives, managers, and department heads" },
                 { icon: Target, label: "Business-Focused",     desc: "Built around your actual workflows, not generic AI content" },
@@ -182,7 +182,7 @@ export default function Workshops() {
               </p>
             </div>
           </FadeSection>
-          <div ref={topics.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "0" }}>
+          <div ref={topics.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "0" }}>
             {TOPICS.map((t, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: "1rem",
@@ -214,7 +214,7 @@ export default function Workshops() {
       {/* ── CERTIFICATION ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.navy }}>
         <div className="container">
-          <div ref={cert.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div ref={cert.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: cert.inView ? 1 : 0, transform: cert.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>Certification</span>
               <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "1.25rem" }}>
@@ -293,6 +293,12 @@ export default function Workshops() {
           </FadeSection>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 920px) {
+          .hero-shell { padding-top: 96px !important; padding-bottom: 56px !important; }
+          .workshop-feature-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
 
     </div>
   );

@@ -3,18 +3,14 @@
  * Dedicated, focused page for all "Get Started" CTAs across the site.
  */
 
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { C } from "@/lib/constants";
 
 export default function ContactPage() {
   return (
-    <div style={{ backgroundColor: "#0A1628", color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <NavBar />
-
+    <div style={{ backgroundColor: "#0A1628", color: "#fff", minHeight: "100dvh", display: "flex", flexDirection: "column" }}>
       {/* ── FORM SECTION ── */}
-      <section style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "140px 0 80px", position: "relative", overflow: "hidden" }}>
+      <section style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "110px 0 80px", position: "relative", overflow: "hidden" }}>
         {/* Subtle background grid */}
         <div style={{
           position: "absolute", inset: 0,
@@ -42,7 +38,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

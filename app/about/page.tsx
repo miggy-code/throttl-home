@@ -24,7 +24,7 @@ export default function About() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F5 0%, ${C.navy}CC 55%, ${C.navy}77 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "640px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>About Throttl</span>
             <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
@@ -41,7 +41,7 @@ export default function About() {
       {/* ── MISSION ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Our Mission</span>
               <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
@@ -84,7 +84,7 @@ export default function About() {
               </h2>
             </div>
           </FadeSection>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
             {/* AI Workshops card */}
             <Link href="/workshops" style={{ textDecoration: "none", display: "block" }}>
               <FadeSection delay={0} style={{ height: "100%" }}>
@@ -171,6 +171,11 @@ export default function About() {
           </FadeSection>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 920px) {
+          .hero-shell { padding-top: 96px !important; padding-bottom: 56px !important; }
+        }
+      `}</style>
 
     </div>
   );

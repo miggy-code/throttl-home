@@ -42,6 +42,13 @@
   }
 }
 
+@media (max-width: 920px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #F5F2EC; }

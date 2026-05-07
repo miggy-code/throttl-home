@@ -4,7 +4,7 @@ import { C } from "@/lib/constants";
 export default function NotFound() {
   return (
     <div style={{
-      minHeight: "100vh",
+      minHeight: "100dvh",
       backgroundColor: C.cream,
       display: "flex",
       alignItems: "center",

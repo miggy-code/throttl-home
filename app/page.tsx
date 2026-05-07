@@ -38,14 +38,14 @@ export default function Home() {
     <div style={{ backgroundColor: C.cream, color: C.navy }}>
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "100dvh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.hero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}EE 0%, ${C.navy}BB 45%, ${C.navy}55 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px", opacity: 0.6 }} />
         </div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "120px", paddingBottom: "80px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "120px", paddingBottom: "80px" }}>
           <div style={{ maxWidth: "720px" }}>
             {/* Eyebrow */}
             <div style={{
@@ -137,7 +137,7 @@ export default function Home() {
       {/* ── PROBLEM ── */}
       <section id="problem" style={{ padding: "5.5rem 0", backgroundColor: C.navy }}>
         <div className="container">
-          <div ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div className="problem-grid" ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>The Problem</span>
               <h2 className="font-display" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.5rem" }}>
@@ -152,7 +152,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(24px)", transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s" }}>
+            <div className="problem-stats" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(24px)", transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s" }}>
               {[
                 { num: "~4 in 5", label: "executives say lack of internal AI skills is their top barrier to adoption" },
                 { num: "70%",     label: "of AI projects fail due to poor team adoption" },
@@ -197,7 +197,7 @@ export default function Home() {
             {(() => {
               const FeaturedIcon = USE_CASES[0].icon;
               return (
-                <div style={{
+                <div className="featured-usecase" style={{
                   backgroundColor: C.navy,
                   borderRadius: "10px",
                   padding: "2.25rem 2.5rem",
@@ -286,7 +286,7 @@ export default function Home() {
 
           <div ref={services.ref} style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: "2.5rem",
             maxWidth: "1100px",
             margin: "0 auto",
@@ -515,7 +515,7 @@ export default function Home() {
             </div>
           </FadeSection>
 
-          <div ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.25rem" }}>
+          <div className="audience-grid" ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1.25rem" }}>
             {[
               { role: "CEOs & Founders",  desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
               { role: "COOs & Operators", desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
@@ -545,6 +545,15 @@ export default function Home() {
 
       {/* ── FINAL CTA ── */}
       <GlobalCTA />
+      <style>{`
+        @media (max-width: 920px) {
+          .hero-shell { padding-top: 96px !important; padding-bottom: 56px !important; }
+          .problem-grid { gap: 1.5rem !important; }
+          .problem-stats { grid-template-columns: 1fr !important; }
+          .featured-usecase { flex-direction: column !important; align-items: flex-start !important; padding: 1.5rem !important; gap: 1rem !important; }
+          .audience-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
 
     </div>
   );

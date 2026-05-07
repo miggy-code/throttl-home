@@ -95,7 +95,7 @@ export default function Transformation() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F2 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
           <div style={{ maxWidth: "680px" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
             <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
@@ -126,7 +126,7 @@ export default function Transformation() {
       {/* ── WHAT IS IT ── */}
       <section style={{ padding: "5rem 0", backgroundColor: C.cream }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <FadeSection>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>What Is AI Business Transformation</span>
               <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2, marginBottom: "1.25rem" }}>
@@ -210,7 +210,7 @@ export default function Transformation() {
           {/* Step cards — alternating layout */}
           <div ref={steps.ref} style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
             {ACCELERATOR_STEPS.map((s, i) => (
-              <div key={i} style={{
+              <div className="accel-step-card" key={i} style={{
                 display: "grid",
                 gridTemplateColumns: i % 2 === 0 ? "1fr 2fr" : "2fr 1fr",
                 gap: "0",
@@ -296,7 +296,7 @@ export default function Transformation() {
               </p>
             </div>
           </FadeSection>
-          <div ref={toolkit.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "0.75rem" }}>
+          <div ref={toolkit.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "0.75rem" }}>
             {TOOLKIT.map((t, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: "10px",
@@ -339,6 +339,12 @@ export default function Transformation() {
           </FadeSection>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 920px) {
+          .hero-shell { padding-top: 96px !important; padding-bottom: 56px !important; }
+          .accel-step-card { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
 
     </div>
   );

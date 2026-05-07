@@ -19,6 +19,7 @@ export default function NavBar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = usePathname();
+  const [canHover, setCanHover] = useState(false);
 
   const isDark = ["/", "/transformation", "/workshops", "/about"].includes(location ?? "");
 
@@ -26,6 +27,14 @@ export default function NavBar() {
     const fn = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanHover(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
@@ -43,6 +52,12 @@ export default function NavBar() {
       if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+    setMobileServicesOpen(false);
+    setServicesOpen(false);
+  }, [location]);
 
   const openServices = () => {
     if (closeTimerRef.current) {
@@ -72,7 +87,7 @@ export default function NavBar() {
       WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
       borderBottom: scrolled ? `1px solid ${C.navy}14` : "1px solid transparent",
     }}>
-      <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
+      <div className="container nav-shell" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
 
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
@@ -81,18 +96,18 @@ export default function NavBar() {
         </Link>
 
         {/* Desktop links */}
-        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+        <div className="desktop-links" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
           <Link href="/about" style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: location === "/about" ? 1 : 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = location === "/about" ? "1" : "0.72")}
+            onMouseEnter={e => { if (canHover) e.currentTarget.style.opacity = "1"; }}
+            onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = location === "/about" ? "1" : "0.72"; }}
           >
             About Us
           </Link>
 
           {/* Services dropdown */}
           <div ref={dropdownRef} style={{ position: "relative" }}
-            onMouseEnter={openServices}
-            onMouseLeave={closeServices}
+            onMouseEnter={() => { if (canHover) openServices(); }}
+            onMouseLeave={() => { if (canHover) closeServices(); }}
           >
             <button onClick={() => setServicesOpen(v => !v)} style={{
               display: "flex", alignItems: "center", gap: "5px",
@@ -108,14 +123,14 @@ export default function NavBar() {
             {servicesOpen && (
               <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", paddingTop: "18px", animation: "fadeDropdown 0.18s ease" }}>
                 <div style={{ backgroundColor: C.white, borderRadius: "8px", boxShadow: `0 18px 48px ${C.navy}29, 0 2px 8px ${C.navy}10`, border: `1px solid ${C.navy}12`, minWidth: "300px", padding: "0.5rem" }}
-                  onMouseEnter={openServices}
-                  onMouseLeave={closeServices}
+                  onMouseEnter={() => { if (canHover) openServices(); }}
+                  onMouseLeave={() => { if (canHover) closeServices(); }}
                 >
                   <div style={{ position: "absolute", top: "12px", left: "50%", transform: "translateX(-50%) rotate(45deg)", width: "12px", height: "12px", backgroundColor: C.white, border: `1px solid ${C.navy}12`, borderRight: "none", borderBottom: "none" }} />
                   {SERVICES.map(s => (
                     <Link key={s.href} href={s.href} onClick={() => setServicesOpen(false)} style={{ display: "flex", alignItems: "center", gap: "0.6rem", padding: "0.85rem 1rem", borderRadius: "6px", textDecoration: "none", backgroundColor: location === s.href ? `${C.coral}0D` : "transparent", transition: "background-color 0.15s" }}
-                      onMouseEnter={e => { e.currentTarget.style.backgroundColor = `${C.coral}12`; }}
-                      onMouseLeave={e => { e.currentTarget.style.backgroundColor = location === s.href ? `${C.coral}0D` : "transparent"; }}
+                      onMouseEnter={e => { if (canHover) e.currentTarget.style.backgroundColor = `${C.coral}12`; }}
+                      onMouseLeave={e => { if (canHover) e.currentTarget.style.backgroundColor = location === s.href ? `${C.coral}0D` : "transparent"; }}
                     >
                       <div style={{ width: "3px", alignSelf: "stretch", backgroundColor: location === s.href ? C.coral : "transparent", borderRadius: "2px", transition: "background-color 0.15s" }} />
                       <div style={{ flex: 1 }}>
@@ -130,55 +145,73 @@ export default function NavBar() {
           </div>
 
           <a href={BOOKING_URL} style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "0.72")}
+            onMouseEnter={e => { if (canHover) e.currentTarget.style.opacity = "1"; }}
+            onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = "0.72"; }}
           >
             Contact
           </a>
 
           <a href={`/transformation#get-started`} style={{ backgroundColor: C.coral, color: C.white, padding: "0.5rem 1.25rem", borderRadius: "3px", fontSize: "0.825rem", fontWeight: 700, textDecoration: "none", letterSpacing: "0.04em", textTransform: "uppercase" as const, transition: "all 0.25s ease" }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.coralDark; e.currentTarget.style.transform = "translateY(-1px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(0)"; }}
+            onMouseEnter={e => { if (canHover) { e.currentTarget.style.backgroundColor = C.coralDark; e.currentTarget.style.transform = "translateY(-1px)"; } }}
+            onMouseLeave={e => { if (canHover) { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(0)"; } }}
           >
             Get Started
           </a>
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: "none", border: "none", color: textColor, padding: "8px", transition: "color 0.35s", display: "none" }}>
+        <button
+          className="mobile-toggle"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          style={{ background: "none", border: "none", color: textColor, padding: "8px", transition: "color 0.35s", display: "none" }}
+        >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div style={{ backgroundColor: C.cream, borderTop: `1px solid rgba(15,28,63,0.08)`, padding: "1.25rem 1.5rem 2rem" }}>
-          <Link href="/about" onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.8rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "0.95rem" }}>
+        <div className="mobile-menu-panel" style={{ backgroundColor: C.cream, borderTop: `1px solid rgba(15,28,63,0.08)`, padding: "1.25rem 1.5rem 2rem", maxHeight: "calc(100dvh - 64px)", overflowY: "auto" }}>
+          <Link href="/about" onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
             About Us
           </Link>
           <div style={{ borderBottom: `1px solid rgba(15,28,63,0.06)` }}>
-            <button onClick={() => setMobileServicesOpen(v => !v)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "0.8rem 0", color: C.navy, fontWeight: 500, background: "none", border: "none", fontSize: "0.95rem", cursor: "pointer" }}>
+            <button onClick={() => setMobileServicesOpen(v => !v)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "0.9rem 0", color: C.navy, fontWeight: 500, background: "none", border: "none", fontSize: "1rem", cursor: "pointer", minHeight: "44px" }}>
               Services
               <ChevronDown size={16} style={{ transition: "transform 0.25s", transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </button>
             {mobileServicesOpen && (
               <div style={{ paddingBottom: "0.5rem" }}>
                 {SERVICES.map(s => (
-                  <Link key={s.href} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.6rem 0 0.6rem 1rem", color: C.navy, fontWeight: 500, textDecoration: "none", fontSize: "0.9rem", borderLeft: `2px solid ${C.coral}`, marginBottom: "0.25rem" }}>
+                  <Link key={s.href} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.7rem 0 0.7rem 1rem", color: C.navy, fontWeight: 500, textDecoration: "none", fontSize: "0.95rem", borderLeft: `2px solid ${C.coral}`, marginBottom: "0.25rem", minHeight: "44px" }}>
                     {s.label}
                   </Link>
                 ))}
               </div>
             )}
           </div>
-          <a href={BOOKING_URL} style={{ display: "block", padding: "0.8rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "0.95rem" }}>
+          <a href={BOOKING_URL} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
             Contact
           </a>
-          <a href="/transformation#get-started" style={{ display: "block", marginTop: "1.25rem", backgroundColor: C.coral, color: "#fff", padding: "0.85rem 1.5rem", borderRadius: "3px", textAlign: "center" as const, fontWeight: 700, textDecoration: "none", fontSize: "0.875rem", letterSpacing: "0.04em", textTransform: "uppercase" as const }}>
+          <a href="/transformation#get-started" style={{ display: "block", marginTop: "1.25rem", backgroundColor: C.coral, color: "#fff", padding: "0.95rem 1.5rem", borderRadius: "3px", textAlign: "center" as const, fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", letterSpacing: "0.04em", textTransform: "uppercase" as const, minHeight: "44px" }}>
             Get Started
           </a>
         </div>
       )}
+      <style>{`
+        @media (max-width: 920px) {
+          .desktop-links { display: none !important; }
+          .mobile-toggle { display: inline-flex !important; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+          .nav-shell { height: 64px !important; }
+        }
+        @supports (padding-top: env(safe-area-inset-top)) {
+          .mobile-menu-panel {
+            padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+          }
+        }
+      `}</style>
     </nav>
   );
 }
