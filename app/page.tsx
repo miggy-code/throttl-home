@@ -326,8 +326,8 @@ export default function Home() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, ${C.navy}FF 40%, ${C.navy}AA 100%)` }} />
         </div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div ref={accelerator.ref} style={{ maxWidth: "680px" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }} ref={accelerator.ref}>
+          <div style={{ maxWidth: "680px" }}>
             <div style={{ opacity: accelerator.inView ? 1 : 0, transform: accelerator.inView ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>Our Methodology</span>
               <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem" }}>
@@ -337,8 +337,9 @@ export default function Home() {
                 Our proprietary 4-step framework that takes companies from AI experimentation to full operationalisation. Every AI Business Transformation engagement is built around it.
               </p>
             </div>
+          </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "1rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
               {[
                 { step: "01", label: "Identify",   desc: "Find where AI creates immediate impact", icon: Search },
                 { step: "02", label: "Train",      desc: "Certify your leadership team in AI",     icon: BookOpen },
@@ -406,7 +407,6 @@ export default function Home() {
                 See the Full Framework <ArrowRight size={15} />
               </Link>
             </div>
-          </div>
         </div>
       </section>
 
