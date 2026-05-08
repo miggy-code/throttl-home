@@ -21,7 +21,7 @@ export default function NavBar() {
   const location = usePathname();
   const [canHover, setCanHover] = useState(false);
 
-  const isDark = ["/", "/transformation", "/workshops", "/about"].includes(location ?? "");
+  const isDark = ["/", "/transformation", "/workshops"].includes(location ?? "");
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
@@ -97,11 +97,11 @@ export default function NavBar() {
 
         {/* Desktop links */}
         <div className="desktop-links" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-          <Link href="/about" style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: location === "/about" ? 1 : 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
+          <Link href="/" style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: location === "/" ? 1 : 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
             onMouseEnter={e => { if (canHover) e.currentTarget.style.opacity = "1"; }}
-            onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = location === "/about" ? "1" : "0.72"; }}
+            onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = location === "/" ? "1" : "0.72"; }}
           >
-            About Us
+            About
           </Link>
 
           {/* Services dropdown */}
@@ -174,8 +174,8 @@ export default function NavBar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="mobile-menu-panel" style={{ backgroundColor: C.cream, borderTop: `1px solid rgba(15,28,63,0.08)`, padding: "1.25rem 1.5rem 2rem", maxHeight: "calc(100dvh - 64px)", overflowY: "auto" }}>
-          <Link href="/about" onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
-            About Us
+          <Link href="/" onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
+            About
           </Link>
           <div style={{ borderBottom: `1px solid rgba(15,28,63,0.06)` }}>
             <button onClick={() => setMobileServicesOpen(v => !v)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "0.9rem 0", color: C.navy, fontWeight: 500, background: "none", border: "none", fontSize: "1rem", cursor: "pointer", minHeight: "44px" }}>

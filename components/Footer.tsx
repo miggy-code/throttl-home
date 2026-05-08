@@ -38,11 +38,11 @@ export default function Footer() {
           {/* Company */}
           <div>
             <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "1rem" }}>Company</div>
-            <Link href="/about" style={{ display: "block", color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", textDecoration: "none", marginBottom: "0.6rem", transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+            <Link href="/" style={{ display: "block", color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", textDecoration: "none", marginBottom: "0.6rem", transition: "color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.9)"}
+              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.55)"}
             >
-              About Throttl
+              About
             </Link>
             <a href={BOOKING_URL} style={{ display: "block", color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", textDecoration: "none", marginBottom: "0.6rem", transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}

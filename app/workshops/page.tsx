@@ -33,7 +33,7 @@ export default function Workshops() {
     <div style={{ backgroundColor: C.cream, color: C.navy,  }}>
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", minHeight: "64vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "100dvh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.workshopsHero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F0 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />

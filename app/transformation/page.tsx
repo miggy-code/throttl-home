@@ -89,7 +89,7 @@ export default function Transformation() {
     <div style={{ backgroundColor: C.cream, color: C.navy,  }}>
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", minHeight: "64vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "100dvh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img src={IMGS.enablementHero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F2 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />
@@ -183,9 +183,9 @@ export default function Transformation() {
 
           {/* Step progress bar */}
           <FadeSection delay={0.1}>
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "2.75rem", overflowX: "auto", paddingBottom: "0.5rem" }}>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "2.75rem", overflowX: "auto", paddingBottom: "1rem" }}>
               {ACCELERATOR_STEPS.map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: "120px" }}>
+                <div key={i} style={{ display: "flex", alignItems: "center", flex: "1 0 auto", minWidth: "140px", paddingRight: i === ACCELERATOR_STEPS.length - 1 ? "1.5rem" : "0" }}>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
                     <div style={{
                       width: "48px", height: "48px", borderRadius: "50%",
