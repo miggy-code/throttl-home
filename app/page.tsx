@@ -11,6 +11,7 @@ import FadeSection from "@/components/FadeSection";
 import GlobalCTA from "@/components/GlobalCTA";
 import { useInView } from "@/hooks/useInView";
 import { IMGS, C, BOOKING_URL } from "@/lib/constants";
+import AnimatedHero from "@/components/AnimatedHero";
 
 const USE_CASES = [
   { icon: BarChart2,     title: "Faster Decisions",         body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
@@ -38,101 +39,7 @@ export default function Home() {
     <div style={{ backgroundColor: C.cream, color: C.navy }}>
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", minHeight: "100dvh", display: "flex", alignItems: "center", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <img src={IMGS.hero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
-          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}EE 0%, ${C.navy}BB 45%, ${C.navy}55 100%)` }} />
-          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px", opacity: 0.6 }} />
-        </div>
-
-        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "120px", paddingBottom: "80px" }}>
-          <div style={{ maxWidth: "720px" }}>
-            {/* Eyebrow */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              border: `1px solid ${C.gold}55`, borderRadius: "2px",
-              padding: "5px 14px", marginBottom: "2rem",
-              opacity: heroLoaded ? 1 : 0, transform: heroLoaded ? "translateY(0)" : "translateY(12px)",
-              transition: "opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s",
-            }}>
-              <span style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: C.gold, display: "inline-block" }} />
-              <span style={{ color: C.goldLight, fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>AI Enablement for Executives</span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="font-display" style={{
-              fontSize: "clamp(3rem, 6.5vw, 5rem)",
-              fontWeight: 700,
-              color: "#fff",
-              lineHeight: 1.05,
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.025em",
-              opacity: heroLoaded ? 1 : 0,
-              transform: heroLoaded ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s",
-            }}>
-              We Teach<br />
-              <span style={{ color: C.goldLight, fontStyle: "italic" }}>Executives AI.</span>
-            </h1>
-
-            {/* Sub */}
-            <p className="font-sans" style={{
-              fontSize: "clamp(1rem, 2vw, 1.2rem)",
-              color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.75,
-              marginBottom: "2.75rem",
-              maxWidth: "560px",
-              opacity: heroLoaded ? 1 : 0,
-              transform: heroLoaded ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s",
-            }}>
-              So they can make better decisions, lead more effectively, and run companies that get more done with fewer resources.
-            </p>
-
-            {/* CTAs */}
-            <div style={{
-              display: "flex", gap: "1rem", flexWrap: "wrap",
-              opacity: heroLoaded ? 1 : 0,
-              transform: heroLoaded ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s",
-            }}>
-              <a href={BOOKING_URL} style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: C.coral, color: "#fff",
-                padding: "0.9rem 2rem", borderRadius: "3px",
-                fontWeight: 700, fontSize: "0.9rem",
-                textDecoration: "none", letterSpacing: "0.03em",
-                transition: "background-color 0.2s, transform 0.15s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.coralDark; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(0)"; }}
-              >
-                Get Started <ArrowRight size={16} />
-              </a>
-              <a href="#services" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: "transparent", color: "#fff",
-                padding: "0.9rem 2rem", borderRadius: "3px",
-                fontWeight: 600, fontSize: "0.9rem",
-                textDecoration: "none",
-                border: "1.5px solid rgba(255,255,255,0.35)",
-                transition: "border-color 0.2s, background-color 0.2s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.8)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.07)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)"; e.currentTarget.style.backgroundColor = "transparent"; }}
-              >
-                Explore Our Services
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll cue */}
-        <a href="#problem" style={{ position: "absolute", bottom: "2.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 1, textDecoration: "none", animation: "bounce 2.2s ease-in-out infinite" }}>
-          <ChevronDown size={26} color="rgba(255,255,255,0.4)" />
-        </a>
-        <style>{`@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}`}</style>
-      </section>
+      <AnimatedHero />
 
       {/* ── PROBLEM ── */}
       <section id="problem" style={{ padding: "5.5rem 0", backgroundColor: C.navy }}>
