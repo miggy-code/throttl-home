@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { C, BOOKING_URL } from "@/lib/constants";
+import { C, BOOKING_URL, IMGS } from "@/lib/constants";
 
 // Wave timing (ms)
 const T = {
@@ -344,8 +344,10 @@ export default function AnimatedHero() {
 
   return (
     <section ref={heroRef} className="relative min-h-[100dvh] w-full overflow-hidden" style={{ backgroundColor: C.navy, paddingTop: "72px" }}>
-      {/* Background Grid & Mesh */}
-      <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+      {/* Background Grid & Image */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <img src={IMGS.hero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}EE 0%, ${C.navy}BB 45%, ${C.navy}55 100%)` }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px", opacity: 0.6 }} />
       </div>
 
