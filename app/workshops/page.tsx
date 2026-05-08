@@ -39,8 +39,8 @@ export default function Workshops() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F0 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
-          <div style={{ maxWidth: "640px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+          <div style={{ maxWidth: "640px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Management Training</span>
             <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               AI Workshops for<br />
@@ -49,7 +49,7 @@ export default function Workshops() {
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: "520px" }}>
               Hands-on, practical AI training built for leadership teams. Not theory. Not generic tutorials. Real skills for real business workflows.
             </p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
               <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",

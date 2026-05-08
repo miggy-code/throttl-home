@@ -95,8 +95,8 @@ export default function Transformation() {
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${C.navy}F2 0%, ${C.navy}CC 50%, ${C.navy}66 100%)` }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px" }}>
-          <div style={{ maxWidth: "680px" }}>
+        <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+          <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Business Transformation</span>
             <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               We transform how your<br />
@@ -105,7 +105,7 @@ export default function Transformation() {
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "1.5rem", maxWidth: "560px" }}>
               Our team embeds inside your business and works alongside your management to assess, implement, and scale AI — using <strong style={{ color: C.goldLight }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
             </p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
               <a href="/contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: C.coral, color: "#fff",
