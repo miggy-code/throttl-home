@@ -422,7 +422,7 @@ export default function Home() {
             </div>
           </FadeSection>
 
-          <div className="audience-grid" ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1.25rem" }}>
+          <div className="audience-grid" ref={audience.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
             {[
               { role: "CEOs & Founders",  desc: "You want your company doing more with the same team. You need everyone moving faster without adding headcount." },
               { role: "COOs & Operators", desc: "You're responsible for execution. AI should make your workflows sharper, not add more complexity." },
