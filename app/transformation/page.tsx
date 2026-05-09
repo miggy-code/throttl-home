@@ -184,9 +184,11 @@ export default function Transformation() {
           {/* Step progress bar */}
           <FadeSection delay={0.1}>
             <div style={{ display: "flex", alignItems: "center", marginBottom: "2.75rem", overflowX: "auto", paddingBottom: "1rem" }}>
+              {/* Left padding spacer */}
+              <div style={{ flexShrink: 0, width: "16px" }} aria-hidden="true" />
               {ACCELERATOR_STEPS.map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", flex: "1 0 auto", minWidth: "140px", paddingRight: i === ACCELERATOR_STEPS.length - 1 ? "1.5rem" : "0" }}>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+                <div key={i} style={{ display: "flex", alignItems: "center", flexShrink: 0, minWidth: i === ACCELERATOR_STEPS.length - 1 ? "70px" : "150px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: i === ACCELERATOR_STEPS.length - 1 ? 1 : "0 0 auto", width: i === ACCELERATOR_STEPS.length - 1 ? "100%" : "auto" }}>
                     <div style={{
                       width: "48px", height: "48px", borderRadius: "50%",
                       backgroundColor: s.color, color: "#fff",
@@ -200,10 +202,12 @@ export default function Transformation() {
                     <div style={{ fontWeight: 700, color: C.navy, fontSize: "0.85rem", textAlign: "center" }}>{s.label}</div>
                   </div>
                   {i < ACCELERATOR_STEPS.length - 1 && (
-                    <div style={{ height: "2px", flex: 1, backgroundColor: "rgba(15,28,63,0.12)", margin: "0 0.5rem", marginBottom: "1.5rem" }} />
+                    <div style={{ height: "2px", flex: 1, backgroundColor: "rgba(15,28,63,0.12)", margin: "0 0.75rem", marginBottom: "1.5rem" }} />
                   )}
                 </div>
               ))}
+              {/* Right padding spacer to prevent cutoff on mobile */}
+              <div style={{ flexShrink: 0, width: "32px" }} aria-hidden="true" />
             </div>
           </FadeSection>
 
