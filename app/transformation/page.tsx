@@ -255,7 +255,7 @@ export default function Transformation() {
                     return (
                       <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.6rem" }}>
                         <CheckCircle2 size={16} color={s.color} style={{ flexShrink: 0, marginTop: "2px" }} />
-                        <span style={{ fontSize: "0.9rem", color: isHighlight ? "#ffffff" : "#3A3530", fontWeight: isHighlight ? 600 : 400 }}>
+                        <span style={{ fontSize: "0.9rem", color: isHighlight ? s.color : "#3A3530", fontWeight: isHighlight ? 700 : 400 }}>
                           {isHighlight ? "→ " : ""}{o}
                         </span>
                       </div>
