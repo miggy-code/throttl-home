@@ -22,7 +22,7 @@ export default function NotFound() {
         }}>
           404
         </div>
-        <h1 style={{
+        <h1 className="font-hero" style={{
           fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
           fontWeight: 700,
           color: C.navy,

@@ -42,7 +42,7 @@ export default function Workshops() {
         <div className="container hero-shell" style={{ position: "relative", zIndex: 1, paddingTop: "115px", paddingBottom: "70px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           <div style={{ maxWidth: "640px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, display: "block", marginBottom: "1rem" }}>AI Management Training</span>
-            <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
+            <h1 className="font-hero" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.08, marginBottom: "1.25rem", letterSpacing: "-0.02em" }}>
               AI Workshops for<br />
               <span style={{ color: C.goldLight, fontStyle: "italic" }}>Executives & Managers</span>
             </h1>

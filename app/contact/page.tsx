@@ -25,7 +25,7 @@ export default function ContactPage() {
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.gold, display: "block", marginBottom: "1rem" }}>
                 Get Started
               </span>
-              <h1 style={{ fontSize: "clamp(2rem, 5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1rem", letterSpacing: "-0.015em" }}>
+              <h1 className="font-hero" style={{ fontSize: "clamp(2rem, 5vw, 2.75rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: "1rem", letterSpacing: "-0.015em" }}>
                 Let's start the conversation.
               </h1>
               <p style={{ fontSize: "1.05rem", color: "#B0B8C8", lineHeight: 1.7, maxWidth: "460px", margin: "0 auto" }}>

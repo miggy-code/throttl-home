@@ -24,7 +24,7 @@ export default function BlogPage() {
             <span style={{ color: C.coral }} className="font-sans text-[14px] font-medium uppercase tracking-[0.08em]">
               Insights
             </span>
-            <h1 style={{ color: C.navy }} className="font-display mt-4 font-bold text-[40px] leading-tight md:text-[56px]">
+            <h1 style={{ color: C.navy }} className="font-hero mt-4 font-bold text-[40px] leading-tight md:text-[56px]">
               From the field.
             </h1>
             <p style={{ color: C.warmGray }} className="font-sans mt-5 max-w-[600px] text-lg">

@@ -229,31 +229,33 @@ export default function Home() {
                   <span style={{ backgroundColor: C.coral, color: "#fff", padding: "3px 10px", borderRadius: "2px", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>01 — AI Workshops</span>
                 </div>
               </div>
-              <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
+              <div style={{ padding: "1.75rem 1.75rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
                 <h3 style={{ fontSize: "1.55rem", fontWeight: 700, color: C.navy, marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Management Training
                 </h3>
                 <p style={{ color: "#5A5550", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
                   Hands-on workshops that give your executives and managers the skills to use AI inside their real workflows — and the certification to prove it.
                 </p>
-                {["Live workshops tailored to your business", "Practical tool mastery for real workflows", "AI Operator Certification on completion", "Confidence to lead AI adoption internally"].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
-                    <CheckCircle2 size={15} color={C.coral} style={{ flexShrink: 0, marginTop: "2px" }} />
-                    <span style={{ fontSize: "0.86rem", color: "#3A3530" }}>{item}</span>
-                  </div>
-                ))}
-                <Link href="/workshops" style={{
-                  display: "inline-flex", alignItems: "center", gap: "7px",
-                  color: C.coral, fontWeight: 700, fontSize: "0.875rem",
-                  textDecoration: "none", marginTop: "1.75rem",
-                  borderBottom: `2px solid ${C.coral}`, paddingBottom: "2px",
-                  transition: "gap 0.2s",
-                }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "12px"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "7px"; }}
-                >
-                  Explore Workshops <ArrowRight size={14} />
-                </Link>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                  {["Live workshops tailored to your business", "Practical tool mastery for real workflows", "AI Operator Certification on completion", "Confidence to lead AI adoption internally"].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
+                      <CheckCircle2 size={15} color={C.coral} style={{ flexShrink: 0, marginTop: "2px" }} />
+                      <span style={{ fontSize: "0.86rem", color: "#3A3530" }}>{item}</span>
+                    </div>
+                  ))}
+                  <Link href="/workshops" style={{
+                    display: "inline-flex", alignItems: "center", gap: "7px",
+                    color: C.coral, fontWeight: 700, fontSize: "0.875rem",
+                    textDecoration: "none", marginTop: "auto", paddingTop: "1.75rem",
+                    borderBottom: `2px solid ${C.coral}`, paddingBottom: "2px",
+                    transition: "gap 0.2s",
+                  }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "12px"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "7px"; }}
+                  >
+                    Explore Workshops <ArrowRight size={14} />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -288,31 +290,33 @@ export default function Home() {
                   <span style={{ backgroundColor: C.coral, color: "#fff", padding: "3px 10px", borderRadius: "2px", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>02 — Transformation</span>
                 </div>
               </div>
-              <div style={{ padding: "1.75rem 1.75rem 2rem" }}>
+              <div style={{ padding: "1.75rem 1.75rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
                 <h3 style={{ fontSize: "1.55rem", fontWeight: 700, color: "#fff", marginBottom: "0.75rem", lineHeight: 1.2 }}>
                   AI Business Transformation
                 </h3>
                 <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "1.5rem", fontSize: "0.92rem" }}>
                   Our team embeds inside your business to assess, implement, and scale AI across your operations — using <strong style={{ color: C.goldLight, fontWeight: 700 }}>The Throttl Accelerator</strong>, our proprietary 4-step framework.
                 </p>
-                {["AI opportunity assessment & workflow mapping", "Identify highest-value use cases fast", "Embedded Throttl team inside your business", "From experimentation to making it part of daily operations"].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
-                    <CheckCircle2 size={15} color={C.gold} style={{ flexShrink: 0, marginTop: "2px" }} />
-                    <span style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.8)" }}>{item}</span>
-                  </div>
-                ))}
-                <Link href="/transformation" style={{
-                  display: "inline-flex", alignItems: "center", gap: "7px",
-                  color: C.goldLight, fontWeight: 700, fontSize: "0.875rem",
-                  textDecoration: "none", marginTop: "1.75rem",
-                  borderBottom: `2px solid ${C.gold}`, paddingBottom: "2px",
-                  transition: "gap 0.2s",
-                }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "12px"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "7px"; }}
-                >
-                  Explore Transformation <ArrowRight size={14} />
-                </Link>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                  {["AI opportunity assessment & workflow mapping", "Identify highest-value use cases fast", "Embedded Throttl team inside your business", "From experimentation to making it part of daily operations"].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px", marginBottom: "0.55rem" }}>
+                      <CheckCircle2 size={15} color={C.gold} style={{ flexShrink: 0, marginTop: "2px" }} />
+                      <span style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.8)" }}>{item}</span>
+                    </div>
+                  ))}
+                  <Link href="/transformation" style={{
+                    display: "inline-flex", alignItems: "center", gap: "7px",
+                    color: C.goldLight, fontWeight: 700, fontSize: "0.875rem",
+                    textDecoration: "none", marginTop: "auto", paddingTop: "1.75rem",
+                    borderBottom: `2px solid ${C.gold}`, paddingBottom: "2px",
+                    transition: "gap 0.2s",
+                  }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "12px"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.gap = "7px"; }}
+                  >
+                    Explore Transformation <ArrowRight size={14} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -416,7 +420,7 @@ export default function Home() {
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral, display: "block", marginBottom: "1rem" }}>Who This Is For</span>
-              <h2 className="font-display" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
+              <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>
                 Built for operators who want to lead, not follow
               </h2>
             </div>

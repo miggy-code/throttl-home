@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: ["var(--font-fraunces)", "serif"],
+        hero: ["var(--font-familjen-grotesk)", "sans-serif"],
         sans: ["var(--font-outfit)", "sans-serif"],
       },
     },

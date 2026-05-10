@@ -433,7 +433,7 @@ export default function AnimatedHero() {
 
         {/* Headline */}
         <h1 style={{
-          fontFamily: "var(--font-fraunces)", fontWeight: 700, lineHeight: 1.05,
+          fontFamily: "var(--font-familjen-grotesk)", fontWeight: 700, lineHeight: 1.05,
           color: "#fff", fontSize: "clamp(3rem, 6.5vw, 5rem)", letterSpacing: "-0.025em"
         }} className="flex flex-col items-center gap-[0.25em]">
           <div className="flex flex-wrap items-center justify-center gap-[0.25em]">
