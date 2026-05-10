@@ -453,7 +453,7 @@ export default function AnimatedHero() {
                 </span>
               ) : null
             ))}
-            <span ref={periodRef} className="inline-block" style={{ opacity: resolved ? 1 : 0, color: resolved ? C.goldLight : "white" }}>
+            <span ref={periodRef} className="inline-block" style={{ opacity: resolved ? 1 : 0, color: resolved ? C.goldLight : "white", marginLeft: "-0.25em" }}>
               .
             </span>
           </div>
