@@ -1,0 +1,22 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./content/blog/**/*.{md,mdx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ["var(--font-fraunces)", "serif"],
+        hero: ["var(--font-familjen-grotesk)", "sans-serif"],
+        sans: ["var(--font-outfit)", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
