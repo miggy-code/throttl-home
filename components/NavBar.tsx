@@ -91,7 +91,6 @@ export default function NavBar() {
 
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={IMGS.logo} alt="Throttl" style={{ height: "34px", width: "auto" }} />
         </Link>
 
@@ -144,6 +143,13 @@ export default function NavBar() {
             )}
           </div>
 
+          <Link href="/blog" style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: location?.startsWith("/blog") ? 1 : 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
+            onMouseEnter={e => { if (canHover) e.currentTarget.style.opacity = "1"; }}
+            onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = location?.startsWith("/blog") ? "1" : "0.72"; }}
+          >
+            Insights
+          </Link>
+
           <a href={BOOKING_URL} style={{ color: textColor, fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", opacity: 0.72, transition: "opacity 0.2s, color 0.35s", letterSpacing: "0.01em" }}
             onMouseEnter={e => { if (canHover) e.currentTarget.style.opacity = "1"; }}
             onMouseLeave={e => { if (canHover) e.currentTarget.style.opacity = "0.72"; }}
@@ -192,6 +198,9 @@ export default function NavBar() {
               </div>
             )}
           </div>
+          <Link href="/blog" onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
+            Insights
+          </Link>
           <a href={BOOKING_URL} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
             Contact
           </a>

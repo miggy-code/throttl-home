@@ -11,6 +11,7 @@ import { mdxComponents } from "@/components/blog/MDXComponents";
 import { formatBlogDate } from "@/lib/blog-date";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { C } from "@/lib/constants";
+import { absoluteUrl, defaultOgImage } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
 
@@ -28,8 +29,31 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} | Throttl`,
+    title: post.title,
     description: post.description,
+    alternates: {
+      canonical: absoluteUrl(`/blog/${slug}`),
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      url: absoluteUrl(`/blog/${slug}`),
+      publishedTime: new Date(post.date).toISOString(),
+      authors: [post.author],
+      tags: post.tags,
+      images: [
+        {
+          url: absoluteUrl(defaultOgImage),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [absoluteUrl(defaultOgImage)],
+    },
   };
 }
 

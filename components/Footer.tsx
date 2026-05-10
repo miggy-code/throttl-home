@@ -44,6 +44,12 @@ export default function Footer() {
             >
               About
             </Link>
+            <Link href="/blog" style={{ display: "block", color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", textDecoration: "none", marginBottom: "0.6rem", transition: "color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.9)"}
+              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.55)"}
+            >
+              Insights
+            </Link>
             <a href={BOOKING_URL} style={{ display: "block", color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", textDecoration: "none", marginBottom: "0.6rem", transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}

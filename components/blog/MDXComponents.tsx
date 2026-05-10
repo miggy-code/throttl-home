@@ -126,7 +126,6 @@ export const mdxComponents: MDXComponents = {
     <hr style={{ borderColor: "rgba(15,28,63,0.1)" }} className="my-12 border-t" />
   ),
   img: (props) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       style={{ borderColor: "rgba(15,28,63,0.1)" }}
       className="my-8 w-full rounded-lg border"

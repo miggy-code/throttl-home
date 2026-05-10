@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-fraunces: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-outfit: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  --font-familjen-grotesk: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+}
+
 @layer base {
   * {
     box-sizing: border-box;

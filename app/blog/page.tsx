@@ -4,11 +4,34 @@ import GlobalCTA from "@/components/GlobalCTA";
 import { BlogGallery } from "@/components/blog/BlogGallery";
 import { getAllPosts, getAllTags, getAllThemes } from "@/lib/blog";
 import { C } from "@/lib/constants";
+import { absoluteUrl, defaultOgImage } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Insights | Throttl",
+  title: "Insights",
   description:
     "Thought leadership on AI strategy, implementation, and operations.",
+  alternates: {
+    canonical: absoluteUrl("/blog"),
+  },
+  openGraph: {
+    title: "Insights",
+    description:
+      "Thought leadership on AI strategy, implementation, and operations.",
+    url: absoluteUrl("/blog"),
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl(defaultOgImage),
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insights",
+    description:
+      "Thought leadership on AI strategy, implementation, and operations.",
+    images: [absoluteUrl(defaultOgImage)],
+  },
 };
 
 export default function BlogPage() {
