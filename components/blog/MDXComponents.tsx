@@ -126,12 +126,25 @@ export const mdxComponents: MDXComponents = {
     <hr style={{ borderColor: "rgba(15,28,63,0.1)" }} className="my-12 border-t" />
   ),
   img: (props) => (
-    <img
-      style={{ borderColor: "rgba(15,28,63,0.1)" }}
-      className="my-8 w-full rounded-lg border"
-      alt={props.alt ?? ""}
-      {...props}
-    />
+    <figure className="my-10">
+      <img
+        style={{
+          borderColor: "rgba(15,28,63,0.1)",
+          boxShadow: "0 18px 40px rgba(15,28,63,0.08)",
+        }}
+        className="mx-auto w-full max-w-full rounded-2xl border bg-white object-cover"
+        alt={props.alt ?? ""}
+        {...props}
+      />
+      {props.alt ? (
+        <figcaption
+          style={{ color: "rgba(15,28,63,0.55)" }}
+          className="mt-3 text-center font-sans text-[13px] leading-relaxed"
+        >
+          {props.alt}
+        </figcaption>
+      ) : null}
+    </figure>
   ),
   table: (props) => (
     <div style={{ borderColor: "rgba(15,28,63,0.1)" }} className="my-8 overflow-x-auto rounded-lg border">

@@ -34,10 +34,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+type BlogPageProps = {
+  searchParams: Promise<{
+    q?: string;
+    theme?: string;
+    tags?: string;
+    sort?: string;
+  }>;
+};
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
   const posts = getAllPosts();
   const allTags = getAllTags();
   const allThemes = getAllThemes();
+  const query = await searchParams;
 
   return (
     <>
@@ -61,6 +71,7 @@ export default function BlogPage() {
               posts={posts}
               allTags={allTags}
               allThemes={allThemes}
+              initialQuery={query}
             />
           </div>
         </div>
