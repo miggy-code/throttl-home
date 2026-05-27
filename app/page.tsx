@@ -14,7 +14,7 @@ import { IMGS, C, BOOKING_URL } from "@/lib/constants";
 import AnimatedHero from "@/components/AnimatedHero";
 
 const USE_CASES = [
-  { icon: BarChart2,     title: "Faster Decisions",         body: "Analyse data, surface insights, and make better calls in a fraction of the time." },
+  { icon: BarChart2,     title: "Faster Decisions",         body: "Analyze data, surface insights, and make better calls in a fraction of the time." },
   { icon: Zap,           title: "Brainstorming & Strategy", body: "Use AI as a thinking partner to stress-test ideas and accelerate planning." },
   { icon: MessageSquare, title: "Clearer Communication",    body: "Draft sharper emails, proposals, and internal memos in minutes." },
   { icon: FileText,      title: "SOPs & Documentation",     body: "Turn tribal knowledge into structured, searchable operating procedures." },
@@ -338,7 +338,7 @@ export default function Home() {
                 The Throttl Accelerator
               </h2>
               <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "2.5rem" }}>
-                Our proprietary 4-step framework that takes companies from AI experimentation to full operationalisation. Every AI Business Transformation engagement is built around it.
+                Our proprietary 4-step framework that takes companies from AI experimentation to full operationalization. Every AI Business Transformation engagement is built around it.
               </p>
             </div>
           </div>

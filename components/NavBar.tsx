@@ -157,7 +157,7 @@ export default function NavBar() {
             Contact
           </a>
 
-          <a href={`/transformation#get-started`} style={{ backgroundColor: C.coral, color: C.white, padding: "0.5rem 1.25rem", borderRadius: "3px", fontSize: "0.825rem", fontWeight: 700, textDecoration: "none", letterSpacing: "0.04em", textTransform: "uppercase" as const, transition: "all 0.25s ease" }}
+          <a href={BOOKING_URL} style={{ backgroundColor: C.coral, color: C.white, padding: "0.5rem 1.25rem", borderRadius: "3px", fontSize: "0.825rem", fontWeight: 700, textDecoration: "none", letterSpacing: "0.04em", textTransform: "uppercase" as const, transition: "all 0.25s ease" }}
             onMouseEnter={e => { if (canHover) { e.currentTarget.style.backgroundColor = C.coralDark; e.currentTarget.style.transform = "translateY(-1px)"; } }}
             onMouseLeave={e => { if (canHover) { e.currentTarget.style.backgroundColor = C.coral; e.currentTarget.style.transform = "translateY(0)"; } }}
           >
@@ -204,7 +204,7 @@ export default function NavBar() {
           <a href={BOOKING_URL} style={{ display: "block", padding: "0.9rem 0", color: C.navy, fontWeight: 500, textDecoration: "none", borderBottom: `1px solid rgba(15,28,63,0.06)`, fontSize: "1rem", minHeight: "44px" }}>
             Contact
           </a>
-          <a href="/transformation#get-started" style={{ display: "block", marginTop: "1.25rem", backgroundColor: C.coral, color: "#fff", padding: "0.95rem 1.5rem", borderRadius: "3px", textAlign: "center" as const, fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", letterSpacing: "0.04em", textTransform: "uppercase" as const, minHeight: "44px" }}>
+          <a href={BOOKING_URL} style={{ display: "block", marginTop: "1.25rem", backgroundColor: C.coral, color: "#fff", padding: "0.95rem 1.5rem", borderRadius: "3px", textAlign: "center" as const, fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", letterSpacing: "0.04em", textTransform: "uppercase" as const, minHeight: "44px" }}>
             Get Started
           </a>
         </div>

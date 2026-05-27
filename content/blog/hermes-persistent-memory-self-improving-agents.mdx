@@ -1,0 +1,59 @@
+---
+title: "What persistent memory actually changes"
+description: "Most agents are stateless. Every session starts from zero. Hermes breaks that assumption at the architecture level, and the difference compounds."
+date: "2026-05-27"
+tags: ["Hermes", "AI Agents", "Persistent Memory", "Harness Engineering"]
+theme: "Engineering"
+coverGradient: "from-[#0066FF]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+---
+
+Most AI agents have no memory between sessions. You run them, they do a thing, they forget. The next run starts from scratch.
+
+For a weekend experiment, that's fine. For anything operational, it's a slow grinding problem. You re-explain context every time. You watch the agent make the same mistakes it made last week because corrections have nowhere to stick. The agent never gets better in any meaningful sense; it just runs.
+
+Hermes, released by Nous Research in February 2026, is built around a different assumption: an agent should get more useful the longer it runs. Memory isn't a feature bolted onto a session system. It's the architecture.
+
+## Three layers and why they're separate
+
+The first is session memory. Standard context window management. Nothing new.
+
+The second is persistent memory backed by SQLite with FTS5 full-text search. Retrieval benchmarks around 10 milliseconds across 10,000+ stored documents. This is where the agent writes facts it learned, corrections it received, and lessons from past runs. When you start a new session, the relevant parts of this store pull into context automatically.
+
+The third is a user model: a preference profile the agent builds continuously. Coding style, communication tone, timezone, tool preferences, frequent collaborators. Not inferred once and frozen, but updated over time.
+
+The agent maintains two files in the workspace. MEMORY.md holds facts, lessons, and corrections. USER.md holds your profile as the agent understands it. These aren't read-only summaries. The agent writes to them, revises them, and reads from them at the start of every session. It's the closest thing I've seen to an agent that actually keeps notes.
+
+The reason the three layers are separate is less obvious but worth understanding. Session memory, episodic archive, and user model each have different retrieval patterns, different decay rates, and different token budgets. Collapsing them into one thing would mean making compromises that hurt all three. Keeping them separate lets you tune each one for its actual purpose.
+
+## What trips everyone up
+
+Self-learning is disabled by default.
+
+This catches almost every first-time user. You install Hermes, run a few sessions, notice nothing seems to stick, assume the memory system is broken. It's not broken. You have to explicitly enable persistent memory and skill generation in `~/.hermes/config.toml`.
+
+The reasoning is defensible. An agent that writes to its own memory can write wrong things to its own memory. A bad fact committed to the persistent store will color every future session until someone finds and corrects it. Nous Research's position is: know what you're enabling before you enable it. That seems right to me, even if it makes the out-of-the-box experience confusing.
+
+## What compounding actually looks like
+
+The first few sessions with persistent memory enabled feel roughly the same as without it. The agent doesn't have much stored yet.
+
+By week two or three, the character of the interaction starts to shift. The agent already knows the project structure, your naming conventions, what tools you prefer, a few corrections you gave it earlier. You stop re-explaining things you've explained before. Sessions get shorter.
+
+By month two, something less expected happens. The agent starts applying lessons from one context to situations in a different context. Not always correctly. But sometimes it makes a connection you wouldn't have predicted. That's the user model doing something real.
+
+I want to be precise about what this is and isn't. Persistent memory doesn't make an agent smart. It makes the agent less redundant in specific ways, over time, in proportion to the quality of what you've given it. If you run it sloppily, if you let corrections go unstated, if you feed it noise, the memory store reflects that. You end up with a messy, unreliable context that helps less than a clean stateless agent would.
+
+The compounding is only as good as the signal going in.
+
+## What this means for teams
+
+The more interesting implication for teams is that the memory becomes organizational infrastructure. A Hermes instance running against a codebase for three months has accumulated something you don't want to throw away: a working map of how the project actually behaves, where the edge cases are, what earlier runs learned about the system.
+
+That's institutional knowledge in a form that persists when people leave and doesn't live only in someone's head.
+
+It also raises a question worth thinking about before you need the answer: how do you structure the memory layer when multiple agents need to share it? A single agent with its own memory store is tractable. Eight agents reading from and writing to overlapping stores, without a shared consistency model, is a different problem. The right time to design for that is before it's urgent.
+
+---
+
+*Building a multi-agent system and thinking about memory architecture? [Our team](/contact) works on this full-time.*
