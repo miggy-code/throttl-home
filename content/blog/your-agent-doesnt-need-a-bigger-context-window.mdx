@@ -1,0 +1,111 @@
+---
+title: "Your agent doesn't need a bigger context window"
+description: "Every AI tool has amnesia. Teams keep reaching for more context when the real fix is memory organization. When to use markdown vs a real database, why structured retrieval beats grepping prose, how Hermes and Open Claw do memory, and why a kanban board is the coordination layer that holds up."
+date: "2026-06-02"
+tags: ["AI Agents", "Memory", "Harness Engineering", "Obsidian", "Orchestration"]
+theme: "Engineering"
+coverGradient: "from-[#06B6D4]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+---
+
+Every AI tool on the market has the same defect. The model is smart. The memory is a sieve. You spend an hour walking an agent through your pricing logic, your vendor list, the three constraints that killed last quarter's project, and the next session it greets you like a stranger.
+
+People keep framing this as a context-window problem. It isn't. It's an organizational-knowledge problem, and the companies getting real work out of agents in 2026 are the ones who figured that out. Where does your knowledge live, who maintains it, and how does the agent participate in that loop without quietly rewriting things no human has reviewed. That is the whole game.
+
+Harnesses like Hermes and Open Claw exist to answer it. A harness is the scaffolding around the model: how it stores memory, how it spawns helpers, how it coordinates work. The model is the engine. The harness is everything that turns an engine into a car you can actually drive to work.
+
+## Two ways to remember, and you need both
+
+There are two philosophies for how an agent builds memory, and most teams pick one when they should run both.
+
+The first is ambient capture. You talk, you screenshot, you dump the 90 seconds of "here's what happened with Acme" you would never sit down and type out. The system files it automatically and consolidates it later. Garry Tan's GBrain pattern is the clean example. It is great for the messy, on-the-go reality of running a business.
+
+The second is intentional curation. You deliberately feed the system a bounded set of sources, five competitor teardowns, last quarter's interviews, the strategy doc, and it compiles them into an interlinked wiki you query instead of re-deriving from raw files every time. This is Andrej Karpathy's second-brain pattern. The curation is the value. The tradeoff is that it does not capture as you work. You feed it by hand.
+
+Ambient is how you keep up. Intentional is how you go deep. A team that only does ambient drowns in unsorted notes. A team that only does intentional has a beautiful wiki that is three weeks stale. The harnesses are starting to ship both. Open Claw's "dreaming" runs background consolidation in three phases, light to sort short-term material, deep to promote durable facts into a permanent memory file, REM to surface themes. Hermes keeps a compact persistent memory that gets injected into every session so the agent stops re-learning who you are. Same idea, different plumbing: separate the firehose from the canon, and promote from one to the other on a schedule.
+
+## The design patterns that actually hold up
+
+Across every system worth using, the same four patterns show up. They are boring. They are also the difference between an agent you trust and one you babysit.
+
+A source on every claim. When the agent says your churn is 4 percent, it should be able to point at where that came from. Memory systems that let models cite invented numbers as fact are worse than no memory at all.
+
+Conflict markers instead of silent overwrites. When two sources disagree, the system flags it and waits for a human, rather than picking a winner and burying the other. A `CONFLICT:` tag in a markdown file does more for trust than any benchmark score.
+
+Plain markdown over a database. Your knowledge in files you control, in a format both humans and models read natively. No phone app, no proprietary store, no export problem when you change tools.
+
+Humans as first-class authors. The agent should not be the only thing that writes to the knowledge base. The single most important question to ask any memory system: can a person open the same files in a normal editor and fix what the agent got wrong, outside the agent loop entirely. If the answer is no, walk away.
+
+That last one is why we run our own stack with a strict rule: one agent is the sole writer to the system of record, everything else reads and proposes. Humans review before anything becomes canon. It is slower. It is also the only version that does not eventually corrupt itself.
+
+## Obsidian and the memory graph
+
+This is where Obsidian quietly became the most interesting tool in the category, despite being four developers who refuse to build an AI feature.
+
+The pitch from its creator, Steinar Kepano, is blunt: AI agents baked into cloud apps will always be worse than best-in-class agents pointed at Obsidian, because your Obsidian data is plain-text markdown in your control. You can run Claude, Gemini, Codex, or a local private model against it. Cloud note apps are not end-to-end encrypted, which means breaches, and means your private thinking can become someone's training data. Plain files on your machine have none of those problems.
+
+The graph part matters more than it looks. When your notes link to each other, you are not just storing facts, you are storing relationships. Who owns what. What decision depended on which constraint. What changed when. This is the same structure the serious memory vendors are selling as "knowledge graphs," Zep and Graphiti building temporal graphs where every fact has a time dimension, Neo4j building context graphs, Mem0 layering a graph on top of vectors. A well-linked Obsidian vault is a memory graph you already own, for free, in a format that outlives every vendor in that list.
+
+And the economics are not close. On the standard memory benchmark, stuffing the full conversation into context every turn buys you under 6 points of accuracy for roughly 14 times the token cost versus a real memory layer. Brute force is expensive and barely better. Organization wins.
+
+## When markdown stops being enough
+
+Here is where I have to complicate the story, because "just use plain markdown" is right up to a point and then it is dangerously wrong.
+
+The cleanest way to think about it is a distinction most people skip: interface versus substrate. The interface is how the agent reaches the knowledge. The substrate is where the knowledge actually lives. Files win as an interface, because every model already knows how to list a directory, grep for a pattern, read a range of lines, and write a file. No schema, no query language, nothing to learn. Databases win as a substrate, because the moment knowledge has to be shared, audited, queried reliably, and written by more than one thing at once, you need guarantees that a folder of files cannot give you.
+
+The benchmark that made this concrete: same model, same task, one agent backed by markdown files and one backed by a database with semantic search. On a small set of keyword-friendly questions, they tied. On a large corpus with fuzzy, paraphrased questions, the file agent scored 29.7 percent and the database agent scored 87.1 percent. Grep matches the words you typed. Semantic retrieval matches what you meant. At scale, that gap is the whole ballgame.
+
+So the real guidance is not "files good, databases bad." It is: know which kind of data you are holding.
+
+Use markdown when the knowledge is narrative and human-owned. Decisions, context, the reasoning behind a choice, meeting takeaways, the why behind a number. This is the stuff a human needs to read and edit directly, and it is where a linked vault shines.
+
+Use a real database, with structured retrieval, when the data is factual, relational, or large. Your customer records, your pricing tiers, your inventory, anything you would ask "how many" or "which ones" or "what is the current value of." Asking an agent to grep through markdown files to total up last quarter's deals is asking it to do mental math over a filing cabinet. A query that returns the exact number in ten milliseconds is not just faster, it is the difference between an answer you can trust and a plausible guess. When the question has a correct answer, you want structured retrieval, not a similarity search over prose.
+
+And there is a trap worth naming: the moment you start hardening your markdown memory, adding file locking so two agents do not corrupt each other, building an index so search stays fast, adding metadata so you can filter, you are rebuilding a database by hand, with fewer guarantees and more edge cases. Concurrent writes to the same file can silently lose data, which for a system of record is the worst possible failure because nothing tells you it happened. If multiple agents share state, start with database guarantees instead of reinventing them badly.
+
+The pattern the industry is converging on splits the difference: a database underneath for the guarantees, exposed to the agent as a virtual filesystem on top for the ergonomics. The agent thinks it is reading files. The substrate is doing the real work. You get both.
+
+## How knowledge should actually be organized
+
+Step back and the bigger shift comes into focus. For years the race was bigger models. The realization landing across serious teams in 2026 is that scale alone does not create value, context does. An agent without a structured knowledge foundation is brittle, inconsistent, and impossible to govern. You cannot automate chaos.
+
+That reframes knowledge management from a storage problem into an infrastructure problem, and it splits cleanly along the line we just drew.
+
+Structured data belongs in structured systems, queried, not browsed. Facts with a correct answer live in a database and are reached by precise retrieval. This is what makes an answer auditable: you can trace it back to the exact row it came from. "Why did the agent say that" should have a real answer, and a query against a governed source is how you get one.
+
+Knowledge, the harder and more valuable half, wants a graph. Not a pile of documents and not a flat table, but a web of facts where the relationships are first-class: this customer belongs to this segment, this decision depended on that constraint, this fact superseded that one on this date. This is the GraphRAG idea the enterprise world is moving toward, and it is the same instinct behind a well-linked Obsidian vault. The links are the knowledge. A fact with no relationships is trivia. A fact connected to its causes, its consequences, and its source is something an agent can actually reason over.
+
+Three principles hold the whole thing together, and they are the same ones from earlier scaled up. Every fact traces to a source, so nothing is unverifiable. Knowledge is versioned, so you can see what changed and when, and roll back a bad write. And a human stays in the loop as a curator, not a bottleneck. The emerging job here is something like a knowledge librarian: a person who tends the graph, validates what the agents propose, and decides what becomes canon. The agent drafts. The human approves. The knowledge base improves on every loop instead of slowly rotting.
+
+This is the order most teams get backward. They buy the agent framework before they have organized the knowledge, the cart before the horse. Get one well-grounded source of truth right first, structured data in a queryable store, narrative knowledge in a linked graph, a source on every claim, and then point agents at it. Skip that and you have automated your chaos, which just means you reach the wrong answer faster.
+
+## Concurrency: when one agent becomes a team
+
+The other half of harness design is what happens when you stop running one agent and start running several at once.
+
+The shift is from conductor to orchestrator. With one agent you pair, synchronously, and its context window is a hard ceiling. With a team, you manage. Each agent gets its own context window, works asynchronously, and the codebase or the knowledge base becomes the shared canvas instead of a single conversation thread.
+
+Three walls force the move. One agent can only hold so much before it gets confused. A generalist juggling everything is master of none. And a lone agent cannot coordinate with anything. Subagents fix the first two: spin up a focused helper that only sees the files it owns, run several in parallel, keep each one's context clean. The practical rule is to spawn a couple of leads that each spawn their own specialists, rather than six flat helpers that fragment your attention. It mirrors how real teams work. A VP talks to tech leads, not to thirty engineers.
+
+But parallelism without coordination is just chaos running faster. Three agents editing the same file at the same time is not 3x throughput, it is a merge conflict with extra steps. Which is exactly why the humble kanban board turned out to be the coordination layer that holds up.
+
+## Why the kanban board wins
+
+The systems that survive contact with real concurrent agents all converge on the same primitives, and they happen to be the primitives of a kanban board.
+
+A shared task list with real statuses: pending, in progress, completed, blocked. Dependency tracking, so a task that needs another's output waits instead of guessing. File locking, so two agents never write the same file at once. And automatic unblocking, so the moment a dependency finishes, the work that was waiting on it becomes available without a human poking it.
+
+That is a kanban board. Cards, columns, swimlanes, work-in-progress limits. The same tool that has run human teams for decades turns out to be exactly the right shape for coordinating agents, because the problem is identical: independent workers, shared dependencies, limited capacity, and a need to see at a glance who is doing what. The sweet spot is three to five concurrent agents. Past that, token costs climb linearly and the coordination overhead eats the parallelism gains.
+
+The deeper point: agents did not need a new exotic coordination paradigm. They needed the boring one that already works for people. A board with a hard work-in-progress limit, a clear definition of done, and a column for "blocked, needs a human." The same discipline that keeps a five-person team from stepping on each other keeps five agents from doing it too.
+
+## The bottom line
+
+Memory and concurrency are not separate problems. They are the same problem at different scales: how does work persist and coordinate when no single context can hold all of it. The answer is not a bigger model or a longer context window. It is organization. Ambient capture feeding curated canon. Plain-text graphs you own. A source on every claim and a human who can always overrule. A board that makes dependencies visible so parallel work does not collide.
+
+None of this is glamorous. It is the cognitive janitorial work that makes the whole system sustainable. Which is exactly why most teams skip it, and exactly why the ones that don't are pulling ahead.
+
+---
+
+*This is the kind of infrastructure decision that compounds. If you want to talk through how to organize your team's agent memory and orchestration, [our team works on this](/contact) for a living.*
