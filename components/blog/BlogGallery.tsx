@@ -204,18 +204,30 @@ function BlogCard({ post, index }: { post: BlogMeta; index: number }) {
           style={{ borderTop: "1px solid rgba(15,28,63,0.1)" }}
           className="mt-5 flex items-center justify-between pt-4"
         >
-          <div
-            style={{ color: "rgba(15,28,63,0.5)" }}
-            className="flex items-center gap-4 font-sans text-[13px]"
-          >
-            <span className="flex items-center gap-1.5">
-              <Calendar className="h-3.5 w-3.5" />
-              {formattedDate}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" />
-              {post.readTime}
-            </span>
+          <div className="flex items-center gap-3">
+            {post.author.avatar ? (
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                className="h-7 w-7 rounded-full object-cover"
+              />
+            ) : null}
+            <div
+              style={{ color: "rgba(15,28,63,0.5)" }}
+              className="flex items-center gap-3 font-sans text-[13px]"
+            >
+              <span style={{ color: "rgba(15,28,63,0.7)" }} className="font-medium">
+                {post.author.name}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" />
+                {formattedDate}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                {post.readTime}
+              </span>
+            </div>
           </div>
           <span
             style={{ color: C.coral }}
