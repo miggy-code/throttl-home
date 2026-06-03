@@ -1,0 +1,62 @@
+---
+title: "Why your agent project isn't in production"
+description: "88% of AI agent projects never ship. Here's what's actually breaking them."
+date: "2026-05-13"
+tags: ["AI Agents", "Harness Engineering", "Production", "Infrastructure"]
+theme: "Engineering"
+coverGradient: "from-[#FF4D00]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+image: "/media/blog/server-room-blue.jpg"
+---
+
+Eighty-eight percent of agent projects never reach production.
+
+I've seen that number cited enough places that I believe it roughly. It's not surprising, exactly. But it is uncomfortable if you've been shipping agents for clients, because it means most of what the industry is building is falling over somewhere between "this demo is incredible" and "this runs reliably on Thursday."
+
+The failure modes are not subtle. I've watched them up close.
+
+## The demo problem
+
+Agents look great in demos for a specific reason: demos are short. You ask the agent to do something, it does it, you clap. Nobody asks what happens when the model returns malformed JSON on turn 14 and the whole run dies. Nobody asks how you'd reconstruct what the agent did last Tuesday when something went wrong. Nobody asks what the experience is like for 800 concurrent users instead of one.
+
+That's not a knock on demos. It's just the difference between a proof of concept and a system.
+
+## What actually kills it
+
+No observability is the first killer. You run an agent, something goes wrong, you have no idea what happened. The logs, if they exist, are a raw stream of model output with no structure. There's no trace of which tools were called, which decisions were made, or why the agent went one direction instead of another. Debugging becomes archaeology.
+
+No recovery is next. Long-running agents fail in the middle. Models return errors, timeouts happen, rate limits kick in. Without checkpointing, a failure at turn 28 means starting over from turn 0. Most projects don't have checkpointing. Most just restart and hope.
+
+No persistent memory means every session starts from scratch. The agent that ran yesterday knows nothing about what it learned yesterday. You re-explain context every time. Fine for an experiment. Not fine for anything you'd hand to a real team.
+
+And no feedback loop means mistakes compound silently. The agent makes the same errors week after week because corrections have nowhere to stick.
+
+## What connects them
+
+These are infrastructure problems, not model problems. The model is capable. The model was probably capable six months ago. What's missing is the environment around it: the memory, the error handling, the observability, the logging structure that tells you what actually happened when it goes wrong.
+
+People call this the harness. It's everything that isn't the model.
+
+## Getting to production
+
+Checkpointing and recovery comes first. Temporal, Inngest, and Trigger.dev all handle this. The pattern is simple: write state after each meaningful action so any failure can resume from the last checkpoint instead of from zero.
+
+Structured logging is not optional once you're debugging something real. Raw model output is useless for incident response. You need the tool called, the input, the output, and the decision made, in a format you can actually query later.
+
+Persistent memory at minimum means the agent carries forward what it learned. The Hermes architecture gives you a clean model for thinking about this: session memory, episodic archive, and a user model that builds over time. At a smaller scale, a SQLite store with decent indexing covers most cases.
+
+Graceful degradation means the agent has a plan for when things fail. Not "retry forever." Not "crash silently." Log it, write current state, surface it to a human, stop.
+
+Continuous evaluation is where most projects skip and then regret it. Without it, you don't know if a change you made helped or hurt. You make decisions about the agent blind and call it shipped.
+
+## The honest version
+
+None of this is novel. It's the same infrastructure work that made microservices reliable, or CI/CD actually trustworthy. The AI wave moved fast and people skipped the foundations.
+
+Agents running reliably in production today have harnesses. Not always clean ones. But harnesses. The agents still living in demo mode don't.
+
+If your project hasn't shipped, I'd bet on one of the above being the reason. Pick the most broken one and fix it before touching the model.
+
+---
+
+*Thinking about building agents that hold up in production? [Talk to our team](/contact) about how we approach harness design.*

@@ -1,0 +1,56 @@
+---
+title: "The model is not your moat"
+description: "A team held the model constant and only changed what surrounded it. Score went from 52.8% to 66.5%. Ranking jumped from outside the top 30 to top 5. The model didn't change."
+date: "2026-05-20"
+tags: ["Harness Engineering", "AI Strategy", "AI Agents", "Infrastructure"]
+theme: "Engineering"
+coverGradient: "from-[#00CC88]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+image: "/media/blog/chess-strategy.jpg"
+---
+
+Last year, the LangChain team ran an experiment. They held the model constant and only changed what surrounded it: the instructions, constraints, feedback loops, memory, and orchestration. Score on their internal benchmark moved from 52.8% to 66.5%. The ranking jumped from outside the top 30 to top 5.
+
+The model didn't change.
+
+I keep returning to this because it makes explicit something that's been true for a while but hasn't been named clearly. The competitive advantage in agent systems isn't which model you're using. Models are converging. The frontier labs are tracking each other closely on the benchmarks that matter. Swapping from one leading model to another gives you a few percentage points on any given task.
+
+The harness gave them 14.
+
+## What a harness is
+
+The word gets used loosely, so here's the precise version. The harness is every layer of infrastructure around the model that shapes what the agent can do and how reliably it does it.
+
+That means the context the agent receives at the start of a session. The tools available to it. The constraints on what actions it can take. The memory systems that persist information across runs. The error handling when a model call fails. The structured logging that tells you what happened. The evaluation feedback loops that tell you if it's getting better or worse over time.
+
+The model is one component. The harness is the system.
+
+## Why model choice matters less than people think
+
+Frontier models are genuinely close to each other on most real-world tasks. The days of one model being categorically better than everything else for a given domain are mostly behind us, at least at the top of the market. You can still pick the wrong model for a very specific task, but you're unlikely to pick the wrong model for general-purpose agent work and have that be your main problem.
+
+Your main problem is almost certainly the harness.
+
+88% of agent projects never reach production. The failure modes are almost always infrastructure failures: no observability so you can't tell what went wrong, no recovery so failures start over from zero, no persistent memory so the agent never learns, no feedback loop so mistakes compound. None of these are model problems. A smarter model in a fragile harness is still a fragile agent.
+
+## What this means for how you build
+
+If the harness matters more than model selection, some priorities shift.
+
+Evaluation infrastructure moves to the front. Without it, you're making decisions about your agent blind. You change a prompt, add a tool, adjust a constraint, and you have no way of knowing if you've improved anything. Evaluation doesn't need to be elaborate, but it needs to exist from the start, because retrofitting it later is painful and usually doesn't happen.
+
+Memory architecture is the other thing that consistently gets underestimated. Stateless agents are easy to build and hard to make useful past a certain point. Agents with persistent memory are harder to set up correctly but compound in value over time. The question isn't whether you need persistent memory. It's when you build it and whether you do it intentionally.
+
+Observability and recovery are table stakes. If you can't see what your agent did and can't resume from a failure, you're not running a production system. You're running a demo that happens to be deployed.
+
+## The longer view
+
+Your model is a vendor relationship. It gets better on the vendor's timeline. You can swap it when something better ships, and that'll probably be worth doing periodically.
+
+Your harness is yours. The memory your agents have accumulated, the constraints you've tuned, the failure modes you've learned to handle, the evaluation data you've built up over months: none of that transfers to a competitor. None of it gets commoditized when Anthropic ships a new model or Nous Research updates Hermes.
+
+That's where your advantage actually lives.
+
+---
+
+*Building agent infrastructure that holds up is the harder problem. If you want to talk through the architecture, [our team works on this](/contact) for a living.*
