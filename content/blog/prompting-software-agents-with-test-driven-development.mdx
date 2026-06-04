@@ -1,0 +1,212 @@
+---
+title: "Prompting software agents with test-driven development"
+description: "The fastest way to make software agents reliable is to stop treating prompts like prose and start treating them like executable specifications. Use tests, fixtures, and feedback loops to shape what the agent does before you ask it to do more."
+date: "2025-12-09"
+tags: ["AI Agents", "Prompting", "Test Driven Development", "Harness Engineering"]
+theme: "Engineering"
+coverGradient: "from-[#FF8A00]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+image: "/media/blog/code-dark-screen.jpg"
+---
+
+Most teams still prompt software agents the way they prompt chat models: write a paragraph, hope for the best, and iterate when the output is vaguely wrong. That works for a demo. It does not work for a system that edits code, calls tools, and takes actions you need to trust.
+
+The better pattern is to borrow from test-driven development.
+
+TDD gave software teams a disciplined loop for building correct behavior: write the test, make it pass, then refactor. Agent prompting needs the same thing. Not because prompts are code in disguise, but because software agents fail in the same way software does: ambiguous requirements, hidden edge cases, and regressions that only show up after a few changes.
+
+If you want reliable agents, do not start by writing a clever prompt. Start by writing the thing that proves the prompt is good.
+
+## Why prompts need tests
+
+A prompt is not a request. It is a contract about behavior.
+
+When you ask an agent to "fix the failing tests" or "summarize the last five PRs" or "triage these bug reports," the vague version of that instruction is not enough. The model will fill in the blanks, and it will usually fill them in differently than you expected.
+
+Tests make the blanks visible.
+
+The point is not only to catch mistakes after the fact. The point is to force the task into a shape the agent can actually execute. Once you have a failing test or an explicit acceptance case, you can see what matters:
+
+- What input is guaranteed
+- What output is acceptable
+- What edge cases matter
+- What the agent is allowed to change
+- What it must leave alone
+
+That is what a good prompt should encode.
+
+## Red, green, refactor for agents
+
+The classic TDD loop maps cleanly onto agent prompting.
+
+### Red
+
+Write the test or evaluation first. For agents, that might mean:
+
+- A unit test that should fail until the agent edits the code correctly
+- A small benchmark of representative tasks
+- A checklist of acceptance criteria for a tool call workflow
+- A transcript-based evaluation that scores whether the agent followed the right steps
+
+If you cannot describe the failure mode, you do not understand the task well enough to prompt it.
+
+### Green
+
+Write the simplest prompt that makes the test pass.
+
+This is where people usually overdo it. They add personality, style guidance, long preambles, and examples that explain the problem six different ways. Most of that is noise. A useful agent prompt should be more like a spec than an essay:
+
+- State the goal
+- Define the inputs
+- Define the constraints
+- Define the success condition
+- Define the failure condition
+
+If the prompt gets longer, it should get longer because the task is genuinely more complex, not because you are trying to compensate for missing structure.
+
+### Refactor
+
+Once the agent passes the test, tighten the prompt.
+
+Look for the parts that are accidental complexity:
+
+- Duplicate instructions
+- Examples that only restate the rule
+- Constraints that belong in tools or code, not in prose
+- Steps that can be moved into a script, a validator, or a test fixture
+
+The best agent prompts are usually not the most detailed ones. They are the most constrained ones.
+
+## What to test
+
+The wrong way to test an agent is to ask it one broad question and judge the output by feel. That gives you a nice screenshot and no real signal.
+
+The right way is to test behavior at the boundary where the agent meets the system.
+
+For coding agents, that boundary is usually one of these:
+
+- File edits
+- Shell commands
+- Git state
+- Test results
+- Structured outputs
+
+Build tests around those boundaries.
+
+If the agent is supposed to modify code, give it a tiny repo and a failing test. If it is supposed to classify issues, give it labeled examples and score the result. If it is supposed to use tools, assert the sequence of tool calls, not just the final answer.
+
+Anthropic's own guidance on agent tools points in this direction: define tools clearly, make expected inputs and outputs explicit, and evaluate behavior rather than trusting prose. That is the same instinct behind TDD. The test tells you whether the behavior is real.
+
+## A practical workflow
+
+Here is the workflow I recommend for prompting software agents.
+
+### 1. Write a failing case
+
+Pick one task the agent should handle well. Make it concrete.
+
+Bad:
+
+> Help the agent improve the codebase.
+
+Good:
+
+> When the API returns a 500 from the billing service, the agent should open the right file, identify the failing error path, and patch the retry logic without touching unrelated code.
+
+That version is testable. The vague version is not.
+
+### 2. Define the allowed moves
+
+Agents get unreliable when they are given too much freedom.
+
+Write down the limits:
+
+- Which directories it may edit
+- Which commands it may run
+- Whether it may commit changes
+- Whether it may open PRs
+- Whether it should stop and ask for help
+
+This is the agent equivalent of narrowing the surface area of a unit test.
+
+### 3. Add examples, but only the ones that change behavior
+
+Examples are useful when they disambiguate. They are harmful when they just repeat the instruction in a different costume.
+
+Use examples to show:
+
+- The shape of the expected output
+- A boundary case
+- A failure case the agent should avoid
+
+Do not use examples to explain the obvious.
+
+### 4. Run the agent against the test
+
+Now the prompt becomes something you can measure.
+
+If the agent fails, inspect the transcript:
+
+- Did it misunderstand the task?
+- Did it skip a tool step?
+- Did it over-edit?
+- Did it hallucinate a constraint?
+- Did it need more context or less?
+
+That feedback tells you whether to change the prompt, the tools, or the test.
+
+### 5. Turn the winning prompt into a versioned artifact
+
+If the prompt works, do not leave it buried in a chat thread.
+
+Put it in the repo. Name it. Review it. Track changes to it. Treat it the way you treat tests, scripts, and configuration.
+
+The moment a prompt becomes operational, it is part of the system.
+
+## Why this matters more for agents than for chat
+
+Plain chat can survive a little ambiguity. Agents cannot.
+
+Once a system can write files, call APIs, or trigger workflows, every unclear instruction becomes a production risk. A bad answer is no longer just a bad answer. It can become a broken branch, a corrupted file, or a wrong action taken on behalf of a user.
+
+That is why agent prompting belongs closer to software engineering than marketing copy. You are not trying to sound persuasive. You are trying to make behavior repeatable.
+
+TDD is a good mental model because it forces that discipline:
+
+- Start with the behavior you want
+- Encode it as a checkable failure
+- Make the agent satisfy the check
+- Improve the prompt only after the behavior is proven
+
+## The hidden benefit: better prompts, better systems
+
+The side effect of this approach is that it makes your whole agent stack better.
+
+Once prompts are tested, you start noticing the real dependencies:
+
+- A missing tool description
+- A noisy log format
+- A weak acceptance test
+- A prompt that is doing work the code should do
+- A workflow that needs a human checkpoint, not another paragraph
+
+This is how prompt work becomes engineering work.
+
+You stop asking, "What wording gets the model to behave?"
+You start asking, "What system shape makes the behavior inevitable?"
+
+That is the right question.
+
+## The bottom line
+
+Prompting software agents is not about writing beautiful instructions. It is about creating a reliable loop between intent, test, behavior, and revision.
+
+If you want a useful agent, do not begin with prose. Begin with a failing case, a narrow contract, and a way to measure whether the agent did the job.
+
+Write the test first.
+Then write the prompt that makes it pass.
+Then refactor both until the system is boring in the best possible way.
+
+---
+
+*If you are trying to make agent behavior reliable in a real product, [our team works on this](/contact) for a living.*
