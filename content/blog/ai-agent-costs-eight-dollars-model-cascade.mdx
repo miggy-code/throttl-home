@@ -1,0 +1,60 @@
+---
+title: "How to run AI agents for $8 a month"
+description: "A real OpenRouter dashboard shows 90 sessions, four models, and a total bill of $8.16. The secret isn't the agent — it's knowing which model to use for which job."
+date: "2026-06-05"
+tags: ["AI Agents", "Cost Optimization", "Infrastructure", "AI Strategy"]
+theme: "Engineering"
+coverGradient: "from-[#06B6D4]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+---
+
+Here's a real OpenRouter usage dashboard from someone running an AI agent 24/7 for a full month:
+
+| Model | Min/Session | Max/Session | Avg/Session | **Monthly Total** |
+|---|---|---|---|---|
+| Minimax M2.7 | $0.03 | $0.83 | $0.38 | **$7.60** |
+| MiniMax 2.5 | $0.04 | $0.09 | $0.06 | $0.53 |
+| Kimi K2.6 | $0.02 | $0.02 | $0.02 | $0.02 |
+| Kimi K2.5 | $0.01 | $0.01 | $0.01 | $0.01 |
+
+**90 sessions. $8.16 total.** The most expensive single session was 83 cents. The average was 38 cents.
+
+This isn't a demo or a theoretical — it's a screen recording of someone's actual usage. And it breaks a lot of assumptions about what AI agents cost to run.
+
+## The assumption that's costing you money
+
+Most businesses hear "AI agent" and think: ChatGPT Pro at $200/seat, Claude at $100/seat, enterprise API contracts in the thousands. The mental model is subscription software — you pay a flat fee, you get access, the meter doesn't run.
+
+Agents don't work that way. You pay per token — that is, per word the model reads and writes. If you hook that agent up to an expensive model like Claude Opus or GPT-5, your bill will look like a subscription. If you route tasks to the right model for each job, your bill collapses.
+
+The dashboard above proves the point. One model — Minimax M2.7 — handled 93% of the work at $7.60 for the entire month. Three other models picked up the hard reasoning tasks. Combined, they cost 56 cents.
+
+## The cascade strategy
+
+The setup is simple: instead of one model doing everything, you create a three-tier cascade.
+
+**Tier 1 — The workhorse (cheap, fast).** Minimax M2.7 handles scanning, summarizing, quick lookups, and routine chat. It's fast enough to feel instantaneous and cheap enough that you never think about the meter. 93% of all work hits this tier.
+
+**Tier 2 — The planner (balanced).** DeepSeek V4 steps in for structured reasoning: decomposing complex tasks, writing implementation plans, and organizing work into steps. More capable than Tier 1, still single-digit cents per session.
+
+**Tier 3 — The heavy lifter (precision).** Kimi K2.6 handles the genuinely hard problems: complex analysis, multi-step reasoning chains, nuanced creative work. Used sparingly — the dashboard above shows a lifetime cost of 2 cents.
+
+The result: every session costs cents, not dollars. You never hit a rate limit. The agent runs 24/7 on a VPS, paying only for what it uses.
+
+## What happens when you pick wrong
+
+Moe Lueker, who published the dashboard, put it bluntly in his walkthrough: "If you choose this wrong, you might be paying 30 times as much."
+
+Default to Claude Opus or GPT-5 for every task instead of the cascade, and that $8.16 becomes roughly $245. Same agent. Same tasks. Same output. The only difference is which model processed your request.
+
+This is the quiet tax most teams don't see. They connect an agent to whatever model is in the dropdown, never look at the usage dashboard, and wonder why the API bill keeps climbing. The cascade isn't a clever optimization — it's the difference between an agent being a cost center and being too cheap to meter.
+
+## What we do at Throttl
+
+Model selection is not a setup step you do once and forget. It's an ongoing discipline. Models change. Prices drop. New contenders appear — the dashboard above includes a model that didn't exist six months ago.
+
+We treat the model layer as a strategic lever, not a default. For every client deployment, we map each workflow to the cheapest model that handles it reliably, build the cascade, and monitor usage so the bill stays flat even as the agent gets smarter.
+
+The $8.16 dashboard isn't a special case. It's what happens when someone optimizes the right thing.
+
+*If you're running AI agents and haven't looked at your per-model spend in the last month, [we should talk](/contact).*
