@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import GlobalCTA from "@/components/GlobalCTA";
 import { mdxComponents } from "@/components/blog/MDXComponents";
+import { EditorialCallout, MetricGrid, ReviewMatrix, ValueBridge, WorkflowFlow } from "@/components/blog/WorkflowFlow";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { formatBlogDate } from "@/lib/blog-date";
@@ -215,7 +216,7 @@ export default async function BlogPostPage({
             <article data-blog-article="true" className="min-w-0">
               <MDXRemote
                 source={post.content}
-                components={mdxComponents}
+                components={{ ...mdxComponents, EditorialCallout, MetricGrid, ReviewMatrix, ValueBridge, WorkflowFlow }}
                 options={{
                   mdxOptions: {
                     remarkPlugins: [remarkGfm],

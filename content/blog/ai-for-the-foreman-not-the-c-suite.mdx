@@ -1,0 +1,70 @@
+---
+title: "AI for the foreman, not the C-suite"
+description: "Most AI adoption in manufacturing and logistics is designed for people who don't touch the product. The AI that actually works on a shop floor looks nothing like the AI that works in a boardroom."
+date: "2026-06-30"
+tags: ["Manufacturing", "Logistics", "AI Implementation", "Human in the Loop"]
+theme: "Implementation"
+coverGradient: "from-[#00CC88]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+image: "/media/blog/foreman-shop-floor.jpg"
+---
+
+Most AI adoption in manufacturing and logistics is designed for people who don't touch the product.
+
+The dashboards go to the VP of Operations. The pilots get presented to the CIO. The ROI slides go to the CFO. And the guy standing next to the press at 6am, the one who actually knows when a part sounds wrong, gets nothing. Or worse, he gets a tablet bolted to the machine that nobody asked him about.
+
+I've been in enough plants and warehouses at this point to know the pattern. The technology shows up, the people who bought it present it to the people who'll use it, and within two weeks everyone's figured out how to ignore it. Not because they're resistant to change. Because the tool doesn't fit the job.
+
+The AI that actually works on a shop floor looks nothing like the AI that works in a boardroom.
+
+## What doesn't work
+
+We worked with a precision machining shop in Connecticut where the setup sheets, tool specs, and calibration knowledge for every job lived in one foreman's head. He'd been there 22 years. Great operator, but he was the single point of failure for the entire shop. New guys on second shift would call him at home. Jobs sat waiting because nobody else could figure out the right feeds and speeds for a particular material on a particular machine.
+
+We built a knowledge base. Nothing fancy. The foreman walked us through his setup process for a dozen common jobs, we structured that into a searchable system, and we connected it to their ERP so a job traveler coming through would automatically pull the relevant setup notes. The foreman could update a note in the system and every operator on every shift had it immediately. The first month, setup time on repeat jobs dropped 18%. Not because of AI. Because the knowledge was finally accessible to the people who needed it.
+
+Same story with a regional 3PL in Pennsylvania. They were running separate systems for warehouse management, transportation, and customer order tracking. The warehouse lead spent the first 90 minutes of every shift cross-referencing three screens to figure out what was shipping, what was staged, and what was missing. We connected the systems so the data flowed into one operational view. Then we layered an AI check on top that flagged discrepancies, a shipment in the WMS but not the TMS, a customer request in the portal that didn't match the pick list. The lead reviews the flags, confirms or corrects them, and the system learns. What used to take 90 minutes now takes 15.
+
+## What "human in the loop" actually means
+
+Everyone says "human in the loop" now. It's on every vendor's slide deck. But most of them mean "a human can intervene if something goes wrong." That's not what I'm talking about.
+
+I'm talking about building the human into the system from the start. Not as a fallback. As a core input. The person who runs the machine, picks the order, or drives the route knows things the data doesn't capture. They know that press number 4 has been acting up since the maintenance cycle. They know that client X always short-ships in July. They know that the new guy on afternoons is still learning and needs simpler picks.
+
+That knowledge is not in your ERP. It's not in your WMS. It's in the heads of people who've been doing the job for a decade. And every time you deploy an AI system that bypasses them instead of incorporating them, you waste that knowledge.
+
+The knowledge base at the Connecticut shop works because the foreman is the one updating it. The discrepancy flags at the 3PL work because the warehouse lead is the one reviewing them. The system isn't replacing their judgment. It's extending their judgment to more people, more shifts, more situations.
+
+## The interaction layer is the product
+
+Here's where most AI deployments actually fail. It's not the model. It's not the data. It's the layer between the AI and the person using it.
+
+Every AI system has an interaction layer. The question is whether someone designed it on purpose or let it happen by default. When you buy an off-the-shelf tool, the interaction layer is whatever the vendor shipped. Usually that's a dashboard built for the person who approved the purchase, not the person who'll use it every day.
+
+The interaction layer is where the AI output meets human judgment. It's the override button. It's the approval queue. It's the morning review where the dispatcher adjusts the route. It's the interface that lets the inspector say "this part is fine" and have the system learn from that. It's the alert that goes to the right person, in the right format, at the right time.
+
+This is the core of how we build client implementations at Throttl. We don't just pick a model and plug it in. We design the interaction layer around the people who'll actually touch it. That means understanding what information they need, when they need it, what they can override, what they can't, and how their corrections feed back into the system.
+
+Most vendors build interaction layers for demos. They look great on a screen in a conference room. Then you put them on a tablet next to a press running 60 parts a minute and nobody touches them. The interface is too slow, the information is wrong for the context, and the person who knows what to do has no way to tell the system.
+
+We build our own interaction layer on top of whatever AI is running underneath. The model is interchangeable. The interaction layer is what makes it work for a specific operation, a specific team, a specific set of workflows. That's the part that's custom. That's the part that actually generates ROI.
+
+## The pattern
+
+Here's what the good implementations had in common:
+
+The AI handled the repetitive, data-heavy work. Cross-referencing systems, flagging discrepancies, pulling relevant information from a knowledge base. Things that require processing across multiple data sources. That's what machines are good at.
+
+The human handled the context. Seasonal patterns, personnel quirks, customer relationships, equipment history. Things that require knowing the operation. That's what experienced people are good at.
+
+The system was designed so the human could correct the AI, and the AI learned from the correction. Not a feedback form that goes into a black hole. A direct, immediate override that updates the knowledge base or adjusts the parameters.
+
+And most importantly, the people on the floor were consulted before the system was bought, not after. They were asked what would actually help them do their jobs. Which sounds simple. But in three years of doing this work, I can count on one hand the number of times that happened before we got involved.
+
+## Stop buying tools for the org chart
+
+If you're a COO or operations director thinking about AI for your operation, here's my advice. Stop buying tools based on what looks good in a vendor demo. Start by walking the floor and ***asking the people who actually do the work what slows them down.***
+
+The best AI implementations I've seen weren't the most technically sophisticated. They were the ones where someone bothered to ask the foreman, the warehouse lead, or the dispatcher what they needed. And then built the AI around that answer instead of around a slide deck.
+
+The technology is real. The ROI is real. But only when it's built for the people who'll actually use it. Not the people who'll approve the purchase.

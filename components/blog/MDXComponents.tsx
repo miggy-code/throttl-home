@@ -83,17 +83,10 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  ul: (props) => (
-    <ul
-      style={{ color: C.warmGray }}
-      className="my-5 ml-1 list-none space-y-3 font-sans text-[17px] leading-[1.8] [&>li]:relative [&>li]:pl-6 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.65em] [&>li]:before:h-[5px] [&>li]:before:w-[5px] [&>li]:before:rounded-full [&>li]:before:bg-gray-400 [&>li]:before:content-['']"
-      {...props}
-    />
-  ),
   ol: (props) => (
     <ol
       style={{ color: C.warmGray }}
-      className="my-5 ml-1 list-none space-y-3 font-sans text-[17px] leading-[1.8] counter-reset-[item] [&>li]:relative [&>li]:pl-8 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.15em] [&>li]:before:flex [&>li]:before:h-6 [&>li]:before:w-6 [&>li]:before:items-center [&>li]:before:justify-center [&>li]:before:rounded-full [&>li]:before:bg-gray-100 [&>li]:before:font-mono [&>li]:before:text-xs [&>li]:before:font-semibold [&>li]:before:text-gray-500 [&>li]:before:counter-increment-[item] [&>li]:before:content-[counter(item)]"
+      className="my-5 ml-1 list-decimal space-y-3 pl-8 font-sans text-[17px] leading-[1.8] marker:font-mono marker:text-xs marker:font-semibold marker:text-gray-500"
       {...props}
     />
   ),
@@ -145,6 +138,13 @@ export const mdxComponents: MDXComponents = {
         </figcaption>
       ) : null}
     </figure>
+  ),
+  ul: (props) => (
+    <ul
+      style={{ color: C.warmGray }}
+      className="my-5 ml-1 list-disc space-y-3 pl-6 font-sans text-[17px] leading-[1.8] marker:text-[#6A8A9E]"
+      {...props}
+    />
   ),
   table: (props) => (
     <div style={{ borderColor: "rgba(15,28,63,0.1)" }} className="my-8 overflow-x-auto rounded-lg border">
