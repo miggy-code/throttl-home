@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { absoluteUrl, defaultOgImage, siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
@@ -41,6 +42,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased">
+        <Script
+          id="vtag-ai-js"
+          async
+          src="https://r2.leadsy.ai/tag.js"
+          data-pid="NHxbIXRVz4wcP6iD"
+          data-version="062024"
+        />
         <NavBar />
         {children}
         <Footer />
