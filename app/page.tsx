@@ -42,7 +42,7 @@ export default function Home() {
       <AnimatedHero />
 
       {/* ── PROBLEM ── */}
-      <section id="problem" style={{ padding: "5.5rem 0", backgroundColor: C.navy }}>
+      <section id="problem" style={{ padding: "clamp(4rem, 8vw, 7rem) 0", backgroundColor: C.navy }}>
         <div className="container">
           <div className="problem-grid" ref={problem.ref} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "4rem", alignItems: "center" }}>
             <div style={{ opacity: problem.inView ? 1 : 0, transform: problem.inView ? "translateX(0)" : "translateX(-24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* ── USE CASES ── */}
-      <section style={{ padding: "5.5rem 0", backgroundColor: C.cream }}>
+      <section style={{ padding: "clamp(4rem, 8vw, 7rem) 0", backgroundColor: C.cream }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -180,7 +180,7 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: "5.5rem 0", backgroundColor: C.creamDark }}>
+      <section id="services" style={{ padding: "clamp(4rem, 8vw, 7rem) 0", backgroundColor: C.creamDark }}>
         <div className="container">
           <FadeSection>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>

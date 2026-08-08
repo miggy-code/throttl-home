@@ -1,0 +1,90 @@
+{
+  "url": "http://127.0.0.1:3100/blog/your-ai-pilot-may-be-measuring-the-wrong-thing/",
+  "results": [
+    {
+      "width": 375,
+      "data": {
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "figs": [
+          {
+            "text": "THE COMPLETE WORKFLOW\n\nWhere did the wor",
+            "x": 16,
+            "y": 3311.5625,
+            "w": 343,
+            "h": 654.125
+          },
+          {
+            "text": "THE AI PILOT VALUE BRIDGE\n\nCount the wor",
+            "x": 16,
+            "y": 4558.71875,
+            "w": 343,
+            "h": 883
+          }
+        ],
+        "required": [
+          true,
+          true
+        ],
+        "h3": 2
+      }
+    },
+    {
+      "width": 768,
+      "data": {
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "figs": [
+          {
+            "text": "THE COMPLETE WORKFLOW\n\nWhere did the wor",
+            "x": 16,
+            "y": 2735.609375,
+            "w": 736,
+            "h": 362.859375
+          },
+          {
+            "text": "THE AI PILOT VALUE BRIDGE\n\nCount the wor",
+            "x": 16,
+            "y": 3598.125,
+            "w": 736,
+            "h": 442
+          }
+        ],
+        "required": [
+          true,
+          true
+        ],
+        "h3": 2
+      }
+    },
+    {
+      "width": 1440,
+      "data": {
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "figs": [
+          {
+            "text": "THE COMPLETE WORKFLOW\n\nWhere did the wor",
+            "x": 433,
+            "y": 2591.15625,
+            "w": 820,
+            "h": 362.859375
+          },
+          {
+            "text": "THE AI PILOT VALUE BRIDGE\n\nCount the wor",
+            "x": 433,
+            "y": 3453.671875,
+            "w": 820,
+            "h": 419.5
+          }
+        ],
+        "required": [
+          true,
+          true
+        ],
+        "h3": 2
+      }
+    }
+  ],
+  "errors": []
+}

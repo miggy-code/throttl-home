@@ -1,0 +1,27 @@
+{
+  "status": "BLOCKED",
+  "source": "independent-worker-grader",
+  "score": 32,
+  "score_status": "provisional",
+  "blocking_issue": "The independent grader could not complete rendered viewport verification in its isolated run: npm run build timed out before browser evidence was available.",
+  "source_inspection": {
+    "sticky_desktop": "PASS",
+    "sticky_offset": "112px",
+    "bounded_internal_scroll": "PASS",
+    "mobile_non_sticky_disclosure": "PASS",
+    "anchor_offset": "PASS",
+    "canonical_source_boundary": "PASS",
+    "horizontal_overflow_risk": "none_evident"
+  },
+  "independent_verification_available_in_parent_run": {
+    "lint": "PASS",
+    "build_after_clearing_stale_next_artifacts": "PASS",
+    "vercel_preview": "PASS",
+    "browser_sticky_computed_style": "PASS",
+    "browser_sticky_scroll_behavior": "PASS",
+    "browser_anchor_scroll_margin": "112px",
+    "browser_horizontal_overflow": "PASS"
+  },
+  "production_status": "not_published",
+  "next_action": "Keep the candidate out of automatic PASS until a complete fixed-viewport screenshot run is captured and attached to the design-run evidence."
+}

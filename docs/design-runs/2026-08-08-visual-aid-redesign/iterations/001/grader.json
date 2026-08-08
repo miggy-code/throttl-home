@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "score": 30,
+  "rubric": {"spacing": 4, "alignment": 4, "hierarchy": 4, "responsive": 3, "typography": 4, "clarity": 4, "brand_fit": 4, "craft": 3},
+  "notes": "Workflow now uses separated stage cards and connector rails; Value Bridge has a framed endpoint and explicit closure rail. Remaining score deduction is conservative because full automated 375/768 capture was not available in this environment."
+}

@@ -1,0 +1,23 @@
+{
+  "run_id": "2026-08-05-workflow-flow",
+  "route": "/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "targets": ["WorkflowFlow"],
+  "canonical_sources": {
+    "WorkflowFlow": "components/blog/WorkflowFlow.tsx"
+  },
+  "non_targets": [
+    "unrelated existing working-tree changes",
+    "public/media/blog/ai-pilot-value-bridge.svg",
+    "public/media/blog/ai-pilot-review-matrix.svg"
+  ],
+  "viewports": [375, 768, 1440],
+  "design_intent": "Make the workflow read as a deliberate sequence with disciplined editorial spacing, a clear centerline, and an intentional mobile vertical rail.",
+  "acceptance_criteria": [
+    "Desktop shows one horizontal connector through the node centerline.",
+    "Mobile shows one vertical connector through the node centerline.",
+    "The visual reads as a sequence, not six unrelated bordered rows.",
+    "No horizontal overflow, clipping, or missing labels at any required viewport."
+  ],
+  "max_iterations": 3,
+  "production_status": "not_published"
+}

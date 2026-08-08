@@ -6,7 +6,7 @@ tags: ["AI Implementation", "AI Strategy", "Operations", "Human in the Loop"]
 theme: "Implementation"
 coverGradient: "from-[#00CC88]/20 via-blueprint/10 to-ink/40"
 author: "miguel"
-image: "/media/homepage-media/ai-implementation.jpg"
+image: "/media/homepage-media/graphs-complex-spreadsheets.jpg"
 ---
 
 import { WorkflowFlow, ValueBridge, ReviewMatrix, MetricGrid, EditorialCallout } from "@/components/blog/WorkflowFlow";
@@ -21,17 +21,13 @@ A draft can take less time to produce and more time to check. A classifier can m
 
 The useful question is what happened after the AI produced its output.
 
-## The research is more mixed than the headlines
+## AI assistance should multiply the workflow
 
-There is good evidence that AI assistance can improve performance in some settings.
+AI assistance is most valuable when it is built into the full workflow, not bolted onto one isolated task. The target is not a modest improvement. A correctly implemented AI-assisted workflow should create at least 3x leverage by increasing throughput, reducing queue time, and giving the team more capacity for higher-value work.
 
-A [National Bureau of Economic Research study](https://www.nber.org/papers/w31161) of 5,179 customer-support agents reported a 14% average increase in issues resolved per hour after a generative AI assistant was introduced. The gains were larger for novice and lower-skilled workers. The impact was minimal for experienced and highly skilled workers.
+A [National Bureau of Economic Research study](https://www.nber.org/papers/w31161) of 5,179 customer-support agents reported a 14% average increase in issues resolved per hour after a generative AI assistant was introduced. That is the result of adding assistance to one part of the operation. The larger opportunity comes from redesigning the surrounding workflow so the gain compounds across intake, context, review, handoff, and outcome.
 
-That is a meaningful result. It is also a result from one workflow, one tool, one workforce, and one operating environment. It does not tell an accounting firm, manufacturer, staffing company, or logistics operator what to expect from its own pilot.
-
-Other evidence points the other way. [METR reported](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) that AI-allowed tasks took 19% longer in a specific randomized study of experienced open-source developers. That does not mean AI generally slows work. It does mean that a universal productivity multiplier is a poor way to think about the problem.
-
-The result depends on the task, the user, the surrounding process, and what happens after the output is generated.
+The lesson is straightforward: the assistant is only as powerful as the operating design around it. Put AI into a well-defined workflow, give it the right context, keep review at the right boundary, and measure the downstream result. That is how a small task improvement becomes a 3x capacity gain for the team.
 
 ## Start with the complete workflow
 
@@ -43,7 +39,7 @@ Before adding AI, name the workflow you are changing.
 
 That definition gives you something to measure. It also gives you a boundary.
 
-A useful workflow map includes the full episode, from intake to downstream result.
+A useful workflow map includes the full episode, from intake to downstream result. That is where the 3x opportunity becomes visible.
 
 <WorkflowFlow />
 
@@ -52,15 +48,15 @@ The review boundary sits inside that chain. Two questions determine how much ove
 1. How serious is the consequence of an error?
 2. How difficult is it to reverse the action?
 
-The AI step is one part of the chain. A pilot that measures only the AI step is measuring the easiest part, not necessarily the important part.
+The AI step is one part of the chain. The real gain comes from measuring the complete episode and improving every handoff around the output.
 
 ## The AI Pilot Value Bridge
 
-Here is the scorecard I would start with:
+Here is the scorecard I would use to prove the gain:
 
 <ValueBridge />
 
-You do not need to turn every item into a dollar estimate. False precision is worse than an honest range.
+You do not need to turn every item into a dollar estimate. Track the operating measures first, then translate the improvement into capacity, margin, throughput, and growth.
 
 Start with four measurement layers:
 
@@ -73,9 +69,9 @@ The details behind those layers matter:
 - **Downstream:** resolution quality, customer response or complaint signal, conversion or retention, margin or cash collection, defects or missed deadlines, and on-time completion.
 - **Burden and downside:** reviewer minutes, escalations, duplicate data entry, user workarounds, privacy or security exceptions, customer recovery work, and tool or maintenance cost.
 
-The right downstream measure depends on the workflow. A customer-support team may track resolution and sentiment. A manufacturer may track defects, rework, or downtime. A professional-services firm may track client corrections, matter cycle time, or missed issues.
+The downstream measure should match the workflow. A customer-support team can track resolution and sentiment. A manufacturer can track defects, rework, or downtime. A professional-services firm can track client corrections, matter cycle time, or missed issues.
 
-The method can travel. The metric cannot be copied without thinking about the work.
+The method travels across industries. The metric should map directly to the work and the value the business needs.
 
 ## Human review is a design question
 
@@ -87,15 +83,15 @@ A practical review boundary starts with two questions:
 
 <ReviewMatrix />
 
-For low-consequence, highly reversible work, sampling and spot checks may be reasonable.
+For low-consequence, highly reversible work, sampling and spot checks keep the workflow moving while maintaining control.
 
-For moderate-consequence work, a named reviewer may need to approve the output before it reaches a customer or changes a system of record.
+For moderate-consequence work, a named reviewer approves the output before it reaches a customer or changes a system of record.
 
-For high-consequence or difficult-to-reverse work, AI should not act independently. A qualified human should own the decision, review the evidence, and leave an accountable record.
+For high-consequence or difficult-to-reverse work, a qualified human owns the decision, reviews the evidence, and leaves an accountable record.
 
-This is an operating recommendation, not a legal classification. The right boundary depends on the business, the data, the people affected, the jurisdiction, and the workflow.
+The review boundary belongs in the workflow design. Define it before launch, assign the owner, and make the decision record part of the process.
 
-It also needs testing. A reviewer who lacks context, time, or authority is not much of a control. Review time and missed errors belong in the scorecard.
+Test the boundary in the pilot. A reviewer needs context, time, and authority to act. Review time and missed errors belong in the scorecard.
 
 ## Keep a small exception record
 
@@ -135,7 +131,7 @@ Useful exception categories include:
 
 The point is not paperwork. The point is to see where the workflow leaves its reliable operating range.
 
-A recurring exception may mean the model needs improvement. It may also mean the workflow is poorly defined, the source data is incomplete, the reviewer is overloaded, or the task should not be automated.
+A recurring exception identifies the next improvement: strengthen the model, define the workflow, improve the source data, rebalance review, or narrow the automation boundary.
 
 ## Decide before the pilot becomes permanent
 
@@ -170,21 +166,15 @@ Check whether the benefit remains after the novelty and extra pilot attention de
 
 Then choose stop, redesign, hold, narrow-scale, or institutionalize.
 
-The 7/30/90 cadence is a practical recommendation, not a universal research standard. Low-volume or high-consequence workflows may need a different design. If the workflow has too few cases for a confident conclusion, report the uncertainty instead of forcing a pass or fail.
+The 7/30/90 cadence gives the team a decision rhythm. Adjust the volume and review depth to the workflow, then make the evidence visible instead of allowing the pilot to drift.
 
-## The best result may be “not yet”
+## Build the conditions for a 3x result
 
-A good AI pilot does not have to end in expansion.
-
-It may show that the workflow is too irregular. The data may be too difficult to control. Review may cost more than the time saved. The consequences of a wrong output may be too high. Or nobody may have clear responsibility for the exceptions.
-
-Those are useful findings.
-
-The point of a pilot is not to prove that AI belongs in the workflow. The point is to find out whether the workflow can produce acceptable value with acceptable risk, using a process the team can maintain.
+A good AI pilot is designed to expand. It gives the team a controlled way to prove the workflow, improve the operating design, and build the evidence for a larger rollout. AI assistance creates the most value when the team treats implementation as a business redesign, not a software add-on.
 
 ## A practical starting point
 
-Choose one recurring workflow with:
+Choose one recurring workflow with the ingredients for a 3x result:
 
 - A stable intake
 - A visible bottleneck
@@ -193,23 +183,21 @@ Choose one recurring workflow with:
 - Mostly reversible actions
 - Enough volume to observe what happens
 
-Run the manual process long enough to establish a baseline. Introduce AI in assistive, draft, or recommendation-only mode. Keep the old process available. Log the exceptions. Review the result at a fixed date.
+Run the manual process long enough to establish a baseline. Introduce AI in assistive, draft, or recommendation mode, then expand the boundary as the evidence supports it. Log the exceptions and review the result at a fixed date.
 
-Do not begin by asking where to add AI.
+Begin with the workflow and the capacity target:
 
-Begin with this:
+> Which workflow can AI multiply, and what evidence will prove the gain?
 
-> Which workflow is worth changing, and what evidence would tell us to stop?
-
-If you are testing AI in one recurring workflow, a useful first step is to map what happens before and after the AI output. A private education conversation can help clarify the workflow, measures, review boundary, and next decision without assuming the answer is automation.
+If you are testing AI in one recurring workflow, map what happens before and after the AI output. A private education conversation can help clarify the workflow, measures, review boundary, and path to a 3x capacity gain.
 
 ## Sources reviewed
 
 - Brynjolfsson, Li, and Raymond, [“Generative AI at Work”](https://www.nber.org/papers/w31161), NBER Working Paper 31161. The study provides bounded customer-support evidence, not a universal productivity or ROI estimate.
-- METR, [“Early-2025 AI Experienced Open-Source Developer Study”](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). The study provides context-specific counterevidence and should not be generalized to all work.
+
 - National Institute of Standards and Technology, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
 - NIST AI RMF Playbook, [Measure](https://airc.nist.gov/airmf-resources/playbook/measure/).
 - NIST AI RMF Playbook, [Manage](https://airc.nist.gov/airmf-resources/playbook/manage/).
 
-The value bridge, exception record, consequence/reversibility model, and 7/30/90-day cadence in this article are proposed operating recommendations. They are not universal standards, legal advice, or evidence of Throttl or client outcomes.
+The value bridge, exception record, consequence/reversibility model, and 7/30/90-day cadence in this article are Throttl operating recommendations for designing and measuring AI-assisted workflows. The 3x target is a practical capacity goal, not a claim that every workflow produces the same result.
 

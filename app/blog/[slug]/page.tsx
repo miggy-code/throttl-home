@@ -107,7 +107,7 @@ export default async function BlogPostPage({
           />
         </div>
 
-        <div className="container relative z-10 py-16 md:py-24">
+        <div className="container relative z-10 py-14 md:py-20">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 font-sans text-[14px] font-medium text-white/50 transition-colors hover:text-white"
@@ -116,7 +116,7 @@ export default async function BlogPostPage({
             All articles
           </Link>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4 font-sans text-[14px] text-white/50">
+          <div className="mt-7 flex flex-wrap items-center gap-4 font-sans text-[13px] text-white/50">
             <span className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
               {formattedDate}
@@ -147,7 +147,7 @@ export default async function BlogPostPage({
             ) : null}
           </div>
 
-          <h1 className="font-hero mt-6 max-w-[800px] font-bold text-[32px] leading-[1.15] text-white md:text-[48px]">
+          <h1 className="font-hero mt-6 max-w-[800px] font-bold text-[32px] leading-[1.08] tracking-[-0.02em] text-white md:text-[52px]">
             {post.title}
           </h1>
 
@@ -171,7 +171,7 @@ export default async function BlogPostPage({
             ))}
           </div>
 
-          <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-6">
+          <div className="mt-7 flex items-center gap-3 border-t border-white/10 pt-5">
             {post.author.avatar ? (
               <img
                 src={post.author.avatar}
@@ -199,9 +199,9 @@ export default async function BlogPostPage({
       </section>
 
       <section style={{ backgroundColor: C.cream }}>
-        <div className="container py-12 md:py-16">
+        <div className="container py-10 md:py-14">
           {post.image ? (
-            <div className="mx-auto mb-10 max-w-[980px] overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_28px_80px_rgba(15,28,63,0.12)]">
+            <div className="mx-auto mb-12 max-w-[980px] overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_28px_80px_rgba(15,28,63,0.12)]">
               <img
                 src={post.image}
                 alt={post.title}
@@ -210,7 +210,7 @@ export default async function BlogPostPage({
             </div>
           ) : null}
 
-          <div className="mx-auto grid max-w-[980px] gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
+          <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[190px_minmax(0,820px)] lg:justify-center lg:gap-14">
             <TableOfContents headings={post.headings} />
 
             <article data-blog-article="true" className="min-w-0">

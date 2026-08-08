@@ -1,0 +1,11 @@
+{
+  "route": "/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "targets": ["components/blog/WorkflowFlow.tsx"],
+  "non_targets": ["unrelated existing working-tree changes", "production publication"],
+  "canonical_visual_sources": {"workflow": "components/blog/WorkflowFlow.tsx", "value_bridge": "components/blog/WorkflowFlow.tsx"},
+  "viewports": [375, 768, 1440],
+  "intent": "Redesign the workflow as discrete stages with clean connector rails and close the value bridge with an explicit burden-to-net-value relationship.",
+  "acceptance": ["connectors do not pass through stage circles", "workflow reads as a complete episode", "value bridge has explicit net-value closure", "no horizontal overflow", "mobile stacking is intentional"],
+  "max_autonomous_iterations": 3,
+  "human_approval_gate": true
+}

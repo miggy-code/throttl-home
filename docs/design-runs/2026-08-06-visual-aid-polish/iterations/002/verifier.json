@@ -1,0 +1,66 @@
+{
+  "url": "http://127.0.0.1:3100/blog/your-ai-pilot-may-be-measuring-the-wrong-thing/",
+  "results": [
+    {
+      "width": 375,
+      "data": {
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "figs": [
+          {
+            "x": 16,
+            "w": 343,
+            "h": 654.125
+          },
+          {
+            "x": 16,
+            "w": 343,
+            "h": 883
+          }
+        ],
+        "required": 2
+      }
+    },
+    {
+      "width": 768,
+      "data": {
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "figs": [
+          {
+            "x": 16,
+            "w": 736,
+            "h": 362.859375
+          },
+          {
+            "x": 16,
+            "w": 736,
+            "h": 442
+          }
+        ],
+        "required": 2
+      }
+    },
+    {
+      "width": 1440,
+      "data": {
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "figs": [
+          {
+            "x": 433,
+            "w": 820,
+            "h": 362.859375
+          },
+          {
+            "x": 433,
+            "w": 820,
+            "h": 419.5
+          }
+        ],
+        "required": 2
+      }
+    }
+  ],
+  "errors": []
+}

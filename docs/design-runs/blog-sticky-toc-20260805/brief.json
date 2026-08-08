@@ -1,0 +1,26 @@
+{
+  "run_id": "blog-sticky-toc-20260805",
+  "route": "/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "targets": ["TableOfContents", "blog article layout"],
+  "canonical_sources": {
+    "TableOfContents": "components/blog/TableOfContents.tsx",
+    "blog_article_layout": "app/blog/[slug]/page.tsx"
+  },
+  "non_targets": [
+    "unrelated existing working-tree changes",
+    "visual-aid redesign beyond layout impact",
+    "production deployment"
+  ],
+  "viewports": [375, 768, 1440],
+  "design_intent": "Keep the desktop article navigation visible as the reader scrolls, while preserving a compact, non-intrusive mobile disclosure. The navigation should remain easy to scan, never cover content, and stay inside the article grid.",
+  "acceptance_criteria": [
+    "The desktop In this article navigation uses sticky positioning below the site header.",
+    "The desktop navigation remains within the article column and does not overlap the article body.",
+    "The desktop navigation has a bounded viewport height and can scroll internally when the list is taller than the viewport.",
+    "The mobile navigation remains a disclosure element and does not become sticky.",
+    "Anchor headings remain visible below the fixed reading-progress/header area when jumped to.",
+    "There is no horizontal overflow at 375px, 768px, or 1440px."
+  ],
+  "max_iterations": 3,
+  "production_status": "not_published"
+}

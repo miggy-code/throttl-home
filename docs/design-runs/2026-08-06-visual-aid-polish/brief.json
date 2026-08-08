@@ -1,0 +1,19 @@
+{
+  "run_id": "2026-08-06-visual-aid-polish",
+  "route": "/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "targets": ["Complete Workflow", "AI Pilot Value Bridge"],
+  "canonical_visual_sources": {
+    "Complete Workflow": "components/blog/WorkflowFlow.tsx::WorkflowFlow",
+    "AI Pilot Value Bridge": "components/blog/WorkflowFlow.tsx::ValueBridge"
+  },
+  "non_targets": ["public/media/blog/ai-pilot-value-bridge.svg", "public/media/blog/ai-pilot-review-matrix.svg", "all unrelated existing working-tree changes"],
+  "design_intent": "Polished Throttl editorial visuals with disciplined spacing, clear information hierarchy, and intentional responsive composition.",
+  "viewports": [375, 768, 1440],
+  "max_autonomous_iterations_per_target": 3,
+  "acceptance": {
+    "workflow": ["desktop horizontal centerline connector", "mobile vertical centerline connector", "intentional terminal spacing", "reads as one sequence", "exception note subordinate"],
+    "value_bridge": ["balanced desktop columns", "40px arrow rails", "intentional mobile progression", "gross benefit, hidden work, and net value immediately legible", "hidden-work list visibly connected", "coral reserved for endpoint"],
+    "deterministic": ["no horizontal overflow", "no clipping", "target figures have nonzero bounds", "required headings present", "no console errors", "semantic h3 headings retained"]
+  },
+  "production_status": "not_published"
+}

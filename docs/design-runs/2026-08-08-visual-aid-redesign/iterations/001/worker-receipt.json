@@ -1,0 +1,6 @@
+{
+  "status": "candidate",
+  "files_changed": ["components/blog/WorkflowFlow.tsx"],
+  "notes": ["Replaced timeline with stage cards and dedicated connector rails", "Added explicit hidden-work closure panel and net-value endpoint"],
+  "verification": {"lint": "passed", "build": "passed", "git_diff_check": "passed"}
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "route": "http://127.0.0.1:3100/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "viewport_evidence": [{"width": 1280, "scrollWidth": 1280, "workflowOverflow": false, "valueBridgeOverflow": false, "workflowHeight": 437.734375, "valueBridgeHeight": 565.5}],
+  "checks": ["route rendered", "target figures present", "no target figure overflow", "no uncaught console errors observed", "desktop visual inspected"],
+  "limitations": ["local browser session retained a dev overlay issue indicator unrelated to the target figures", "mobile viewport screenshot capture unavailable in this browser adapter; responsive CSS and DOM were inspected"]
+}

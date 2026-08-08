@@ -49,21 +49,21 @@ export const mdxComponents: MDXComponents = {
   h1: (props) => (
     <h1
       style={{ color: C.navy }}
-      className="font-display font-bold text-[32px] leading-tight md:text-[40px] mt-12 mb-6 first:mt-0"
+      className="font-display scroll-mt-28 font-bold text-[32px] leading-tight md:text-[40px] mt-12 mb-6 first:mt-0"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
       style={{ color: C.navy }}
-      className="font-display font-semibold text-[26px] leading-tight md:text-[30px] mt-14 mb-5 scroll-mt-24"
+      className="font-display font-semibold text-[26px] leading-tight md:text-[30px] mt-14 mb-5 scroll-mt-28"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
       style={{ color: C.navy }}
-      className="font-display font-sans font-semibold text-[20px] leading-snug md:text-[22px] mt-10 mb-4 scroll-mt-24"
+      className="font-display font-sans font-semibold text-[20px] leading-snug md:text-[22px] mt-10 mb-4 scroll-mt-28"
       {...props}
     />
   ),
@@ -86,7 +86,7 @@ export const mdxComponents: MDXComponents = {
   ol: (props) => (
     <ol
       style={{ color: C.warmGray }}
-      className="my-5 ml-1 list-decimal space-y-3 pl-8 font-sans text-[17px] leading-[1.8] marker:font-mono marker:text-xs marker:font-semibold marker:text-gray-500"
+      className="my-6 ml-1 list-decimal space-y-3 pl-8 font-sans text-[17px] leading-[1.8] marker:font-mono marker:text-[11px] marker:font-semibold marker:text-[#6A8A9E]"
       {...props}
     />
   ),
@@ -142,7 +142,7 @@ export const mdxComponents: MDXComponents = {
   ul: (props) => (
     <ul
       style={{ color: C.warmGray }}
-      className="my-5 ml-1 list-disc space-y-3 pl-6 font-sans text-[17px] leading-[1.8] marker:text-[#6A8A9E]"
+      className="my-6 ml-1 list-disc space-y-3 pl-7 font-sans text-[17px] leading-[1.8] marker:text-[#6A8A9E] marker:text-[0.72em]"
       {...props}
     />
   ),

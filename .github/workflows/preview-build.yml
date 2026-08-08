@@ -1,0 +1,72 @@
+name: Preview Build
+
+on:
+  push:
+    branches:
+      - "preview/**"
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: preview-build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and package preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Package preview artifact
+        run: |
+          set -euo pipefail
+          mkdir -p deployment
+          cp -a .next deployment/.next
+          if [ -d public ]; then cp -a public deployment/public; fi
+          cp package.json deployment/package.json
+          cp package-lock.json deployment/package-lock.json
+          tar -czf "throttl-home-${GITHUB_SHA}.tar.gz" -C deployment .
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: throttl-home-${{ github.sha }}
+          path: throttl-home-${{ github.sha }}.tar.gz
+          retention-days: 14
+
+      - name: Write build summary
+        run: |
+          {
+            echo "## Preview build passed"
+            echo ""
+            echo "- Revision: \\`${GITHUB_SHA}\\`"
+            echo "- Branch: \\`${GITHUB_REF_NAME}\\`"
+            echo "- Artifact: \\`throttl-home-${GITHUB_SHA}\\`"
+          } >> "$GITHUB_STEP_SUMMARY"

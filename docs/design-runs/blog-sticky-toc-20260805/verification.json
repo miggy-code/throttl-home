@@ -1,0 +1,22 @@
+{
+  "route": "/blog/your-ai-pilot-may-be-measuring-the-wrong-thing",
+  "preview_url": "https://throttl-command-center-jxs4n79x7-throttlm3-s-projects.vercel.app",
+  "status": "verified_with_blocked_independent_grader",
+  "quality_gates": {
+    "npm_run_lint": "PASS",
+    "npm_run_build": "PASS_after_clearing_stale_next_artifacts",
+    "npm_run_preview": "PASS"
+  },
+  "browser_checks": {
+    "desktop_sticky_position": "PASS",
+    "desktop_sticky_top": "112px",
+    "sticky_behavior_after_scroll": "PASS",
+    "mobile_toc_is_non_sticky_disclosure": "PASS_by_source",
+    "heading_scroll_margin": "112px",
+    "horizontal_overflow": "PASS",
+    "figure_widths_at_verified_desktop": [820, 820, 820, 820]
+  },
+  "required_fixed_viewports": [375, 768, 1440],
+  "fixed_viewport_screenshot_artifacts": "not_captured_as_files_in_this_run",
+  "production_status": "not_published"
+}
