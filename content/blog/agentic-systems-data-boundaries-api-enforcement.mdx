@@ -1,0 +1,123 @@
+---
+title: "The API Is Where Agentic Systems Enforce Data Boundaries"
+description: "Enterprise agents need more than responsible prompts. The systems underneath them must enforce identity, scope, permissions, and approvals at every retrieval and action API."
+date: "2026-09-04"
+tags: ["AI Agents", "Security", "Enterprise AI", "API Design", "Governance"]
+theme: "Engineering"
+coverGradient: "from-[#3B7DD8]/20 via-blueprint/10 to-ink/40"
+author: "miguel"
+image: "/media/blog/server-room-blue.jpg"
+---
+
+An agent can read a confidential record, assemble a recommendation, and send a message to a customer in the time it takes a person to open two applications. That is the value. It is also the reason an agent cannot be trusted simply because its instructions sound responsible.
+
+The security boundary has to exist below the conversation. It has to be enforced by the software interfaces the agent uses to retrieve information and take action.
+
+The distinction matters:
+
+> The boundary comes from organizational policy. The API or tool is where that policy must be enforced.
+
+A prompt can tell a model not to cross a client boundary. It cannot guarantee that the rule is followed. A retrieval API and an action API can evaluate the request before returning data or performing a side effect. That is the level where the rule becomes real.
+
+## What an agent request needs to carry
+
+A useful authorization decision is about more than the identity of the person who opened the chat. The system needs enough context to answer questions such as:
+
+- Which user is making the request?
+- Which agent or workflow is acting?
+- Which tenant, client, matter, or business unit is in scope?
+- What resource is being requested?
+- What is the purpose of the request?
+- Which fields and records may be returned?
+- Is the requested action allowed, or does it require approval?
+- Has the authorization expired or been revoked?
+
+That context should travel with every tool call. The source API should make the decision, not the model and not an instruction hidden in the prompt.
+
+A model can propose, summarize, or choose among options. It should not be the final authority on whether a record is visible or a side effect is permitted.
+
+## The enforcement pattern
+
+A robust agent workflow separates retrieval from action and evaluates authorization twice:
+
+```text
+policy defines the boundary
+→ identity identifies user and agent
+→ API evaluates the request
+→ API returns only authorized data
+→ agent proposes an action
+→ action API evaluates authorization again
+→ external system performs the action
+→ system verifies and records the result
+```
+
+The second authorization check is not redundant. A user may be allowed to read a record but not change it. An approval may have expired. The target may have changed between retrieval and execution. A tool call may also be an attempt to turn untrusted content into an instruction.
+
+The action API needs to make its own decision using the current state of the system.
+
+## Claude has useful controls, but the customer still builds the enforcement layer
+
+Claude Cowork and Claude Enterprise provide meaningful controls around the model and its environment. Cloud sessions can run in temporary isolated sandboxes. Enterprise network access can be denied by default, with egress routed through a mandatory proxy and allowlists. Local execution runs in a dedicated virtual machine, with file access limited to connected folders.
+
+Enterprise roles can control which connectors and connector tools members can use. Supported MCP connectors use delegated, per-user OAuth where possible, so Claude inherits permissions from the connected service rather than using an elevated shared account. Organizations can also centrally authorize supported Enterprise connectors.
+
+Those controls are useful. They are not a complete authorization layer for a company's own workflows.
+
+The remaining policy is spread across organization entitlements, roles, connector authorization, filesystem scope, sandbox and network configuration, MCP implementation, source-system permissions, and audit. If a company needs to enforce client, matter, workflow, purpose, field, or action boundaries inside a custom MCP server, Claude does not provide that business logic for it.
+
+That is the practical conclusion: **Claude has useful controls around the model, execution environment, and connector access. It provides almost none of the workflow-specific enforcement layer for a company's own systems. The customer has to build that enforcement into MCP servers, connectors, and source APIs.**
+
+This is not necessarily a reason not to use Claude. It is a reason to understand what is and is not included when an agent is connected to proprietary applications or multiple client systems.
+
+## Microsoft 365 integrates more of the boundary
+
+Microsoft 365 Copilot operates from a more integrated identity and content model when the relevant data already lives in the Microsoft ecosystem.
+
+Copilot APIs use the authentication and authorization model of Microsoft Graph. Delegated permissions authenticate both the calling application and the signed-in user. The API enforces the signed-in user's permissions on every request, and permission trimming removes content that user cannot access from the response. Conditional Access, MFA, sensitivity labels, audit, logging, monitoring, and existing compliance policies can apply to Copilot API interactions.
+
+The wider platform adds SharePoint, OneDrive, and Teams permissions, Graph grounding, encryption, Purview DLP, retention, eDiscovery, and agent governance.
+
+That is a much more mature starting point for organizations whose collaboration and knowledge layer is already in Microsoft 365. The identity, content permissions, retrieval layer, and governance tools are designed to work together. A customer does not have to rebuild the basic enforcement architecture around every Copilot workflow.
+
+Microsoft still cannot fix bad source permissions. If a document is shared with Everyone, permission trimming can correctly make it available to everyone. External connectors still need accurate identity and access-control mapping. Configuration and permission hygiene remain the customer's responsibility.
+
+The two platforms are solving different parts of the problem. Claude provides a flexible model and work environment with important execution and connector controls. Microsoft 365 provides a more integrated policy and authorization foundation for content connected to its ecosystem.
+
+## The choice depends on where the work lives
+
+Microsoft 365 is a strong starting point when the company's data, collaboration, and identity model already live there and the agent can operate within Microsoft's governance model.
+
+Claude can be a strong choice when the company wants its model and work environment across a broader set of systems. But when those systems include proprietary applications, multiple clients, custom tools, or sensitive operational workflows, the company should expect to build more of the policy and authorization layer itself.
+
+In either case, the model is a component inside the system. It is not the component that enforces the organization's security boundary.
+
+## A practical implementation path
+
+A company does not need to solve every agent-permission problem before starting a pilot. It does need to choose a workflow narrow enough to govern.
+
+Start with one process, such as reviewing claims, preparing a sales proposal, handling a freight exception, or answering questions from an internal knowledge base. Identify the systems and resources that process needs. Write down the allowed operations and the actions that always require a person.
+
+Then add the enforcement points:
+
+1. Give the workflow its own identity or capability set.
+2. Pass authenticated user and workflow context to every tool.
+3. Enforce tenant, client, matter, resource, and classification rules in the source API.
+4. Return only the fields and records required for the task.
+5. Separate retrieval from side effects.
+6. Require scoped approvals for external sends and high-consequence changes.
+7. Make writes idempotent so a retry does not create a duplicate action.
+8. Read the external system back after an action and record the result.
+9. Test denied access, revoked access, prompt injection, stale approvals, malformed identifiers, and duplicate retries.
+10. Review denials and exceptions as part of normal operations.
+
+The first goal is not unrestricted autonomy. It is a workflow where the organization can explain what the agent was allowed to do, what it actually did, and why the system accepted or rejected each step.
+
+The enterprise AI market is moving quickly. The security model has to move from the chat interface to the software interfaces underneath it. When an agent requests data or tries to take an action, the important question is not whether its instructions sounded responsible.
+
+The important questions are which policy applied, which API enforced it, what scope it evaluated, and whether the result can be independently verified.
+
+---
+
+*The hard part of enterprise AI is not connecting a model to another system. It is making the boundaries explicit and enforceable. [Our team works on this](/contact) for a living.*
+
+> **Note:** Platform capabilities and limitations change. Confirm current plan, connector, licensing, and tenant behavior before relying on any control in production.
