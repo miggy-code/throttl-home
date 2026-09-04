@@ -21,7 +21,7 @@ export const C = {
   goldLight: "#E2C97A",
   coral:     "#6A8A9E",
   coralDark: "#4F6D7E",
-  warmGray:  "#8A8278",
+  warmGray:  "#655F59",
   white:     "#FFFFFF",
 };
 

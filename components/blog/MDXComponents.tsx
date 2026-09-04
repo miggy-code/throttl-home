@@ -86,7 +86,7 @@ export const mdxComponents: MDXComponents = {
   ol: (props) => (
     <ol
       style={{ color: C.warmGray }}
-      className="my-6 ml-1 list-decimal space-y-3 pl-8 font-sans text-[17px] leading-[1.8] marker:font-mono marker:text-[11px] marker:font-semibold marker:text-[#6A8A9E]"
+      className="my-7 ml-0 list-decimal space-y-4 pl-10 font-sans text-[17px] leading-[1.75] marker:font-mono marker:text-[13px] marker:font-semibold marker:text-[#4F6D7E]"
       {...props}
     />
   ),
